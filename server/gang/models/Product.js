@@ -5,13 +5,22 @@ const productSchema = new Schema({
   owner:{ type: Schema.Types.ObjectId, ref: "User" },
   name: String,
   description: String,
-  email: String,
-  imgPath: {
+  imgPath1: {
     type: String,
+    default: "https://screenshotlayer.com/images/assets/placeholder.png"
+  },
+  imgPath2: {
+    type: String,
+    default: "https://screenshotlayer.com/images/assets/placeholder.png"
+  },
+  imgPath3: {
+    type: String,
+    default: "https://screenshotlayer.com/images/assets/placeholder.png"
   },
   price: Number,
   isBundle: [{ type: Schema.Types.ObjectId, ref: "Bundle" }],
-  active: {default: true},
+  active: { type: Boolean,
+    default: false},
   buyer: { type: Schema.Types.ObjectId, ref: "User" },
 }, {
   timestamps: {

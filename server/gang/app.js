@@ -91,8 +91,19 @@ require('./passport')(app);
 // const index = require('./routes/index');
 // app.use('/', index);
 
-const authRoutes = require('./routes/auth');
+const authRoutes = require('./routes/auth.routes');
 app.use('/', authRoutes);
+
+const createRoutes = require('./routes/create.routes');
+app.use('/create', createRoutes);
+const displayRoutes = require('./routes/display.routes');
+app.use('/display', displayRoutes);
+const editRoutes = require('./routes/edit.routes');
+app.use('/edit', editRoutes);
+const deleteRoutes = require('./routes/delete.routes');
+app.use('/delete', deleteRoutes);
+const userRoutes = require('./routes/user.routes');
+app.use('/user', userRoutes);
 
 // const googleRoutes = require('./routes/google');
 // app.use('/', googleRoutes);
