@@ -20,7 +20,7 @@ const productSchema = new Schema({
   price: Number,
   isBundle: [{ type: Schema.Types.ObjectId, ref: "Bundle" }],
   active: { type: Boolean,
-    default: false},
+    default: true},
   buyer: { type: Schema.Types.ObjectId, ref: "User" },
 }, {
   timestamps: {

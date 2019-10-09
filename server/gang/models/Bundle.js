@@ -8,7 +8,7 @@ const bundleSchema = new Schema({
   products: [{ type: Schema.Types.ObjectId, ref: "Product" }],
   price: Number,
   active: { type: Boolean,
-    default: false},
+    default: true},
   imgPath: {
     type: String,
   },
