@@ -6,18 +6,9 @@ const bidSchema = new Schema({
   productsList: [{ type: Schema.Types.ObjectId, ref: "Product" }],
   bundlesList: [{ type: Schema.Types.ObjectId, ref: "Bundle" }],
   deadLine: Date,
-  from: Date,
-  to: Date,
-  location: {
-    type: {
-      type: String, // Don't do `{ location: { type: String } }`
-      enum: ['Point'], // 'location.type' must be 'Point'
-    },
-    coordinates: {
-      type: [Number],
-    }
-  }
-
+  from: String,
+  to: String,
+  location: { type: { type: String }, coordinates: [Number], address: String},
 }, {
   timestamps: {
     createdAt: 'created_at',

@@ -3,10 +3,12 @@ const Schema   = mongoose.Schema;
 
 const bundleSchema = new Schema({
   owner:{ type: Schema.Types.ObjectId, ref: "User" },
-  name: String,
+  title: String,
+  description: String,
   products: [{ type: Schema.Types.ObjectId, ref: "Product" }],
   price: Number,
-  active: {default: true},
+  active: { type: Boolean,
+    default: true},
   imgPath: {
     type: String,
   },
