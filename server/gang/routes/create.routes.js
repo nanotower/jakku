@@ -7,12 +7,15 @@ const Product = require("../models/Product");
 const Bundle = require("../models/Bundle");
 
 router.post("/new-bid", (req, res, next) => {
+  let {deadLine, from, to} = req.body.state
+  console.log("&&&&&&&6", req.body.state)
+
   Bid.create({ 
     owner: req.user._id,
-    deadLine: req.body.deadLine,
-    from: req.body.from,
-    to: req.body.to,
-    location: req.body.location
+    deadLine: deadLine,
+    from: from,
+    to: to,
+    //location: req.body.location
   })
   .then(created => {
     res.json(created);
