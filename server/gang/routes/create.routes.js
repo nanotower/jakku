@@ -5,17 +5,25 @@ const User = require("../models/User");
 const Bid = require("../models/Bid");
 const Product = require("../models/Product");
 const Bundle = require("../models/Bundle");
+const Photo = require("../models/Photo");
+const uploadCloud = require('../configs/cloudinary.config');
 
 router.post("/new-bid", (req, res, next) => {
   let {deadLine, from, to} = req.body.state
   console.log("&&&&&&&6", req.body.state)
+  
+  let {lat, lng, address} = req.body.state.location
 
   Bid.create({ 
     owner: req.user._id,
     deadLine: deadLine,
     from: from,
     to: to,
-    //location: req.body.location
+    location: {
+      coordinates: [lng, lat],
+      type: 'Point',
+      address: address
+    },
   })
   .then(created => {
     res.json(created);
@@ -24,8 +32,9 @@ router.post("/new-bid", (req, res, next) => {
 })
 
 router.post("/new-product", (req, res, next) => {
-  const{name, description, imgPath1, imgPath2, imgPath3, price} = req.body;
+  const{name, description, imgPath1, imgPath2, imgPath3, price} = req.body.state;
   const owner= req.user._id;
+  console.log("$$$$$$", req.body)
   Product.create({ 
     owner,
     name,
@@ -33,12 +42,29 @@ router.post("/new-product", (req, res, next) => {
     imgPath1,
     imgPath2,
     imgPath3,
+    price
   })
   .then(created => {
     res.json(created);
     console.log("created&&&&&&&&&&&", created)
   })
 })
+
+router.post('/new-product/photo', uploadCloud.single('photo'), (req, res, next) => {
+  const imgName = req.file.originalname;
+  const newPhoto = new Photo({imgName})
+  console.log(req.file.url)
+  res.json(req.file.url)
+  // newPhoto.save()
+  // .then(photo => {
+  //   res.json({url: req.file, photo: photo});
+  // })
+  // .catch(error => {
+  //   console.log(error);
+  // })
+});
+
+
 
 router.post("/new-bundle", (req, res, next) => {
   console.log(req.body)

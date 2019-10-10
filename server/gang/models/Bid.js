@@ -8,16 +8,7 @@ const bidSchema = new Schema({
   deadLine: Date,
   from: String,
   to: String,
-  location: {
-    type: {
-      type: String, // Don't do `{ location: { type: String } }`
-      enum: ['Point', 'other'], // 'location.type' must be 'Point'
-    },
-    coordinates: {
-      type: [Number],
-    }
-  }
-
+  location: { type: { type: String }, coordinates: [Number], address: String},
 }, {
   timestamps: {
     createdAt: 'created_at',
