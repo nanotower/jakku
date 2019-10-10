@@ -18,6 +18,7 @@ const userSchema = new Schema({
   googleID: {
     type: String
   },
+  bid: { type: Schema.Types.ObjectId, ref: "Bid" },
   products: [{ type: Schema.Types.ObjectId, ref: "Product" }],
   bundles: [{ type: Schema.Types.ObjectId, ref: "Bundle" }],
 }, {
