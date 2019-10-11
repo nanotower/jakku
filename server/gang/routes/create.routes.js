@@ -23,20 +23,24 @@ router.post("/new-bid", (req, res, next) => {
       coordinates: [lng, lat],
       type: 'Point',
       address: address
-    },
+    }
   })
   .then(created => {
+    User.findByIdAndUpdate(req.user._id, {bid: created._id}, { new: true })
+    .then(() => {
     res.json(created);
     console.log("created&&&&&&&&&&&", created)
+    })
   })
 })
 
 router.post("/new-product", (req, res, next) => {
-  const{name, description, imgPath1, imgPath2, imgPath3, price} = req.body.state;
+  const{name, description, imgPath1, imgPath2, imgPath3, price, bid} = req.body.state;
   const owner= req.user._id;
   console.log("$$$$$$", req.body)
   Product.create({ 
     owner,
+    bid,
     name,
     description,
     imgPath1,
@@ -45,8 +49,12 @@ router.post("/new-product", (req, res, next) => {
     price
   })
   .then(created => {
-    res.json(created);
-    console.log("created&&&&&&&&&&&", created)
+    console.log("va a empuja el id", created._id)
+    User.findByIdAndUpdate(req.user._id, {$push: {products: created._id}}, {new: true})
+    .then(()=> {
+      res.json(created);
+      console.log("created-product--&&&&&&&&&&&", created)
+    })
   })
 })
 

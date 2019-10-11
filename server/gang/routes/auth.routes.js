@@ -71,7 +71,15 @@ router.get("/logout", (req, res) => {
 
 router.get('/currentuser', (req,res,next) => {
   if(req.user){
-    res.status(200).json(req.user);
+    User.findById(req.user._id)
+    .populate("bid")
+    .populate("products")
+    .populate("bundles")
+    .then(user => {
+      res.status(200).json(user);
+
+    })
+    
   }else{
     next(new Error('Not logged in'))
   }
