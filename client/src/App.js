@@ -106,8 +106,10 @@ export default class App extends Component {
       })
       console.log("vuelta de compra producto", this.state)
     })
-
   }
+
+  
+
 
   render() {
     return this.state.loggedInUser ? (
@@ -120,7 +122,7 @@ export default class App extends Component {
               return (
                 <React.Fragment>
                    <Navbar fromApp={()=>this.logout()}></Navbar>
-                  <HomeLogged user={this.state.loggedInUser}></HomeLogged>
+                  <HomeLogged user={this.state.loggedInUser} product={}></HomeLogged>
                 </React.Fragment>
               );
             }}
