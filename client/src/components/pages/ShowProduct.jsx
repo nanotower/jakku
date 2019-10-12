@@ -44,10 +44,15 @@ export default class ShowProduct extends Component {
           <p>{this.props.product.description}</p>
           <p>La mudanza de esta caja será el {this.props.product.bid.deadLine} de {this.props.product.bid.from} a {this.props.product.bid.to}</p>
           <p>Precio: {this.props.product.price} €</p>
-          <h1>{!this.props.product.active && this.props.userId==this.props.product.buyer? "Comprado! Enhorabuena" : !this.props.product.active? "Vendido": ""}</h1>
+          
+          {this.props.product.active && (<button onClick={e => this.buy(e)}>Comprar</button>)}
+          <span>{!this.props.product.active && this.props.userId==this.props.product.buyer? "Comprado! Enhorabuena" : !this.props.product.active? "Vendido": ""}</span>
+          <div className="owner-container">
           <img src={this.props.product.owner.imgPath}></img>
           <p>{this.props.product.owner.username}</p>
-          <button onClick={e => this.buy(e)}>Comprar</button>
+          </div>
+       
+          
         </div>
         </React.Fragment>
       );
