@@ -35,12 +35,14 @@ export default class ShowBid extends Component {
         <h2>Tus cajas</h2>
         {this.props.user.products.map((product, idx)=> {
           return (
-            <NavLink to={`/box/${product._id}`} key={idx}>
+            <NavLink to={`/my-product/${product._id}`} key={idx}>
+              <div className="product-container">
               <img src={product.imgPath1} alt="Product image"/>
               <h2>{product.name}</h2>
               <p>{product.description}</p>
               <p>Precio: {product.price} €</p>
               <p>{product.isBundle.length>0? "Pertenece a un pack furgo" : "No se vende en pack"}</p>
+              </div>
               
             </NavLink>
           )

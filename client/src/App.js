@@ -15,6 +15,7 @@ import CreateBid from "./components/organisms/CreateBid";
 import CreateProduct from "./components/organisms/CreateProduct";
 import ShowBid from "./components/pages/ShowBid";
 import Navbar from "./components/organisms/Navbar";
+import ShowMyProduct from "./components/pages/ShowMyProduct";
 
 
 export default class App extends Component {
@@ -145,7 +146,7 @@ export default class App extends Component {
               );
             }}
           />
-          <Route
+          {/* <Route
             exact
             path="/product/:id"
             render={() => {
@@ -153,6 +154,20 @@ export default class App extends Component {
                 <React.Fragment>
                   <Navbar fromApp={()=>this.logout()}></Navbar>
                   <h1>show product</h1>
+                </React.Fragment>
+              );
+            }}
+          /> */}
+          <Route
+            exact
+            path="/my-product/:id"
+            render={(props) => {
+              let chosenProduct = props.match.params.id;
+              return (
+                <React.Fragment>
+                  <Navbar fromApp={()=>this.logout()}></Navbar>
+                  <h1>Mostrar caja</h1>
+                  <ShowMyProduct productId={chosenProduct} fromApp={() => this.fetchUser()} user={this.state.loggedInUser} product={null}></ShowMyProduct>
                 </React.Fragment>
               );
             }}
