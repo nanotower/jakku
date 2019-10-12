@@ -61,7 +61,6 @@ router.post("/new-product", (req, res, next) => {
 router.post('/new-product/photo', uploadCloud.single('photo'), (req, res, next) => {
   const imgName = req.file.originalname;
   const newPhoto = new Photo({imgName})
-  console.log(req.file.url)
   res.json(req.file.url)
   // newPhoto.save()
   // .then(photo => {
