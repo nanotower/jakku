@@ -3,9 +3,11 @@ import "./App.css";
 import { Switch, Route, Redirect } from "react-router-dom";
 import Login from "./components/auth/Login";
 import Signup from "./components/auth/Signup";
+// import "./stylesheets/style.scss";
 
 import GoogleAuth from "./components/auth/GoogleAuth";
 import AuthService from "./components/auth/Authservice";
+import RoutesService from "./RoutesService";
 
 import Home from "./components/pages/Home";
 import HomeLogged from "./components/pages/HomeLogged";
@@ -16,6 +18,7 @@ import CreateProduct from "./components/organisms/CreateProduct";
 import ShowBid from "./components/pages/ShowBid";
 import Navbar from "./components/organisms/Navbar";
 import ShowMyProduct from "./components/pages/ShowMyProduct";
+import ShowProduct from "./components/pages/ShowProduct";
 
 
 export default class App extends Component {
@@ -23,15 +26,17 @@ export default class App extends Component {
     super();
     this.state = {
       loggedInUser: null,
-      bid: null
+      bid: null,
+      product: null
     };
     this.service = new AuthService();
-
+    this.router = new RoutesService();
     this.fetchUser();
   }
 
   getUser = userObj => {
     this.setState({
+      ...this.state,
       loggedInUser: userObj
     });
   };
@@ -40,6 +45,7 @@ export default class App extends Component {
     console.log("logueao out")
     this.service.logout().then(() => {
       this.setState({
+        ...this.state,
         loggedInUser: null
       });
     });
@@ -50,12 +56,14 @@ export default class App extends Component {
       .loggedin()
       .then(response => {
         this.setState({
-          loggedInUser: response
+          ...this.state,
+          loggedInUser: response,
         });
-        console.log("fetch/////", response);
+        console.log("fetch/////", this.state);
       })
       .catch(error => {
         this.setState({
+          ...this.state,
           loggedInUser: false
         });
       });
@@ -74,6 +82,31 @@ export default class App extends Component {
     this.fetchUser();
     console.log(newValue);
     console.log("bid actualizada", this.state);
+  }
+
+  getProduct(id) {
+    return this.router.getProduct(id)
+    .then(response=> {
+
+      this.setState({
+        ...this.state,
+        product: response,
+      })
+      console.log("vuelta de productid", this.state)
+    })
+    .catch(error=> console.log(error))
+    
+  }
+  buyProduct(id) {
+    return this.router.buyProduct(id)
+    .then(response=> {
+      this.setState({
+        ...this.state,
+        product: response
+      })
+      console.log("vuelta de compra producto", this.state)
+    })
+
   }
 
   render() {
@@ -146,27 +179,32 @@ export default class App extends Component {
               );
             }}
           />
-          {/* <Route
-            exact
+   
+          <Route
             path="/product/:id"
-            render={() => {
+            render={(props) => {            
               return (
                 <React.Fragment>
                   <Navbar fromApp={()=>this.logout()}></Navbar>
-                  <h1>show product</h1>
+                 
+                  <ShowProduct 
+                  productFromApp={()=>this.getProduct(props.match.params.id)} product={this.state.product}
+                  fromApp={() => this.fetchUser()} userId={this.state.loggedInUser._id} buyFromApp={(id)=>this.buyProduct(id)}>
+                  
+                  </ShowProduct>
                 </React.Fragment>
               );
             }}
-          /> */}
+          />
+
           <Route
-            exact
             path="/my-product/:id"
             render={(props) => {
               let chosenProduct = props.match.params.id;
               return (
                 <React.Fragment>
                   <Navbar fromApp={()=>this.logout()}></Navbar>
-                  <h1>Mostrar caja</h1>
+                 
                   <ShowMyProduct productId={chosenProduct} fromApp={() => this.fetchUser()} user={this.state.loggedInUser} product={null}></ShowMyProduct>
                 </React.Fragment>
               );

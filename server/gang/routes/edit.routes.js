@@ -137,10 +137,13 @@ router.put("/buy-product/:id", (req, res, next) => {
     req.params.id,
     {
      active: false,
-     buyer: owner
+     buyer
     },
     { new: true }
-  )
+  ) 
+  .populate("owner")
+  .populate("isBundle")
+  .populate("bid")
     .then(updatedProduct => {
       console.log("udaptedbid%%%%" + updatedProduct);
       res.json(updatedProduct);

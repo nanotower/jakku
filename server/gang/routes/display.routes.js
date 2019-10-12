@@ -49,15 +49,19 @@ router.get("/bid-info/:id", (req, res, next) => {
     .catch(error => next(error));
 });
 router.get("/product-info/:id", (req, res, next) => {
+  
   const id = req.params.id;
   Product.findById(id)
     .populate("owner")
     .populate("isBundle")
+    .populate("bid")
     .then(product => {
+      console.log("product desde back", product)
       res.json(product);
     })
     .catch(error => next(error));
 });
+
 router.get("/bundle-info/:id", (req, res, next) => {
   const id = req.params.id;
   Bundle.findById(id)
