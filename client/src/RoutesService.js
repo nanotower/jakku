@@ -39,6 +39,19 @@ class RoutesService {
       .then(res => res.data)
       .catch(this.errHandler);
   }
+  getProduct = (id) => {
+    return this.service.get(`display/product-info/${id}`)
+    .then(response=> 
+     response.data)
+    .catch(this.errHandler)
+  }
+  buyProduct = (id) => {
+    return this.service.put(`/edit/buy-product/${id}`)
+    .then(response=>
+      response.data)
+    .catch(this.errHandler)
+  }
+  
 
 
 

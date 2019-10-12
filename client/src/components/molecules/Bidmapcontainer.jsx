@@ -2,29 +2,20 @@ import React from "react";
 import Bidmap from "./Bidmap";
 
 export default class Bidmapcontainer extends React.Component {
+  
   constructor(props) {
     super(props)
     this.state = {
 
     }
   }
-  componentDidMount(props) {
-    navigator.geolocation.getCurrentPosition(
-      position => {
-        const { latitude, longitude } = position.coords;
-
-        this.setState({
-          ...this.state,
-          userLocation: { lat: latitude, lng: longitude },
-          loading: false
-        });
-        console.log(this.state)
-      },
-      () => {
-        this.setState({ loading: false });
-      }
-    );
-  }
+  // componentDidMount(props) {
+  //   const { lat, lng } = this.props.initialCenter;
+  //   this.setState({
+  //     ...this.props,
+  //     userLocation: {lat, lng}
+  //   })
+  // }
 
 	render() {
 		return (

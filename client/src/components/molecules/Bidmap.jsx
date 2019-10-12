@@ -5,21 +5,20 @@ import Bidmarker from "../atoms/Bidmarker";
 const Bidmap = withScriptjs(withGoogleMap((props) =>{
   
 
-  let actualCenter= props.actualCenter;
+  // let actualCenter= props.actualCenter;
   // console.log(props.markers)
-  let markers = props.markers.map( (marker, idx) => <Bidmarker
-                    key={idx}
-                    marker={Bidmarker}
-                    location={{}}
-                    location={marker.userlocation}
-                  />);
+  // let markers = props.markers.map( (marker, idx) => <Bidmarker
+  //                   key={idx}
+  //                   // marker={Bidmarker}
+  //                   location={marker}
+  //                 />);
                   
   return (
       <GoogleMap
         defaultZoom={14}
-        center={ { lat:  actualCenter.lat, lng: actualCenter.lng } }
+        center={ { lat:  44, lng: 33 } }
         >
-        {markers}
+          
       </GoogleMap>
     );
   }
