@@ -107,6 +107,19 @@ export default class App extends Component {
       console.log("vuelta de compra producto", this.state)
     })
   }
+  getProducts() {
+    return this.router.getProducts()
+    .then(response=> {
+      this.setState({
+        ...this.state,
+        products: response
+      })
+      console.log("products from app", this.state)
+
+    }
+     
+      )
+  }
 
   
 
@@ -122,7 +135,7 @@ export default class App extends Component {
               return (
                 <React.Fragment>
                    <Navbar fromApp={()=>this.logout()}></Navbar>
-                  <HomeLogged user={this.state.loggedInUser} product={}></HomeLogged>
+                  <HomeLogged user={this.state.loggedInUser} productsFromApp={(e)=>{this.getProducts(e)}} products={this.state.products}></HomeLogged>
                 </React.Fragment>
               );
             }}

@@ -15,7 +15,6 @@ export default class ShowProduct extends Component {
     this.setState({
       ...this.state,
       product: this.props.product,
-      julito: 1
     })
   }
   change() {
@@ -23,7 +22,6 @@ export default class ShowProduct extends Component {
     this.setState ({
       ...this.state,
       product: this.props.product,
-      julito:55
     })
     console.log("%%%%", this.state)
   }
