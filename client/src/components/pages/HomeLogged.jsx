@@ -3,22 +3,50 @@ import { NavLink } from "react-router-dom";
 
 import { withRouter } from 'react-router-dom'
 import AllProducts from '../organisms/AllProducts';
+import SearchBar from '../atoms/SearchBar';
 
  class HomeLogged extends Component {
    constructor(props){
      super(props)
      this.state= {
-      
+      products: props.products,
+      searchProducts: props.products,
      }
    }
 
-  componentDidMount() {
-    this.props.productsFromApp()
+
+
+  // componentDidMount() {
+  //   this.props.productsFromApp();
+  // }
+  makeSearch(searchText) {
+    console.log(this.props)
+    const searchProductsResults = this.state.products.filter(product =>
+      product.name.toLowerCase().includes(searchText.toLowerCase())
+    );
+    console.log(this.state)
+
     this.setState({
       ...this.state,
-      products: this.props.products,
+      searchProducts: searchProductsResults
     });
   }
+  change =() =>{
+    this.setState({
+      ...this.state,
+      products: this.props.products
+    })
+    console.log(this.state)
+  }
+   
+  
+
+  // changeStock(stockCheckbox) {
+  //   this.setState({
+  //     ...this.state,
+  //     inStock: stockCheckbox
+  //   });
+  // }
 
   render() {
     if(!this.props.user.bid) {
@@ -41,8 +69,12 @@ import AllProducts from '../organisms/AllProducts';
             <NavLink to={"/your-bid"}>Panel de control de mudanza</NavLink>
             
           <p>aqui va la search</p>
+          <SearchBar
+          updateSearch={searchText => this.makeSearch(searchText)}
+          // updateInStock={stockCheckbox => this.changeStock(stockCheckbox)}
+        />
 
-
+          <button onClick={this.change}>cambiar</button>
             <AllProducts products={this.props.products}></AllProducts>
   
           </React.Fragment>  

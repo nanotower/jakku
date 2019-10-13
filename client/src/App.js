@@ -27,11 +27,13 @@ export default class App extends Component {
     this.state = {
       loggedInUser: null,
       bid: null,
-      product: null
+      product: null,
+      products: null
     };
     this.service = new AuthService();
     this.router = new RoutesService();
     this.fetchUser();
+    this.getProducts();
   }
 
   getUser = userObj => {
@@ -50,6 +52,11 @@ export default class App extends Component {
       });
     });
   };
+  start =() => {
+    return this.service
+    .start()
+  }
+
 
   fetchUser = () => {
     return this.service
@@ -58,6 +65,7 @@ export default class App extends Component {
         this.setState({
           ...this.state,
           loggedInUser: response,
+          products: []
         });
         console.log("fetch/////", this.state);
       })
@@ -110,32 +118,46 @@ export default class App extends Component {
   getProducts() {
     return this.router.getProducts()
     .then(response=> {
+      response.sort((a, b) => Math.random() - 0.5);      
       this.setState({
         ...this.state,
         products: response
       })
-      console.log("products from app", this.state)
+      console.log("carga productos en state app", this.state)
 
     }
-     
       )
   }
+  shuffleProducts () {
+    const shuffled= [...this.props.products].sort((a, b) => Math.random() - 0.5);
+    this.setState({
+      ...this.state,
+      products: shuffled
+    })
+  console.log("logged props", this.props)
+
+  }
+  
 
   
 
 
   render() {
     return this.state.loggedInUser ? (
+      
       <React.Fragment>
         <Switch>
           <Route
             exact
             path="/"
             render={() => {
+              console.log("antes de montar", this.state)
               return (
                 <React.Fragment>
                    <Navbar fromApp={()=>this.logout()}></Navbar>
-                  <HomeLogged user={this.state.loggedInUser} productsFromApp={(e)=>{this.getProducts(e)}} products={this.state.products}></HomeLogged>
+                  <HomeLogged user={this.state.loggedInUser}
+                   productsFromApp={()=>{this.getProducts()}}
+                    products={this.state.products}></HomeLogged>
                 </React.Fragment>
               );
             }}
@@ -169,12 +191,15 @@ export default class App extends Component {
             exact
             path="/create-product"
             render={() => {
-              console.log("YYYYYYYYYYYYYYYYYestate" , this.state.loggedInUser)
+              console.log("llama create product" , this.state.loggedInUser)
           
                 return (
                   <React.Fragment>
                     <Navbar fromApp={()=>this.logout()}></Navbar>
-                    <CreateProduct fromApp={()=>this.fetchUser()} bid={this.state.loggedInUser.bid? this.state.loggedInUser.bid._id : null}></CreateProduct>
+                    <CreateProduct 
+                    fromApp={()=>this.fetchUser()}
+                    fromAppRefreshProducts={()=>this.getProducts()} 
+                    bid={this.state.loggedInUser.bid? this.state.loggedInUser.bid._id : null}></CreateProduct>
                   </React.Fragment>
                 ) 
             }}

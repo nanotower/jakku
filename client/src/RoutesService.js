@@ -56,6 +56,11 @@ class RoutesService {
     .then(response=> response.data)
     .catch(this.errHandler)
   }
+  start= () => {
+    return this.service.get("display/start")
+    .then(response=> response.data)
+    .catch(this.errHandler)
+  }
   
 
 
