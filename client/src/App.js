@@ -29,11 +29,13 @@ export default class App extends Component {
       bid: null,
       product: null,
       products: null
+      
     };
     this.service = new AuthService();
     this.router = new RoutesService();
     this.fetchUser();
     this.getProducts();
+    this.getGeoLocation();
   }
 
   getUser = userObj => {
@@ -137,6 +139,21 @@ export default class App extends Component {
   console.log("logged props", this.props)
 
   }
+  getGeoLocation = () => {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+            position => {
+                console.log(position.coords);
+                this.setState(
+                   {
+                        ...this.state,
+                        position :{lat: position.coords.latitude, lng: position.coords.longitude}
+                    }
+                )
+            }
+        )
+    } 
+}
   
 
   
@@ -157,7 +174,9 @@ export default class App extends Component {
                    <Navbar fromApp={()=>this.logout()}></Navbar>
                   <HomeLogged user={this.state.loggedInUser}
                    productsFromApp={()=>{this.getProducts()}}
+                   centerMap={this.state.position}
                     products={this.state.products}></HomeLogged>
+                   
                 </React.Fragment>
               );
             }}
@@ -229,7 +248,8 @@ export default class App extends Component {
                  
                   <ShowProduct 
                   productFromApp={()=>this.getProduct(props.match.params.id)} product={this.state.product}
-                  fromApp={() => this.fetchUser()} userId={this.state.loggedInUser._id} buyFromApp={(id)=>this.buyProduct(id)}>
+                  fromApp={() => this.fetchUser()} userId={this.state.loggedInUser._id} buyFromApp={(id)=>this.buyProduct(id)}
+                  centerMap={this.state.position}>
                   
                   </ShowProduct>
                 </React.Fragment>

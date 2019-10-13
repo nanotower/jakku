@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 import { withRouter } from 'react-router-dom'
 import AllProducts from '../organisms/AllProducts';
 import SearchBar from '../atoms/SearchBar';
+import Bidmapcontainer from '../molecules/Bidmapcontainer';
 
  class HomeLogged extends Component {
    constructor(props){
@@ -74,7 +75,9 @@ import SearchBar from '../atoms/SearchBar';
           // updateInStock={stockCheckbox => this.changeStock(stockCheckbox)}
         />
 
+
           <button onClick={this.change}>cambiar</button>
+            <Bidmapcontainer products={this.props.products} centerMap={this.props.centerMap}></Bidmapcontainer>
             <AllProducts products={this.props.products}></AllProducts>
   
           </React.Fragment>  

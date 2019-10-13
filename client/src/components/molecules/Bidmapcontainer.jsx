@@ -1,5 +1,6 @@
 import React from "react";
 import Bidmap from "./Bidmap";
+import { relativeTimeThreshold } from "moment";
 
 export default class Bidmapcontainer extends React.Component {
   
@@ -8,25 +9,21 @@ export default class Bidmapcontainer extends React.Component {
     this.state = {
 
     }
+
   }
-  // componentDidMount(props) {
-  //   const { lat, lng } = this.props.initialCenter;
-  //   this.setState({
-  //     ...this.props,
-  //     userLocation: {lat, lng}
-  //   })
-  // }
+  
+
 
 	render() {
 		return (
 			<Bidmap
-        actualCenter={this.state.userLocation}
-				// doctors={this.props.doctors}
-				markers={this.props.position}
+        products={this.props.products}
+        centerMap={this.props.centerMap}
 				googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyDUeQXCyJDlhOtCB8JwWAk8zCxpjk6k-jo&libraries=geometry,drawing,places`}
 				loadingElement={<div style={{ height: `100%` }} />}
 				containerElement={<div style={{ height: `600px`, width: `600px` }} />}
-				mapElement={<div style={{ height: `100%` }} />}
+        mapElement={<div style={{ height: `100%` }} />}
+        zoomMap={this.props.zoomMap}
 			/>
 		);
 	}

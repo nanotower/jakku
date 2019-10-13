@@ -30,8 +30,9 @@ router.get("/all-products", (req, res, next) => {
   Product.find()
     .populate("owner")
     .populate("isBundle")
+    .populate("bid")
     .then(allProducts => {
-      console.log("resdata %%%%%%%"+allProducts)
+      console.log("resdata allproduct%%%%%%%"+allProducts)
       res.json(allProducts);
     })
     .catch(error => next(error));

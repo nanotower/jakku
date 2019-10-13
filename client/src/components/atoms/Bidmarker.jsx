@@ -1,8 +1,9 @@
 import React from "react";
-import { Marker } from "react-google-maps";
+import { Marker, InfoWindow } from "react-google-maps"; 
 
-// import StethoscopeIcon from "../stethoscopeIcon.png";
-import Box from "../../img/box.svg"
+
+
+import Box from "../../img/stethoscopeIcon.png"
 
 export default class Bidmarker extends React.Component {
 
