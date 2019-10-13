@@ -31,7 +31,8 @@ class CreateProduct extends Component {
     console.log("envio product&&&&&", this.state, "bid&&&&&&&", this.props.bid);
     this.routes.createProduct(this.state)
     .then(() =>{
-      //this.props.fromApp(this.state);
+      this.props.fromApp();
+      this.props.fromAppRefreshProducts();
       this.props.history.push('/your-bid')
       //  return <Redirect to='/your-bid' />
     
@@ -57,9 +58,9 @@ class CreateProduct extends Component {
 
     });
   }
-  componentDidMount () {
-    this.props.fromApp();
-  }
+  // componentDidMount () {
+  //   this.props.fromApp();
+  // }
 
   render() {
     if(this.props.bid) {

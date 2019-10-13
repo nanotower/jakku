@@ -18,17 +18,17 @@ class Navbar extends Component {
   render() {
     return (
       <React.Fragment>
-        esta es la navbar
+         <div>
+           <NavLink to={"/"}><h1>Logo link home</h1> </NavLink>
+           <button onClick={e=>this.logout(e)}>Logout</button>
+
+        <p>menu</p>
+
+       </div>
       </React.Fragment>
         
       
-      // <div>
-      //      <NavLink to={"/"}><h1>Logo link home</h1> </NavLink>
-      //      <button onClick={e=>this.logout(e)}>Logout</button>
-
-      //   <p>menu</p>
-
-      // </div>
+     
       // <Navbar brand={<a />} alignLinks="left">
       //   <NavItem onClick={this.logout}>Getting started</NavItem>
       //   <NavItem href="components.html">Components</NavItem>

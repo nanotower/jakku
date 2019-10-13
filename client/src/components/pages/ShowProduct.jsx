@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import Bidmapcontainer from "../molecules/Bidmapcontainer";
+
 
 
 export default class ShowProduct extends Component {
@@ -6,16 +8,13 @@ export default class ShowProduct extends Component {
     super(props);
     this.state = {
       product: this.props.product,
-      julito: 99
     };
   }
   componentDidMount(){
-   
     this.props.productFromApp()
     this.setState({
       ...this.state,
       product: this.props.product,
-      julito: 1
     })
   }
   change() {
@@ -23,7 +22,6 @@ export default class ShowProduct extends Component {
     this.setState ({
       ...this.state,
       product: this.props.product,
-      julito:55
     })
     console.log("%%%%", this.state)
   }
@@ -34,6 +32,7 @@ export default class ShowProduct extends Component {
   render() {
     if(this.props.product) {
       return (
+     
         <React.Fragment>
         <h1>Contenido de la caja</h1>
         <div>
@@ -50,9 +49,10 @@ export default class ShowProduct extends Component {
           <div className="owner-container">
           <img src={this.props.product.owner.imgPath}></img>
           <p>{this.props.product.owner.username}</p>
-          </div>
-       
+          <p>Localización: {this.props.product.bid.location.address}</p>
           
+          <Bidmapcontainer products={[this.props.product]} zoomMap={18} centerMap={{lat: this.props.product.bid.location.coordinates[1], lng: this.props.product.bid.location.coordinates[0]}} ></Bidmapcontainer>
+          </div>
         </div>
         </React.Fragment>
       );

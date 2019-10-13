@@ -30,8 +30,9 @@ router.get("/all-products", (req, res, next) => {
   Product.find()
     .populate("owner")
     .populate("isBundle")
+    .populate("bid")
     .then(allProducts => {
-      console.log("resdata %%%%%%%"+allProducts)
+      console.log("resdata allproduct%%%%%%%"+allProducts)
       res.json(allProducts);
     })
     .catch(error => next(error));
@@ -72,7 +73,33 @@ router.get("/bundle-info/:id", (req, res, next) => {
     })
     .catch(error => next(error));
 });
+// router.get("/start", (req, res, next) => {
+//   router.post("/login", (req,res,next) => {
+//   passport.authenticate('local', function(err, user, errinfo) {
+//     if (err)  next(new Error("Something went wrong"));
+//     if (!user) next(errinfo)
+//     req.logIn(user, function(err) {
+//       if (err) { return next(err); }
+//       return res.status(200).json(req.user);
+//     });
+//   })(req, res, next);
+// });
 
+
+
+
+
+
+
+//   const id = req.params.id;
+//   Bundle.findById(id)
+//     .populate("owner")
+//     .populate("products")
+//     .then(bundle => {
+//       res.json(bundle);
+//     })
+//     .catch(error => next(error));
+// });
 
 
 

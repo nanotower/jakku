@@ -32,11 +32,11 @@ export default class ShowBid extends Component {
           Recogerán las cosas el día {this.props.user.bid.deadLine} entre las{" "}
           {this.props.user.bid.from} y las {this.props.user.bid.to}
         </p>
-        <Bidmapcontainer
+        {/* <Bidmapcontainer
           position={this.extractCoordinates(
             this.props.user.bid.location.coordinates
           )}
-        ></Bidmapcontainer>
+        ></Bidmapcontainer> */}
         <NavLink to={"/create-product"}>Añadir caja</NavLink>
         <h2>Tus cajas</h2>
         {this.props.user.products.map((product, idx) => {
