@@ -244,7 +244,7 @@ export default class App extends Component {
               );
             }}
           />
-          <Route
+          {/* <Route
             exact
             path="/bid/:id"
             render={() => {
@@ -258,7 +258,7 @@ export default class App extends Component {
                 </React.Fragment>
               );
             }}
-          />
+          /> */}
    
           <Route
             path="/product/:id"
