@@ -56,13 +56,6 @@ class HomeLogged extends Component {
       searchProducts: searchProductsResults
     });
   }
-  change = () => {
-    this.setState({
-      ...this.state,
-      products: this.props.products
-    });
-    console.log(this.state);
-  };
 
   // changeStock(stockCheckbox) {
   //   this.setState({
@@ -108,13 +101,11 @@ class HomeLogged extends Component {
               <Button>Panel de control de mudanza</Button>
             </NavLink> */}
 
-            <p>aqui va la search</p>
             <SearchBar
               updateSearch={searchText => this.makeSearch(searchText)}
               // updateInStock={stockCheckbox => this.changeStock(stockCheckbox)}
             />
 
-            <button onClick={this.change}>cambiar</button>
             <Bidmapcontainer
               bids={this.state.bids}
               centerMap={this.props.centerMap}

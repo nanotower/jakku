@@ -177,7 +177,7 @@ export default class App extends Component {
                    productsFromApp={()=>{this.getProducts()}}
                    centerMap={this.state.position}
                     products={this.state.products}
-                    bids={this.state.bids}
+                    // bids={this.state.bids}
                     >
                     </HomeLogged>
                    
@@ -318,7 +318,11 @@ export default class App extends Component {
             render={() => {
               return (
                 <React.Fragment>
-                  <Home></Home>
+                  <Home>
+                  productsFromApp={()=>{this.getProducts()}}
+                   centerMap={this.state.position}
+                    products={this.state.products}
+                  </Home>
                 </React.Fragment>
               );
             }}
@@ -350,15 +354,12 @@ export default class App extends Component {
                   </h1>
                   <Login getUser={this.getUser}></Login>
                   <Signup getUser={this.getUser}></Signup>
-                  <GoogleAuth getUser={this.getUser}></GoogleAuth>
+                  {/* <GoogleAuth getUser={this.getUser}></GoogleAuth> */}
                   <a href="http://localhost:3010/auth/google">
                     Sign In with Google
                   </a>
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    href="http://localhost:3010/auth/google"
-                  ></Button>
+         
+         
                 </React.Fragment>
               );
             }}
