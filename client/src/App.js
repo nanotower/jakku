@@ -176,7 +176,10 @@ export default class App extends Component {
                   <HomeLogged user={this.state.loggedInUser}
                    productsFromApp={()=>{this.getProducts()}}
                    centerMap={this.state.position}
-                    products={this.state.products}></HomeLogged>
+                    products={this.state.products}
+                    bids={this.state.bids}
+                    >
+                    </HomeLogged>
                    
                 </React.Fragment>
               );
