@@ -22,6 +22,19 @@ class HomeLogged extends Component {
   componentDidMount() {
     this.router.getProducts()
     .then(response=> {
+      let bids= response.map(product=> product.bid);
+      bids.forEach(bid=> bid.productsList.map(id=> response.filter(product=> product._id===id)))
+      let bidsId= []
+      bids= bids.filter(bid=> {
+        if(bidsId.includes(bid._id)) {
+          return false
+        }
+        else {
+          bidsId.push(bid._id);
+          return true
+        }
+      })
+      console.log(bids)
       this.setState({
         ...this.state,
         products: response
