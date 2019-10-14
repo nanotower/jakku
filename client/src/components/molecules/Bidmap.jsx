@@ -4,7 +4,7 @@ import Bidmarker from "../atoms/Bidmarker";
 
 
 
-const Bidmap = withScriptjs(withGoogleMap((props) =>{
+const Bidmap2 = withScriptjs(withGoogleMap((props) =>{
   console.log("dentro de bidmap", props)
   let active;
   let zoom= 12;
@@ -12,15 +12,15 @@ const Bidmap = withScriptjs(withGoogleMap((props) =>{
     zoom=props.zoomMap
   }
 
-  let markers = props.products.map( (product, idx) => <Bidmarker
-                    product={product}
+  let markers = props.bids.map( (bid, idx) => <Bidmarker
+                    bid={bid}
                     key={idx}
-                    id={product._id}
+                    id={bid._id}
                     closeMarkers={props.closeOtherMarkers}
-                    location={{lat:product.bid.location.coordinates[1], lng: product.bid.location.coordinates[0]}}
+                    location={{lat:bid.location.coordinates[1], lng: bid.location.coordinates[0]}}
                     toggleShowPage={props.toggleShowPage}
                     closeMarkers={props.closeOtherMarkers}
-                    activeMarker={ product._id === props.activeMarker ? true : false}
+                    activeMarker={ bid._id === props.activeMarker ? true : false}
                   />);          
   return (
 
@@ -35,4 +35,4 @@ const Bidmap = withScriptjs(withGoogleMap((props) =>{
   }
 ))
 
-export default Bidmap;
+export default Bidmap2;

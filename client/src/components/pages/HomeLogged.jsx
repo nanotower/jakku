@@ -14,7 +14,8 @@ class HomeLogged extends Component {
     super(props);
     this.state = {
       products: props.products,
-      searchProducts: props.products
+      searchProducts: props.products,
+      bids: null
     };
     this.router= new RoutesService;
   }
@@ -22,10 +23,24 @@ class HomeLogged extends Component {
   componentDidMount() {
     this.router.getProducts()
     .then(response=> {
+      let bids= response.map(product=> product.bid);
+      bids.forEach(bid=> bid.productsList.map(id=> response.filter(product=> product._id===id)))
+      let bidsId= []
+      bids= bids.filter(bid=> {
+        if(bidsId.includes(bid._id)) {
+          return false
+        }
+        else {
+          bidsId.push(bid._id);
+          return true
+        }
+      })
       this.setState({
         ...this.state,
-        products: response
+        products: response,
+        bids: bids
       })
+      console.log(this.state)
     })
   }
 
@@ -72,7 +87,7 @@ class HomeLogged extends Component {
         </div>
       );
     } else {
-      if (this.props.products) {
+      if (this.props.products && this.state.bids) {
         return (
           <React.Fragment>
             {/* <h1>Hola, {this.props.user.username}</h1> */}
@@ -101,7 +116,7 @@ class HomeLogged extends Component {
 
             <button onClick={this.change}>cambiar</button>
             <Bidmapcontainer
-              products={this.props.products}
+              bids={this.state.bids}
               centerMap={this.props.centerMap}
             ></Bidmapcontainer>
          

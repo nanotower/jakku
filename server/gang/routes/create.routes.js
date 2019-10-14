@@ -49,10 +49,14 @@ router.post("/new-product", (req, res, next) => {
   .then(created => {
     console.log("va a empuja el id", created._id)
     User.findByIdAndUpdate(req.user._id, {$push: {products: created._id}}, {new: true})
-    .then(()=> {
-      res.json(created);
-      console.log("created-product--&&&&&&&&&&&", created)
+    .then(()=>{
+      Bid.findByIdAndUpdate(created.bid, {$push: {productsList: created._id}}, {new: true})
+      .then(()=> {
+        res.json(created);
+        console.log("created-product--&&&&&&&&&&&", created)
+      })
     })
+    
   })
 })
 

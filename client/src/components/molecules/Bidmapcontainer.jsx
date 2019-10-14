@@ -2,7 +2,7 @@ import React from "react";
 import Bidmap from "./Bidmap";
 import { relativeTimeThreshold } from "moment";
 
-export default class Bidmapcontainer extends React.Component {
+export default class Bidmapcontainer2 extends React.Component {
   
   constructor(props) {
     super(props)
@@ -21,7 +21,7 @@ export default class Bidmapcontainer extends React.Component {
 	render() {
 		return (
 			<Bidmap
-        products={this.props.products}
+        bids={this.props.bids}
         centerMap={this.props.centerMap}
 				googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyDUeQXCyJDlhOtCB8JwWAk8zCxpjk6k-jo&libraries=geometry,drawing,places`}
 				loadingElement={<div style={{ height: `100%` }} />}

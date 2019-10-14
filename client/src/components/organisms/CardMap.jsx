@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Row, Col, Card } from "react-materialize";
+import { NavLink } from "react-router-dom";
 
 export default class CardMap extends Component {
  
@@ -17,7 +18,7 @@ export default class CardMap extends Component {
               className="blue-grey darken-1"
               textClassName="white-text"
               title="Card title"
-              actions={[<a />, <a />]}
+              actions={[<NavLink to={`/product/${this.props.bid._id}`}>Mudanza</NavLink>]}
             >
               I am a very simple card.
               <h1>{this.props.bid.deadLine}</h1>

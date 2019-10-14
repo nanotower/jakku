@@ -11,7 +11,7 @@ export default class Bidmarker extends React.Component {
     super(props)
     this.state = {
       isOpen: false,
-      activeMarker: this.props.activeMarker
+      activeMarker: true
     }
   }
 
@@ -49,7 +49,7 @@ export default class Bidmarker extends React.Component {
         >
         { this.state.isOpen && this.state.activeMarker ?
           <InfoWindow maxWidth={800} defaultPosition={ this.props.location } onCloseClick={this.props.onToggleOpen}>
-            <CardMap toggleShowPage={this.props.toggleShowPage} bid={this.props.product.bid}/>
+            <CardMap toggleShowPage={this.props.toggleShowPage} bid={this.props.bid}/>
           </InfoWindow> : null
         }
         </Marker>
