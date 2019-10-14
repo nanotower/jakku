@@ -5,6 +5,7 @@ import AllProducts from "../organisms/AllProducts";
 import SearchBar from "../atoms/SearchBar";
 import Bidmapcontainer from "../molecules/Bidmapcontainer";
 import RoutesService from "../../RoutesService";
+import ModalLogin from "../auth/ModalLogin";
 
 class Home extends Component {
   constructor(props) {
@@ -71,7 +72,13 @@ class Home extends Component {
                 <AllProducts products={this.props.products}></AllProducts>
               </div>
             ) : (
-              <Preloader flashing size="small" />
+              <div>
+                    <Preloader flashing size="small" />
+              <ModalLogin></ModalLogin>
+
+              </div>
+          
+             
             )}
           </Tab>
         </Tabs>

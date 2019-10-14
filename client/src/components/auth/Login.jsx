@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import AuthService from "./Authservice";
+import { Button, TextInput } from "react-materialize";
 
 export default class Login extends Component {
   constructor(props) {
@@ -42,13 +43,13 @@ export default class Login extends Component {
   render() {
     return (
       <div>
-        <h1>Login</h1>
+        <h5>Login</h5>
         <form onSubmit={this.sendLogin}>
-        <input value={this.state.name} placeholder="User name"  name="username" onChange={e=>this.changeState(e)} type="text"></input>
-        <input value={this.state.password} placeholder="Password"  name="password" onChange={e=>this.changeState(e)} type="password"></input>
-        <input type="submit" value="Login" />
+        <TextInput value={this.state.name} placeholder="User name"  name="username" onChange={e=>this.changeState(e)} type="text"></TextInput>
+        <TextInput value={this.state.password} placeholder="Password"  name="password" onChange={e=>this.changeState(e)} type="password"></TextInput>
+        <Button type="submit" value="Log in">Submit</Button>
         </form>
-        <h1>{this.state.error? "Login failed. Please, try again o signup." : ""}</h1>
+        <p>{this.state.error? "Login failed. Please, try again o signup." : ""}</p>
       </div>
     )
   }
