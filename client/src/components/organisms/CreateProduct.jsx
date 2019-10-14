@@ -11,9 +11,9 @@ class CreateProduct extends Component {
     this.state = {
       file: null,
       imgPath1: "https://screenshotlayer.com/images/assets/placeholder.png",
-      imgPath2: "https://screenshotlayer.com/images/assets/placeholder.png",
-      imgPath3: "https://screenshotlayer.com/images/assets/placeholder.png",
-      bid: this.props.bid
+      // imgPath2: "https://screenshotlayer.com/images/assets/placeholder.png",
+      // imgPath3: "https://screenshotlayer.com/images/assets/placeholder.png",
+      bid: null,
     };
     this.routes = new RoutesService();
   }
@@ -58,12 +58,23 @@ class CreateProduct extends Component {
 
     });
   }
-  // componentDidMount () {
-  //   this.props.fromApp();
-  // }
+
+  componentDidMount () {
+    this.routes.getMyBids()
+    .then(response => {
+      console.log("componenmount",response)
+
+      this.setState({
+        ...this.state,
+        bid: response[0]._id,
+
+
+      })
+    })
+  }
 
   render() {
-    if(this.props.bid) {
+    if(this.state.bid) {
       return (
         <React.Fragment>
           <h1>Contenido de la caja</h1>
@@ -76,9 +87,9 @@ class CreateProduct extends Component {
             </form>
   
             <img src={this.state.imgPath1} alt="product picture" />
-            <h2>Foto 2</h2>
-  
-            <form onSubmit={e => this.handleSubmit(e, "imgPath2")}>
+            {/* <h2>Foto 2</h2>
+   */}
+            {/* <form onSubmit={e => this.handleSubmit(e, "imgPath2")}>
               <input type="file" onChange={e => this.handleChange(e)} /> <br />
               <button type="submit">Guardar foto</button>
             </form>
@@ -89,9 +100,9 @@ class CreateProduct extends Component {
             <form onSubmit={e => this.handleSubmit(e, "imgPath3")}>
               <input type="file" onChange={e => this.handleChange(e)} /> <br />
               <button type="submit">Guardar foto</button>
-            </form>
-  
-            <img src={this.state.imgPath3} alt="product picture" />
+            </form> */}
+{/*   
+            <img src={this.state.imgPath3} alt="product picture" /> */}
           </div>
           <form>
             <label htmlFor="name">Nombre</label>

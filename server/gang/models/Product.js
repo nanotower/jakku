@@ -10,14 +10,14 @@ const productSchema = new Schema({
     type: String,
     default: "https://screenshotlayer.com/images/assets/placeholder.png"
   },
-  imgPath2: {
-    type: String,
-    default: "https://screenshotlayer.com/images/assets/placeholder.png"
-  },
-  imgPath3: {
-    type: String,
-    default: "https://screenshotlayer.com/images/assets/placeholder.png"
-  },
+  // imgPath2: {
+  //   type: String,
+  //   default: "https://screenshotlayer.com/images/assets/placeholder.png"
+  // },
+  // imgPath3: {
+  //   type: String,
+  //   default: "https://screenshotlayer.com/images/assets/placeholder.png"
+  // },
   price: Number,
   isBundle: [{ type: Schema.Types.ObjectId, ref: "Bundle" }],
   active: { type: Boolean,

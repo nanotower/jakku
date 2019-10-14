@@ -35,7 +35,7 @@ router.post("/new-bid", (req, res, next) => {
 })
 
 router.post("/new-product", (req, res, next) => {
-  const{name, description, imgPath1, imgPath2, imgPath3, price, bid} = req.body.state;
+  const{name, description, imgPath1, price, bid} = req.body.state;
   const owner= req.user._id;
   console.log("$$$$$$", req.body)
   Product.create({ 
@@ -44,8 +44,6 @@ router.post("/new-product", (req, res, next) => {
     name,
     description,
     imgPath1,
-    imgPath2,
-    imgPath3,
     price
   })
   .then(created => {

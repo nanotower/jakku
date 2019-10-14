@@ -7,10 +7,14 @@ export default class Bidmapcontainer extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
+      activeMarker:null
 
     }
 
   }
+  closeOtherMarkers = (id) => {
+		this.setState({activeMarker: id})
+	}
   
 
 
@@ -24,6 +28,9 @@ export default class Bidmapcontainer extends React.Component {
 				containerElement={<div style={{ height: `600px`, width: `600px` }} />}
         mapElement={<div style={{ height: `100%` }} />}
         zoomMap={this.props.zoomMap}
+        activeMarker={this.state.activeMarker}
+        closeOtherMarkers={this.closeOtherMarkers}
+        toggleShowPage={this.props.toggleShowPage}
 			/>
 		);
 	}
