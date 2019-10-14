@@ -14,7 +14,8 @@ class HomeLogged extends Component {
     super(props);
     this.state = {
       products: props.products,
-      searchProducts: props.products
+      searchProducts: props.products,
+      bids: null
     };
     this.router= new RoutesService;
   }
@@ -34,11 +35,12 @@ class HomeLogged extends Component {
           return true
         }
       })
-      console.log(bids)
       this.setState({
         ...this.state,
-        products: response
+        products: response,
+        bids: bids
       })
+      console.log(this.state)
     })
   }
 
@@ -85,7 +87,7 @@ class HomeLogged extends Component {
         </div>
       );
     } else {
-      if (this.props.products) {
+      if (this.props.products && this.state.bids) {
         return (
           <React.Fragment>
             {/* <h1>Hola, {this.props.user.username}</h1> */}
@@ -114,7 +116,7 @@ class HomeLogged extends Component {
 
             <button onClick={this.change}>cambiar</button>
             <Bidmapcontainer
-              products={this.props.products}
+              bids={this.state.bids}
               centerMap={this.props.centerMap}
             ></Bidmapcontainer>
          

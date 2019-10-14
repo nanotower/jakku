@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
-import Bidmapcontainer from "../molecules/Bidmapcontainer";
+import Bidmapcontainer from "../molecules/Productmapcontainer";
 import { Row, Card, CardTitle, Col} from 'react-materialize';
 
-export default class ShowBid extends Component {
+export default class ShowMyBid extends Component {
   constructor(props) {
     super(props);
   }

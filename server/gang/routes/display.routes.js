@@ -31,10 +31,10 @@ router.get("/all-products", (req, res, next) => {
     .populate("owner")
     .populate("isBundle")
     .populate("bid")
-    .populate({
-      path: 'bid',
-      populate: { path: 'productsList' }
-    })
+    // .populate({
+    //   path: 'bid',
+    //   populate: { path: 'productsList' }
+    // })
     .then(allProducts => {
       console.log("resdata allproduct%%%%%%%"+allProducts)
       res.json(allProducts);

@@ -15,7 +15,7 @@ import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import CreateBid from "./components/organisms/CreateBid";
 import CreateProduct from "./components/organisms/CreateProduct";
-import ShowBid from "./components/pages/ShowBid";
+import ShowMyBid from "./components/pages/ShowMyBid";
 import Navbar from "./components/organisms/Navbar";
 import ShowMyProduct from "./components/pages/ShowMyProduct";
 import ShowProduct from "./components/pages/ShowProduct";
@@ -236,9 +236,24 @@ export default class App extends Component {
               return (
                 <React.Fragment>
       
-                  <ShowBid
+                  <ShowMyBid
                     fromApp={() => this.fetchUser()}
                     user={this.state.loggedInUser}
+                  ></ShowMyBid>
+                </React.Fragment>
+              );
+            }}
+          />
+          <Route
+            exact
+            path="/bid/:id"
+            render={() => {
+              return (
+                <React.Fragment>
+      
+                  <ShowBid
+                    BidFromApp={() => this.GetBid()}
+                    // user={this.state.loggedInUser}
                   ></ShowBid>
                 </React.Fragment>
               );

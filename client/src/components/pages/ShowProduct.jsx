@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Bidmapcontainer from "../molecules/Bidmapcontainer";
+import Productmapcontainer from "../molecules/Productmapcontainer";
 
 
 
@@ -51,7 +51,7 @@ export default class ShowProduct extends Component {
           <p>{this.props.product.owner.username}</p>
           <p>Localización: {this.props.product.bid.location.address}</p>
           
-          <Bidmapcontainer products={[this.props.product]} zoomMap={18} centerMap={{lat: this.props.product.bid.location.coordinates[1], lng: this.props.product.bid.location.coordinates[0]}} ></Bidmapcontainer>
+          <Productmapcontainer products={[this.props.product]} zoomMap={18} centerMap={{lat: this.props.product.bid.location.coordinates[1], lng: this.props.product.bid.location.coordinates[0]}} ></Productmapcontainer>
           </div>
         </div>
         </React.Fragment>
