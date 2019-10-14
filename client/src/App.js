@@ -28,7 +28,8 @@ export default class App extends Component {
       loggedInUser: null,
       bid: null,
       product: null,
-      products: null
+      products: null,
+      position: {lat: 40.3923071, lng: -3.6996187}
       
     };
     this.service = new AuthService();
@@ -46,7 +47,7 @@ export default class App extends Component {
   };
 
   logout = () => {
-    console.log("logueao out")
+    console.log("logout done")
     this.service.logout().then(() => {
       this.setState({
         ...this.state,
@@ -54,11 +55,6 @@ export default class App extends Component {
       });
     });
   };
-  start =() => {
-    return this.service
-    .start()
-  }
-
 
   fetchUser = () => {
     return this.service
@@ -163,6 +159,11 @@ export default class App extends Component {
     return this.state.loggedInUser ? (
       
       <React.Fragment>
+          <Navbar
+            className="nav-logged"
+            user={this.state.loggedInUser}
+            logMeOut={this.logout}
+          />
         <Switch>
           <Route
             exact
@@ -171,7 +172,7 @@ export default class App extends Component {
               console.log("antes de montar", this.state)
               return (
                 <React.Fragment>
-                   <Navbar fromApp={()=>this.logout()}></Navbar>
+        
                   <HomeLogged user={this.state.loggedInUser}
                    productsFromApp={()=>{this.getProducts()}}
                    centerMap={this.state.position}
@@ -188,7 +189,7 @@ export default class App extends Component {
               if (this.state.loggedInUser.bid) {
                 return (
                   <React.Fragment>
-                    <Navbar fromApp={()=>this.logout()}></Navbar>
+                
                     <h1>Ya tienes una subasta activa</h1>
                     <p>Link al panel de control de tu mudanza</p>
                   </React.Fragment>
@@ -196,7 +197,7 @@ export default class App extends Component {
               } else {
                 return (
                   <React.Fragment>
-                    <Navbar fromApp={()=>this.logout()}></Navbar>
+          
                     estas log
                     <CreateBid
                       fromApp={newValue => this.changeStateBid(newValue)}
@@ -214,11 +215,13 @@ export default class App extends Component {
           
                 return (
                   <React.Fragment>
-                    <Navbar fromApp={()=>this.logout()}></Navbar>
+          
                     <CreateProduct 
                     fromApp={()=>this.fetchUser()}
                     fromAppRefreshProducts={()=>this.getProducts()} 
-                    bid={this.state.loggedInUser.bid? this.state.loggedInUser.bid._id : null}></CreateProduct>
+                    bid={this.state.loggedInUser.bid? this.state.loggedInUser.bid._id : null}>
+                      
+                    </CreateProduct>
                   </React.Fragment>
                 ) 
             }}
@@ -229,7 +232,7 @@ export default class App extends Component {
             render={() => {
               return (
                 <React.Fragment>
-                  <Navbar fromApp={()=>this.logout()}></Navbar>
+      
                   <ShowBid
                     fromApp={() => this.fetchUser()}
                     user={this.state.loggedInUser}
@@ -244,7 +247,7 @@ export default class App extends Component {
             render={(props) => {            
               return (
                 <React.Fragment>
-                  <Navbar fromApp={()=>this.logout()}></Navbar>
+           
                  
                   <ShowProduct 
                   productFromApp={()=>this.getProduct(props.match.params.id)} product={this.state.product}
@@ -263,7 +266,7 @@ export default class App extends Component {
               let chosenProduct = props.match.params.id;
               return (
                 <React.Fragment>
-                  <Navbar fromApp={()=>this.logout()}></Navbar>
+          
                  
                   <ShowMyProduct productId={chosenProduct} fromApp={() => this.fetchUser()} user={this.state.loggedInUser} product={null}></ShowMyProduct>
                 </React.Fragment>
@@ -286,6 +289,10 @@ export default class App extends Component {
     
     (
       <React.Fragment>
+          <Navbar
+            className="nav-logged"
+            logMeOut={this.logout}
+          />
         <Switch>
           <Route
             exact
@@ -293,8 +300,23 @@ export default class App extends Component {
             render={() => {
               return (
                 <React.Fragment>
-                    <Navbar fromApp={(e)=>this.logout(e)}></Navbar>
                   <Home></Home>
+                </React.Fragment>
+              );
+            }}
+          />
+          <Route
+            exact
+            path="/signup"
+            render={() => {
+              return (
+                <React.Fragment>
+                  <Login getUser={this.getUser}></Login>
+                  <Signup getUser={this.getUser}></Signup>
+                  <GoogleAuth getUser={this.getUser}></GoogleAuth>
+                  <a href="http://localhost:3010/auth/google">
+                    Sign In with Google
+                  </a>
                 </React.Fragment>
               );
             }}
@@ -305,7 +327,6 @@ export default class App extends Component {
             render={() => {
               return (
                 <React.Fragment>
-                  <Navbar fromApp={(e)=>this.logout(e)}></Navbar>
                   <h1>
                     Tienes que estar registrado para poder crear tu mudanza
                   </h1>
@@ -330,7 +351,6 @@ export default class App extends Component {
             render={() => {
               return (
                 <React.Fragment>
-                  <Navbar fromApp={(e)=>this.logout(e)}></Navbar>
                   <h1>
                     Tienes que estar registrado y tener una mudanza activa para
                     poder crear cajas con productos{" "}
@@ -350,135 +370,4 @@ export default class App extends Component {
       </React.Fragment>
     );
   }
-
-  //   return (
-
-  //     <div>
-  //       <Switch>
-  //         <Route
-  //           exact
-  //           path="/"
-  //           render={() => {
-  //             return (
-  //               <React.Fragment>
-  //                 <Home></Home>
-  //                 <Home></Home>
-  //               </React.Fragment>
-  //             );
-  //           }}
-  //         />
-  //         <Route
-  //           exact
-  //           path="/create-bid"
-  //           render={() => {
-  //             return (
-  //               <React.Fragment>
-  //                 {/* <CreateBidForm></CreateBidForm> */}
-  //                 <CreateBid fromApp={newValue=>this.changeStateBid(newValue)}></CreateBid>
-  //               </React.Fragment>
-  //             );
-  //           }}
-  //         />
-  //         <Route
-  //           exact
-  //           path="/create-product"
-  //           render={() => {
-  //             return (
-  //               <React.Fragment>
-  //                 <CreateProduct></CreateProduct>
-  //               </React.Fragment>
-  //             );
-  //           }}
-  //         />
-  //         <Route
-  //           exact
-  //           path="/your-bid"
-  //           render={() => {
-  //             if (this.state.loggedInUser) {
-  //               return (
-  //                 <React.Fragment>
-  //                   <ShowBid></ShowBid>
-  //                 </React.Fragment>
-  //               );
-  //             } else {
-  //               return (
-  //                 <React.Fragment>
-  //                   <Login getUser={this.getUser}></Login>
-  //                   <Signup getUser={this.getUser}></Signup>
-  //                   <GoogleAuth getUser={this.getUser}></GoogleAuth>
-  //                   <a href="http://localhost:3010/auth/google">
-  //                     Sign In with Google
-  //                   </a>
-  //                   <Button variant="contained" color="primary"></Button>
-  //                 </React.Fragment>
-  //               );
-  //             }
-  //           }}
-  //         />
-  //         <Route
-  //           exact
-  //           path="/login"
-  //           render={() => {
-  //             if (this.state.loggedInUser) {
-  //               return (
-  //                 <React.Fragment>
-  //                   <CssBaseline />
-  //                   <Redirect to="/home" />
-  //                   <h1>Wellcome home</h1>
-  //                   <button onClick={this.logout}>Logout</button>
-  //                 </React.Fragment>
-  //               );
-  //             } else {
-  //               return (
-  //                 <React.Fragment>
-  //                   <CssBaseline />
-  //                   <div className="App">
-  //                     <Login getUser={this.getUser}></Login>
-  //                     <Signup getUser={this.getUser}></Signup>
-  //                     <GoogleAuth getUser={this.getUser}></GoogleAuth>
-  //                     <a href="http://localhost:3010/auth/google">
-  //                       Sign In with Google
-  //                     </a>
-  //                     <Button variant="contained" color="primary">
-  //                       Hello World
-  //                     </Button>
-  //                   </div>
-  //                 </React.Fragment>
-  //               );
-  //             }
-  //           }}
-  //         />
-  //       </Switch>
-  //     </div>
-  //   );
-
-  //   // if(this.state.loggedInUser) {
-  //   //   return (
-  //   //     <React.Fragment>
-  //   //       <CssBaseline />
-  //   //     <Redirect to="/home"/>
-  //   //     <h1>Wellcome home</h1>
-  //   //     <button onClick={this.logout}>Logout</button>
-  //   //   </React.Fragment>
-  //   //   )
-  //   // }
-  //   // else {
-  //   //   return (
-  //   //     <React.Fragment>
-  //   //       <CssBaseline />
-  //   //     <div className="App">
-  //   //       <Login getUser={this.getUser}></Login>
-  //   //       <Signup getUser={this.getUser}></Signup>
-  //   //       <GoogleAuth getUser={this.getUser}></GoogleAuth>
-  //   //       <a href="http://localhost:3010/auth/google">Sign In with Google</a>
-  //   //       <Button variant="contained" color="primary">
-  //   //   Hello World
-  //   // </Button>
-
-  //   //     </div>
-  //   //   </React.Fragment>
-  //   //     )
-
-  //   // }
-  // }
 }

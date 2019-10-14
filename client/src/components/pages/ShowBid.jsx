@@ -8,7 +8,7 @@ export default class ShowBid extends Component {
     super(props);
   }
   componentDidMount() {
-    this.props.fromApp();
+    // this.props.fromApp();
     //   axios.get("").then(beer => {
     //    this.setState({
     //      ...this.state,

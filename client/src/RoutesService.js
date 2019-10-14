@@ -61,6 +61,11 @@ class RoutesService {
     .then(response=> response.data)
     .catch(this.errHandler)
   }
+  getMyBids= () => {
+    return this.service.get("display/bid-fromuser")
+    .then(response=> response.data)
+    .catch(this.errHandler)
+  }
   
 
 

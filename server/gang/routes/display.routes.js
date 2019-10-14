@@ -49,6 +49,15 @@ router.get("/bid-info/:id", (req, res, next) => {
     })
     .catch(error => next(error));
 });
+
+router.get("/bid-fromuser", (req, res, next) => {
+  const id = req.params.id;
+  Bid.find({owner: req.user._id})
+    .then(bid => {
+      res.json(bid);
+    })
+    .catch(error => next(error));
+});
 router.get("/product-info/:id", (req, res, next) => {
   
   const id = req.params.id;
