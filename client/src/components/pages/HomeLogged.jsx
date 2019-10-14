@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import { Button, Tabs, Tab } from "react-materialize";
 import { withRouter } from "react-router-dom";
-import ShowBid from "../pages/ShowBid";
+import ShowBid from "./ShowMyBid";
 import AllProducts from "../organisms/AllProducts";
 import SearchBar from "../atoms/SearchBar";
 import Bidmapcontainer from "../molecules/Bidmapcontainer";
