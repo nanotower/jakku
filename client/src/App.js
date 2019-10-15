@@ -3,7 +3,7 @@ import "./App.css";
 import { Switch, Route, Redirect } from "react-router-dom";
 import Login from "./components/auth/Login";
 import Signup from "./components/auth/Signup";
-// import "./stylesheets/style.scss";
+
 
 import GoogleAuth from "./components/auth/GoogleAuth";
 import AuthService from "./components/auth/Authservice";
@@ -19,6 +19,7 @@ import ShowMyBid from "./components/pages/ShowMyBid";
 import Navbar from "./components/organisms/Navbar";
 import ShowMyProduct from "./components/pages/ShowMyProduct";
 import ShowProduct from "./components/pages/ShowProduct";
+import './styles/main.scss'
 
 export default class App extends Component {
   constructor(props) {
@@ -152,6 +153,7 @@ export default class App extends Component {
           user={this.state.loggedInUser}
           logMeOut={this.logout}
         />
+        
         <Switch>
           <Route
             exact
@@ -285,7 +287,15 @@ export default class App extends Component {
           />
         </Switch>
       </React.Fragment>
-    ) : (
+    ) :
+    
+    
+    
+    
+    
+    
+    
+    (
       <React.Fragment>
         <Navbar className="nav-logged" logMeOut={this.logout} />
         <Switch>
@@ -294,7 +304,7 @@ export default class App extends Component {
             path="/"
             render={() => {
               return (
-                <React.Fragment>
+         
                   <Home
                     productsFromApp={() => {
                       this.getProducts();
@@ -302,7 +312,7 @@ export default class App extends Component {
                     centerMap={this.state.position}
                     products={this.state.products}
                   ></Home>
-                </React.Fragment>
+     
               );
             }}
           />

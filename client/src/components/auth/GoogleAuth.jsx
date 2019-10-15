@@ -47,7 +47,7 @@ export default class Login extends Component {
       <div>
         <h1>Login with google</h1>
         <form onSubmit={this.sendLogin}>
-        <input value={this.state.name} placeholder="User name"  name="username" onChange={e=>this.changeState(e)} type="text"></input>
+        <input value={this.state.username} placeholder="User name"  name="username" onChange={e=>this.changeState(e)} type="text"></input>
         <input value={this.state.password} placeholder="Password"  name="password" onChange={e=>this.changeState(e)} type="password"></input>
         <input type="submit" value="Login" />
         </form>

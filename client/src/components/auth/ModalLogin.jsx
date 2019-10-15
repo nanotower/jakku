@@ -8,14 +8,14 @@ export default class ModalLogin extends Component {
   render() {
     return (
       <div>
-        <Modal header="Acceso" fixedFooter trigger={<Button>Acceder</Button>} actions={<Button waves="green" modal="close" flat>Cerrar</Button>}>
+        <Modal header="Tienes que identificarte primero" fixedFooter trigger={<Button>Acceder</Button>} actions={<Button waves="green" modal="close" flat>Cerrar</Button>}>
           <Signup></Signup>
           <Login></Login>
           <Button
             node="a"
             waves="light"
             className="blue"
-            small
+            large
             style={{ marginRight: "5px" }}
           >   <a href={`${process.env.REACT_APP_API_URL}/auth/google`}>
           Google login

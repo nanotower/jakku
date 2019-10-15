@@ -70,6 +70,7 @@ router.get("/logout", (req, res) => {
 });
 
 router.get('/currentuser', (req,res,next) => {
+  console.log("current", req.user)
   if(req.user){
     User.findById(req.user._id)
     .populate("bid")
@@ -99,10 +100,10 @@ router.get(
     passport.authenticate("google", {
       // successRedirect: "https://jakkuapp.herokuapp.com",
       // successRedirect: "http://localhost:3000/",
-      successRedirect: `${process.env.LOCAL_URL}`,
+      successRedirect: `${process.env.REACT_URL}`,
       // failureRedirect: "https://jakkuapp.herokuapp.com/auth/login"
       // failureRedirect: "http://localhost:3000/auth/login"
-      failureRedirect: `${process.env.LOCAL_URL}/auth/login`
+      failureRedirect: `${process.env.REACT_URL}/auth/login`
     })
 );
 // router.get('/auth/google/callback', 

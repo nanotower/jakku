@@ -1,25 +1,6 @@
 .App {
   text-align: center;
 }
-nav .logo-img {
-  height: 40px;
-}
 
 
-nav .brand-logo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-nav .profile-image {
-  border-radius: 50%;
-  height: 40px;
-
-}
-nav .sidenav-trigger {
-  float: right;
-}
-.carouser {
-  overflow: visible;
-}
 

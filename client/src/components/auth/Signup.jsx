@@ -48,9 +48,9 @@ export default class Signup extends Component {
       <div className="sign-container">
              <h5>Signup</h5>
         <form onSubmit={this.sendSignup} >
-        <TextInput label="Nombre" value={this.state.username} type="text" onChange={(e)=> this.changeState(e)}></TextInput>
+        <TextInput label="Nombre" value={this.state.username} type="text" name="username" onChange={(e)=> this.changeState(e)}></TextInput>
   
-        <TextInput label="Contraseña" value={this.state.password} type="password" onChange={(e)=> this.changeState(e)}/>
+        <TextInput label="Contraseña" value={this.state.password} type="password"  name="password"  onChange={(e)=> this.changeState(e)}/>
  
           <Button type="submit" value="Sign up">Submit</Button>
         </form>

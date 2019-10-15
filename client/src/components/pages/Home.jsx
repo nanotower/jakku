@@ -5,7 +5,9 @@ import AllProducts from "../organisms/AllProducts";
 import SearchBar from "../atoms/SearchBar";
 import Bidmapcontainer from "../molecules/Bidmapcontainer";
 import RoutesService from "../../RoutesService";
+import ModalLoginFirst from "../auth/ModalLoginFirst";
 import ModalLogin from "../auth/ModalLogin";
+
 
 class Home extends Component {
   constructor(props) {
@@ -14,59 +16,104 @@ class Home extends Component {
       bids: null,
       products: null
     };
-    this.router= new RoutesService;
+    this.router = new RoutesService();
   }
 
   componentDidMount() {
-    this.router.getProducts()
-    .then(response=> {
-      let bids= response.map(product=> product.bid);
-      bids.forEach(bid=> bid.productsList.map(id=> response.filter(product=> product._id===id)))
-      let bidsId= []
-      bids= bids.filter(bid=> {
-        if(bidsId.includes(bid._id)) {
-          return false
-        }
-        else {
+    this.router.getProducts().then(response => {
+      let bids = response.map(product => product.bid);
+      bids.forEach(bid =>
+        bid.productsList.map(id =>
+          response.filter(product => product._id === id)
+        )
+      );
+      let bidsId = [];
+      bids = bids.filter(bid => {
+        if (bidsId.includes(bid._id)) {
+          return false;
+        } else {
           bidsId.push(bid._id);
-          return true
+          return true;
         }
-      })
+      });
       this.setState({
         ...this.state,
         products: response,
         bids: bids
-      })
-      console.log(this.state, this.props)
-    })
+      });
+      console.log(this.state, this.props);
+    });
   }
 
-
   render() {
-  
     return (
-
-      <div>
+      <div className="home">
+        <div className="title-container">
         <h1>
           Si te acabas de mudar o estás a punto de mudarte, podemos ayudarte
         </h1>
+        <img src='bkg-img.svg' alt="background image"></img>
+
+        </div >
+       
         {/* <NavLink to={"/create-bid"}>Me voy a mudar</NavLink>
         <NavLink to={"/create-bid"}>Me acabo de mudar</NavLink> */}
-        <Tabs className="tab-demo z-depth-1 tabs-fixed-width">
-          <Tab title="Me voy a mudar">
-            <h2>¿Tienes demasiadas cosas y no vas a llevarlas a tu nuevo hogar?</h2>
-            <h2>Estás de enhorabuena.</h2>
-            <p>Tenemos el escaparate perfecto para venderlo todo el día exacto que tú decidas.</p>
+        <Tabs className="tab-demo z-depth-1 tabs-fixed-width tab-container">
+          <Tab title="Me voy a mudar" className="me-mudo">
+            <div className="mudo-container">
+            <h3>
+              ¿Tienes demasiadas cosas y no vas a llevarlas a tu nuevo hogar?
+            </h3>
+            <h3>Estás de enhorabuena.</h3>
+            <p>
+              Tenemos el escaparate perfecto para venderlo todo el día exacto
+              que tú decidas.
+            </p>
 
+            </div>
+          
+            <main className="timeline">
+              <ul>
+                <li className="li-r">
+                  <i class="medium material-icons">event_available</i>
+                  <p className="number-r">1</p>
+                  <h4>Fija el día</h4>
+                  <p>
+                    Decide cuando quieres vaciar tu vivienda. Te liberas de lo
+                    que no necesitas justo cuando te mudas. Ni antes, ni
+                    después.
+                  </p>
+                </li>
+                <li className="li-l">
+                  <i class="medium material-icons">camera_alt</i>
+                  <p className="number-l">2</p>
+                  <h4>Separa lo que no te vas a llevar</h4>
+                  <p>Hazle fotos y descríbelo brevemente. Puedes una sola cosa en cada caja, como una mesa, o meter el salón completo. ¡En nuestras cajas cabe todo!</p>
+                </li>
+                <li className="li-r">
+                  <i class="medium material-icons">euro_symbol</i>
+                  <p className="number-3">3</p>
+                  <h4>Ponles precio</h4>
+                  <p>Desde 1 céntimo hasta lo que tú juzgues.</p>
+                </li>
 
-
-
-
+                <li className="li-l">
+                  <i class="medium material-icons">thumb_up</i>
+                  <p className="number-4">4</p>
+                  <h4>Véndelo</h4>
+                  <p>Los compradores irán a recogerlo el día acordado. Listo para tu mudanza.</p>
+                </li>
+              </ul>
+            </main>
+            <div className="create-bid-container">
+        <label>Crear mudanza</label>
+        <ModalLoginFirst passText={"Tienes que identificarte para continuar"}></ModalLoginFirst>
+        {/* <a class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a> */}
+        </div>
           </Tab>
           <Tab title="Me acabo de mudar" active>
             {this.state.products && this.state.bids && this.props.centerMap ? (
               <div>
-               
                 {/* <SearchBar
                   updateSearch={searchText => this.makeSearch(searchText)}
                   // updateInStock={stockCheckbox => this.changeStock(stockCheckbox)}
@@ -75,20 +122,17 @@ class Home extends Component {
                   bids={this.state.bids}
                   centerMap={this.props.centerMap}
                 ></Bidmapcontainer>
-
                 <AllProducts products={this.props.products}></AllProducts>
               </div>
             ) : (
               <div>
-                    <Preloader flashing size="small" />
-              <ModalLogin></ModalLogin>
-
+                <Preloader flashing size="small" />
+                <ModalLogin></ModalLogin>
               </div>
-          
-             
             )}
           </Tab>
         </Tabs>
+      
       </div>
     );
   }
