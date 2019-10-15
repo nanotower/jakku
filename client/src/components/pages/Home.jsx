@@ -1,12 +1,10 @@
 import React, { Component } from "react";
 import { NavLink, withRouter } from "react-router-dom";
 import { Tabs, Tab, Col, Row, Preloader } from "react-materialize";
-import AllProducts from "../organisms/AllProducts";
-import SearchBar from "../atoms/SearchBar";
-import Bidmapcontainer from "../molecules/Bidmapcontainer";
 import RoutesService from "../../RoutesService";
 import ModalLoginFirst from "../auth/ModalLoginFirst";
 import ModalLogin from "../auth/ModalLogin";
+import AllProductsAndSearch from "../organisms/AllProductsAndSearch";
 
 
 class Home extends Component {
@@ -14,7 +12,7 @@ class Home extends Component {
     super(props);
     this.state = {
       bids: null,
-      products: null
+      products: null,
     };
     this.router = new RoutesService();
   }
@@ -39,7 +37,8 @@ class Home extends Component {
       this.setState({
         ...this.state,
         products: response,
-        bids: bids
+        bids: bids,
+        centerMap: this.props.centerMap
       });
       console.log(this.state, this.props);
     });
@@ -112,24 +111,35 @@ class Home extends Component {
         </div>
           </Tab>
           <Tab title="Me acabo de mudar" active>
-            {this.state.products && this.state.bids && this.props.centerMap ? (
-              <div>
-                {/* <SearchBar
-                  updateSearch={searchText => this.makeSearch(searchText)}
-                  // updateInStock={stockCheckbox => this.changeStock(stockCheckbox)}
-                /> */}
-                <Bidmapcontainer
+            <div className="mudare-container">
+          <div className="mudo-container">
+            <h3>
+              ¿Te faltan cosas en tu nueva casa?
+            </h3>
+            <p>
+              Búscalo. Seguro que alguien se está mudando y le sobra.
+            </p>
+            </div>
+
+            
+            {this.state.products && this.state.bids && this.state.centerMap ? (
+              <React.Fragment>
+              
+                <AllProductsAndSearch
                   bids={this.state.bids}
                   centerMap={this.props.centerMap}
-                ></Bidmapcontainer>
-                <AllProducts products={this.props.products}></AllProducts>
-              </div>
+                  products={this.props.products}
+                
+                ></AllProductsAndSearch>
+              </React.Fragment>
             ) : (
               <div>
-                <Preloader flashing size="small" />
+                <Preloader flashing size="big" />
                 <ModalLogin></ModalLogin>
               </div>
             )}
+       
+            </div>
           </Tab>
         </Tabs>
       

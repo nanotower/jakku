@@ -44,7 +44,7 @@ export default class ShowProduct extends Component {
           <p>La mudanza de esta caja será el {this.props.product.bid.deadLine} de {this.props.product.bid.from} a {this.props.product.bid.to}</p>
           <p>Precio: {this.props.product.price} €</p>
           
-          {this.props.product.active && (<button onClick={e => this.buy(e)}>Comprar</button>)}
+          {this.props.product.active && this.props.product.owner!=this.props.userId &&(<button onClick={e => this.buy(e)}>Comprar</button>)}
           <span>{!this.props.product.active && this.props.userId==this.props.product.buyer? "Comprado! Enhorabuena" : !this.props.product.active? "Vendido": ""}</span>
           <div className="owner-container">
           <img src={this.props.product.owner.imgPath}></img>

@@ -11,6 +11,9 @@
     font-weight: 500;
     line-height: 3rem;
   }
+  h3 {
+    font-weight: bold;
+  }
   .title-container {
     background: linear-gradient(
       to bottom,
@@ -71,6 +74,25 @@
     bottom: -240px;
     right: 0;
     z-index: -5;
+}
+a {
+  color: #FA255E;
+}
+.container-all-search {
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+label{
+  width:300px;
+}
+.input-field {
+  width:300px;
+ 
+}
+col {
+  width:600px;
 }
   
 }
