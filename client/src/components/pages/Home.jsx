@@ -37,17 +37,15 @@ class Home extends Component {
         products: response,
         bids: bids
       })
-      console.log(this.state)
+      console.log(this.state, this.props)
     })
   }
 
 
   render() {
-    // if(false){
-    //   this.props.history.push('/ruta')
-    // }
-
+  
     return (
+
       <div>
         <h1>
           Si te acabas de mudar o estás a punto de mudarte, podemos ayudarte
@@ -55,15 +53,24 @@ class Home extends Component {
         {/* <NavLink to={"/create-bid"}>Me voy a mudar</NavLink>
         <NavLink to={"/create-bid"}>Me acabo de mudar</NavLink> */}
         <Tabs className="tab-demo z-depth-1 tabs-fixed-width">
-          <Tab title="Me voy a mudar"></Tab>
+          <Tab title="Me voy a mudar">
+            <h2>¿Tienes demasiadas cosas y no vas a llevarlas a tu nuevo hogar?</h2>
+            <h2>Estás de enhorabuena.</h2>
+            <p>Tenemos el escaparate perfecto para venderlo todo el día exacto que tú decidas.</p>
+
+
+
+
+
+          </Tab>
           <Tab title="Me acabo de mudar" active>
-            {this.props.products && this.state.bids ? (
+            {this.state.products && this.state.bids && this.props.centerMap ? (
               <div>
                
-                <SearchBar
+                {/* <SearchBar
                   updateSearch={searchText => this.makeSearch(searchText)}
                   // updateInStock={stockCheckbox => this.changeStock(stockCheckbox)}
-                />
+                /> */}
                 <Bidmapcontainer
                   bids={this.state.bids}
                   centerMap={this.props.centerMap}

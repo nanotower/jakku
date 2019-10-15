@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Button, Modal } from "react-materialize";
 import Signup from "./Signup";
 import Login from "./Login";
-import { NavLink, Link } from "react-router-dom";
+
 
 export default class ModalLogin extends Component {
   render() {
@@ -17,7 +17,7 @@ export default class ModalLogin extends Component {
             className="blue"
             small
             style={{ marginRight: "5px" }}
-          >   <a href="https://jakkuapp.herokuapp.com/auth/google">
+          >   <a href={`${process.env.REACT_APP_API_URL}/auth/google`}>
           Google login
         </a></Button>
        
