@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { NavLink } from "react-router-dom";
+
 import { Button, Tabs, Tab, Preloader } from "react-materialize";
 import { withRouter } from "react-router-dom";
 import ShowBid from "./ShowMyBid";
@@ -9,6 +9,7 @@ import Bidmapcontainer from "../molecules/Bidmapcontainer";
 import RoutesService from "../../RoutesService";
 import ModalLoginFirst from "../auth/ModalLoginFirst";
 import AllProductsAndSearch from "../organisms/AllProductsAndSearch";
+import ButtonAdd from "../atoms/ButtonAdd";
 
 class HomeLogged extends Component {
   constructor(props) {
@@ -42,31 +43,13 @@ class HomeLogged extends Component {
         ...this.state,
         products: response,
         bids: bids,
-        centerMap: this.props.centerMap
+        centerMap: this.props.centerMap,
+        loaded: true
       });
-      console.log(this.state);
+      console.log("show home logged", this.state);
     });
   }
 
-  // makeSearch(searchText) {
-  //   console.log(this.props);
-  //   const searchProductsResults = this.state.products.filter(product =>
-  //     product.name.toLowerCase().includes(searchText.toLowerCase())
-  //   );
-  //   console.log(this.state);
-
-  //   this.setState({
-  //     ...this.state,
-  //     searchProducts: searchProductsResults
-  //   });
-  // }
-
-  // // changeStock(stockCheckbox) {
-  // //   this.setState({
-  // //     ...this.state,
-  // //     inStock: stockCheckbox
-  // //   });
-  // // }
 
   render() {
     if (!this.props.user.bid) {
@@ -85,7 +68,7 @@ class HomeLogged extends Component {
                 <div className="mudo-container">
                   <div className="create-bid-container">
                     <label>Crear mudanza</label>
-                    <ModalLoginFirst passText={""}></ModalLoginFirst>
+                    
                   </div>
                 </div>
               </Tab>
@@ -94,16 +77,16 @@ class HomeLogged extends Component {
                 {this.state.products &&
                 this.state.bids &&
                 this.state.centerMap ? (
-                  <div className="container-all-search">
+             
                     <AllProductsAndSearch
                       bids={this.state.bids}
                       centerMap={this.props.centerMap}
                       products={this.props.products}
                     ></AllProductsAndSearch>
-                  </div>
+        
                 ) : (
                   <div>
-                    <Preloader flashing size="big" />
+                    <Preloader className="preloader" flashing size="big" />
                   </div>
                 )}
               </Tab>
@@ -116,30 +99,25 @@ class HomeLogged extends Component {
         <div className="home">
           <div className="title-container">
             <h1>
-              Si te acabas de mudar o estás a punto de mudarte, podemos ayudarte
+              Crea nuevas cajas o busca en otras mudanzas
             </h1>
             <img src="bkg-img.svg" alt="background image"></img>
           </div>
-          {this.state.products && this.state.bids && this.state.centerMap ? (
-            <div className="container-all-search">
+
+          <ButtonAdd product={true}></ButtonAdd>
+
+
+
+          {this.state.loaded && this.state.bids && this.state.products && this.state.centerMap ? (
+         
               <AllProductsAndSearch
                 bids={this.state.bids}
-                centerMap={this.props.centerMap}
-                products={this.props.products}
+                centerMap={this.state.centerMap}
+                products={this.state.products}
               ></AllProductsAndSearch>
-            </div>
+       
           ) : (
-            // <div>
-            //   <SearchBar
-            //     updateSearch={searchText => this.makeSearch(searchText)}
-            //     updateInStock={stockCheckbox => this.changeStock(stockCheckbox)}
-            //   />
-            //   <Bidmapcontainer
-            //     bids={this.state.bids}
-            //     centerMap={this.props.centerMap}
-            //   ></Bidmapcontainer>
-            //   <AllProducts products={this.props.products}></AllProducts>
-            // </div>
+  
             <div>
               <Preloader flashing size="big" />
             </div>

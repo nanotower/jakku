@@ -11,14 +11,17 @@
 
 // MOLECULES
 @import 'molecules/modalfirst';
+@import 'molecules/authstandalone';
 @import 'molecules/timeline';
 @import 'molecules/btncreate';
 @import 'molecules/navbar';
+@import 'molecules/card';
 // @import 'molecules/home/header';
 // @import 'molecules/home/section';
 // @import 'molecules/projects/card';
 
 // ORGANISMS
+@import 'organisms/allsearch';
 // @import 'organisms/home';
 // @import 'organisms/auth';
 // @import 'organisms/singleProject';

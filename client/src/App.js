@@ -16,10 +16,12 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import CreateBid from "./components/organisms/CreateBid";
 import CreateProduct from "./components/organisms/CreateProduct";
 import ShowMyBid from "./components/pages/ShowMyBid";
+import ShowBid from "./components/pages/ShowBid";
 import Navbar from "./components/organisms/Navbar";
 import ShowMyProduct from "./components/pages/ShowMyProduct";
 import ShowProduct from "./components/pages/ShowProduct";
 import './styles/main.scss'
+import Auth from "./components/auth/Auth";
 
 export default class App extends Component {
   constructor(props) {
@@ -233,21 +235,22 @@ export default class App extends Component {
               );
             }}
           />
-          {/* <Route
-            exact
+          <Route
             path="/bid/:id"
-            render={() => {
+            render={props => {
               return (
                 <React.Fragment>
       
                   <ShowBid
-                    BidFromApp={() => this.GetBid()}
-                    // user={this.state.loggedInUser}
+                    // BidFromApp={() => this.GetBid()}
+                    id={props.match.params.id}
+                    user={this.state.loggedInUser}
+                    centerMap={this.state.position}
                   ></ShowBid>
                 </React.Fragment>
               );
             }}
-          /> */}
+          />
 
           <Route
             path="/product/:id"
@@ -322,12 +325,8 @@ export default class App extends Component {
             render={() => {
               return (
                 <React.Fragment>
-                  <Login getUser={this.getUser}></Login>
-                  <Signup getUser={this.getUser}></Signup>
-                  <GoogleAuth getUser={this.getUser}></GoogleAuth>
-                  <a href="http://localhost:3010/auth/google">
-                    Sign In with Google
-                  </a>
+                <Auth></Auth>
+               
                 </React.Fragment>
               );
             }}
@@ -338,15 +337,7 @@ export default class App extends Component {
             render={() => {
               return (
                 <React.Fragment>
-                  <h1>
-                    Tienes que estar registrado para poder crear tu mudanza
-                  </h1>
-                  <Login getUser={this.getUser}></Login>
-                  <Signup getUser={this.getUser}></Signup>
-                  {/* <GoogleAuth getUser={this.getUser}></GoogleAuth> */}
-                  <a href="http://localhost:3010/auth/google">
-                    Sign In with Google
-                  </a>
+               <Auth></Auth>
                 </React.Fragment>
               );
             }}

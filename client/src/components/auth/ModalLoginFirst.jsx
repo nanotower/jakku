@@ -22,20 +22,18 @@ export default class ModalLoginFirst extends Component {
           }
         >
           <div className="auth-container">
+          <p>Accede con tu cuenta de google</p>
+          
+    
+
+    <Button waves="light" className="blue google-auth">
+          <a href={`${process.env.REACT_APP_API_URL}/auth/google`}>
+          Google Login
+          </a>
+          </Button>
             <Signup></Signup>
             <Login></Login>
-            <Button
-              node="a"
-              waves="light"
-              className="blue google-auth"
-              large
-              style={{ marginRight: "5px" }}
-            >
-              {" "}
-              <a href={`${process.env.REACT_APP_API_URL}/auth/google`}>
-                Google login
-              </a>
-            </Button>
+            
           </div>
         </Modal>
       </div>

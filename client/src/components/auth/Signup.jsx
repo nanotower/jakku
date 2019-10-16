@@ -46,13 +46,13 @@ export default class Signup extends Component {
   render() {
     return (
       <div className="sign-container">
-             <h5>Signup</h5>
+             <p>Signup</p>
         <form onSubmit={this.sendSignup} >
         <TextInput label="Nombre" value={this.state.username} type="text" name="username" onChange={(e)=> this.changeState(e)}></TextInput>
   
         <TextInput label="Contraseña" value={this.state.password} type="password"  name="password"  onChange={(e)=> this.changeState(e)}/>
  
-          <Button type="submit" value="Sign up">Submit</Button>
+          <Button type="submit" value="Sign up">Signup</Button>
         </form>
         <p>{this.state.error? "Something was wrong. Please, try again" : ""}</p>
         

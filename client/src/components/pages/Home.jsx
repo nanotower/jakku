@@ -105,7 +105,7 @@ class Home extends Component {
               </ul>
             </main>
             <div className="create-bid-container">
-        <label>Crear mudanza</label>
+        <label className="label-crear">Crear mudanza</label>
         <ModalLoginFirst passText={"Tienes que identificarte para continuar"}></ModalLoginFirst>
         {/* <a class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a> */}
         </div>
@@ -135,7 +135,7 @@ class Home extends Component {
             ) : (
               <div>
                 <Preloader flashing size="big" />
-                <ModalLogin></ModalLogin>
+                {/* <ModalLogin></ModalLogin> */}
               </div>
             )}
        

@@ -38,10 +38,13 @@ export default class AllProductsAndSearch extends Component {
                   updateSearch={searchText => this.makeSearch(searchText)}
                   // updateInStock={stockCheckbox => this.changeStock(stockCheckbox)}
                 />
-                <h6>Selecciona un marcador del mapa para ver mudanzas disponibles</h6>
+                {this.props.title? <p>{this.props.title}</p> 
+                : <h6>Selecciona un marcador del mapa para ver mudanzas disponibles</h6>}
                 <Bidmapcontainer
                   bids={this.props.bids}
                   centerMap={this.props.centerMap}
+                  centerBid={this.props.centerBid}
+                  zoomMap={this.props.zoomMap}
                 ></Bidmapcontainer>
                 <AllProducts products={this.state.searchProducts}></AllProducts>
               </div>

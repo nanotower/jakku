@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import Bidmapcontainer from "../molecules/Productmapcontainer";
 import { Row, Card, CardTitle, Col} from 'react-materialize';
+import AllProducts from "../organisms/AllProducts";
+import ButtonAdd from "../atoms/ButtonAdd";
 
 export default class ShowMyBid extends Component {
   constructor(props) {
@@ -37,9 +39,13 @@ export default class ShowMyBid extends Component {
             this.props.user.bid.location.coordinates
           )}
         ></Bidmapcontainer> */}
-        <NavLink to={"/create-product"}>Añadir caja</NavLink>
+        {/* <NavLink to={"/create-product"}>Añadir caja</NavLink> */}
+        <ButtonAdd product={true}></ButtonAdd>
+     
         <h2>Tus cajas</h2>
-        {this.props.user.products.map((product, idx) => {
+  
+        <AllProducts products={this.props.user.products}></AllProducts>
+        {/* {this.props.user.products.map((product, idx) => {
           return (
             <NavLink to={`/my-product/${product._id}`} key={idx}>
              
@@ -57,7 +63,7 @@ export default class ShowMyBid extends Component {
               </div>
             </NavLink>
           );
-        })}
+        })} */}
       </React.Fragment>
     );
   }
