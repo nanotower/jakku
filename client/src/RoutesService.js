@@ -72,6 +72,11 @@ class RoutesService {
     .then(response=> response.data)
     .catch(this.errHandler)
   }
+  deleteProduct= (id) => {
+    return this.service.delete(`delete/product/${id}`)
+    .then(response=> response.data)
+    .catch(this.errHandler)
+  }
   
 
 

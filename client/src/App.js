@@ -22,6 +22,7 @@ import ShowMyProduct from "./components/pages/ShowMyProduct";
 import ShowProduct from "./components/pages/ShowProduct";
 import './styles/main.scss'
 import Auth from "./components/auth/Auth";
+import FooterBar from "./components/organisms/FooterBar";
 
 export default class App extends Component {
   constructor(props) {
@@ -142,7 +143,6 @@ export default class App extends Component {
             lng: position.coords.longitude
           }
         });
-        console.log(this.state.position);
       });
     }
   };
@@ -161,9 +161,8 @@ export default class App extends Component {
             exact
             path="/"
             render={() => {
-              console.log("antes de montar", this.state);
               return (
-                <React.Fragment>
+                <div className="page">
                   <HomeLogged
                     user={this.state.loggedInUser}
                     productsFromApp={() => {
@@ -173,7 +172,7 @@ export default class App extends Component {
                     products={this.state.products}
                     // bids={this.state.bids}
                   ></HomeLogged>
-                </React.Fragment>
+                </div>
               );
             }}
           />
@@ -183,19 +182,18 @@ export default class App extends Component {
             render={() => {
               if (this.state.loggedInUser.bid) {
                 return (
-                  <React.Fragment>
+                  <div className="page">
                     <h1>Ya tienes una subasta activa</h1>
                     <p>Link al panel de control de tu mudanza</p>
-                  </React.Fragment>
+                  </div>
                 );
               } else {
                 return (
-                  <React.Fragment>
-                    estas log
+                  <div className="page">
                     <CreateBid
                       fromApp={newValue => this.changeStateBid(newValue)}
                     ></CreateBid>
-                  </React.Fragment>
+                  </div>
                 );
               }
             }}
@@ -207,7 +205,7 @@ export default class App extends Component {
               console.log("llama create product", this.state.loggedInUser);
 
               return (
-                <React.Fragment>
+                <div className="page">
                   <CreateProduct
                     fromApp={() => this.fetchUser()}
                     fromAppRefreshProducts={() => this.getProducts()}
@@ -217,7 +215,7 @@ export default class App extends Component {
                         : null
                     }
                   ></CreateProduct>
-                </React.Fragment>
+                </div>
               );
             }}
           />
@@ -225,13 +223,15 @@ export default class App extends Component {
             exact
             path="/your-bid"
             render={() => {
+              console.log("antes de montar", this.state);
               return (
-                <React.Fragment>
+                <div className="page">
                   <ShowMyBid
                     fromApp={() => this.fetchUser()}
                     user={this.state.loggedInUser}
+                    product={this.state.products}
                   ></ShowMyBid>
-                </React.Fragment>
+                </div>
               );
             }}
           />
@@ -239,7 +239,7 @@ export default class App extends Component {
             path="/bid/:id"
             render={props => {
               return (
-                <React.Fragment>
+                <div className="page">
       
                   <ShowBid
                     // BidFromApp={() => this.GetBid()}
@@ -247,7 +247,7 @@ export default class App extends Component {
                     user={this.state.loggedInUser}
                     centerMap={this.state.position}
                   ></ShowBid>
-                </React.Fragment>
+                </div>
               );
             }}
           />
@@ -256,7 +256,7 @@ export default class App extends Component {
             path="/product/:id"
             render={props => {
               return (
-                <React.Fragment>
+                <div className="page">
                   <ShowProduct
                     productFromApp={() =>
                       this.getProduct(props.match.params.id)
@@ -267,7 +267,7 @@ export default class App extends Component {
                     buyFromApp={id => this.buyProduct(id)}
                     centerMap={this.state.position}
                   ></ShowProduct>
-                </React.Fragment>
+                </div>
               );
             }}
           />
@@ -277,18 +277,19 @@ export default class App extends Component {
             render={props => {
               let chosenProduct = props.match.params.id;
               return (
-                <React.Fragment>
+                <div className="page">
                   <ShowMyProduct
                     productId={chosenProduct}
                     fromApp={() => this.fetchUser()}
                     user={this.state.loggedInUser}
                     product={null}
                   ></ShowMyProduct>
-                </React.Fragment>
+                </div>
               );
             }}
           />
         </Switch>
+        <FooterBar></FooterBar>
       </React.Fragment>
     ) :
     

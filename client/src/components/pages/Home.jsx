@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import { NavLink, withRouter } from "react-router-dom";
-import { Tabs, Tab, Col, Row, Preloader } from "react-materialize";
+import { Tabs, Tab } from "react-materialize";
 import RoutesService from "../../RoutesService";
 import ModalLoginFirst from "../auth/ModalLoginFirst";
 import ModalLogin from "../auth/ModalLogin";
 import AllProductsAndSearch from "../organisms/AllProductsAndSearch";
+import PreloaderSpinner from "../atoms/PreloaderSpinner";
+
 
 
 class Home extends Component {
@@ -40,7 +42,7 @@ class Home extends Component {
         bids: bids,
         centerMap: this.props.centerMap
       });
-      console.log(this.state, this.props);
+
     });
   }
 
@@ -133,10 +135,7 @@ class Home extends Component {
                 ></AllProductsAndSearch>
               </React.Fragment>
             ) : (
-              <div>
-                <Preloader flashing size="big" />
-                {/* <ModalLogin></ModalLogin> */}
-              </div>
+              <PreloaderSpinner></PreloaderSpinner>
             )}
        
             </div>

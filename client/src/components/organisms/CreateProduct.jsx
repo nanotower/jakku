@@ -28,7 +28,6 @@ class CreateProduct extends Component {
 
   sendState(e) {
     e.preventDefault();
-    console.log("envio product&&&&&", this.state, "bid&&&&&&&", this.props.bid);
     this.routes.createProduct(this.state)
     .then(() =>{
       this.props.fromApp();
@@ -39,8 +38,7 @@ class CreateProduct extends Component {
     }) 
   }
   handleChange(e) {
-    console.log("archivos seleccionado");
-    console.log(e.target.files[0]);
+
 
     this.setState({
       ...this.state,
@@ -62,7 +60,6 @@ class CreateProduct extends Component {
   componentDidMount () {
     this.routes.getMyBids()
     .then(response => {
-      console.log("componenmount",response)
 
       this.setState({
         ...this.state,

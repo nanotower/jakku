@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import PreloaderSpinner from "../atoms/PreloaderSpinner";
 import { Button, Tabs, Tab, Preloader } from "react-materialize";
 import { withRouter } from "react-router-dom";
 import ShowBid from "./ShowMyBid";
@@ -85,9 +85,7 @@ class HomeLogged extends Component {
                     ></AllProductsAndSearch>
         
                 ) : (
-                  <div>
-                    <Preloader className="preloader" flashing size="big" />
-                  </div>
+                  <PreloaderSpinner></PreloaderSpinner>
                 )}
               </Tab>
             </Tabs>
@@ -118,9 +116,7 @@ class HomeLogged extends Component {
        
           ) : (
   
-            <div>
-              <Preloader flashing size="big" />
-            </div>
+            <PreloaderSpinner></PreloaderSpinner>
           )}
         </div>
       );

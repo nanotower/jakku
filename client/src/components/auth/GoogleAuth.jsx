@@ -23,9 +23,7 @@ export default class Login extends Component {
 
     this.service.googleauth(username, password)
     .then(response => {
-      console.log("llama al setsate")
-      console.log(response)
-
+ 
       this.setState({
         username : username,
         password : password,
@@ -34,7 +32,7 @@ export default class Login extends Component {
       this.props.getUser(response.user);
     })
     .catch(error => {
-      console.log("entra por catch")
+
       this.setState({
         username: username,
         password: password,

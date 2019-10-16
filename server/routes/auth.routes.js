@@ -70,13 +70,13 @@ router.get("/logout", (req, res) => {
 });
 
 router.get('/currentuser', (req,res,next) => {
-  console.log("current", req.user)
   if(req.user){
     User.findById(req.user._id)
     .populate("bid")
     .populate("products")
-    .populate("bundles")
+
     .then(user => {
+      console.log("currentuser", req.user)
       res.status(200).json(user);
 
     })

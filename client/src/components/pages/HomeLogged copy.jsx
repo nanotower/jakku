@@ -40,16 +40,13 @@ class HomeLogged extends Component {
         products: response,
         bids: bids
       })
-      console.log(this.state)
     })
   }
 
   makeSearch(searchText) {
-    console.log(this.props);
     const searchProductsResults = this.state.products.filter(product =>
       product.name.toLowerCase().includes(searchText.toLowerCase())
     );
-    console.log(this.state);
 
     this.setState({
       ...this.state,

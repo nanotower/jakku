@@ -36,7 +36,7 @@ router.get("/all-products", (req, res, next) => {
     //   populate: { path: 'productsList' }
     // })
     .then(allProducts => {
-      console.log("resdata allproduct%%%%%%%"+allProducts)
+      // console.log("resdata allproduct%%%%%%%"+allProducts)
       res.json(allProducts);
     })
     .catch(error => next(error));

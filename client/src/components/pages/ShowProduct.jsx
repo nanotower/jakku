@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Productmapcontainer from "../molecules/Productmapcontainer";
-import {Preloader } from "react-materialize";
+import PreloaderSpinner from "../atoms/PreloaderSpinner";
 
 
 
@@ -72,13 +72,10 @@ export default class ShowProduct extends Component {
       
       return (
  
-           <div>
-              <Preloader flashing size="big" />
-            </div>
+        <PreloaderSpinner></PreloaderSpinner>
         
      
       )
     }
-  
   }
 }

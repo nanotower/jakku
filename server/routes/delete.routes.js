@@ -16,8 +16,9 @@ router.delete("/product/:id", (req, res, next) => {
   Product.findByIdAndDelete(req.params.id).then(() => {
     User.findById(req.user._id)
       .populate("products")
-      .then(products => {
-        res.json(products);
+      .populate("bid")
+      .then(user => {
+        res.json(user);
       });
   });
 });

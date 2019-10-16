@@ -25,7 +25,7 @@ export default class Signup extends Component {
 
     this.service.signup(username, password)
     .then(response => {
-      console.log("response sing", response)
+  
       this.setState({
         username: "",
         password: ""

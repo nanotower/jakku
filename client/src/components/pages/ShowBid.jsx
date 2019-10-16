@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import RoutesService from "../../RoutesService";
 import AllProductsAndSearch from '../organisms/AllProductsAndSearch';
-import { Preloader } from "react-materialize";
+import PreloaderSpinner from "../atoms/PreloaderSpinner";
 
 export default class ShowBid extends Component {
   constructor(props) {
@@ -15,7 +15,6 @@ export default class ShowBid extends Component {
   componentDidMount() {
     this.router.getBid(this.props.id)
     .then(bid=>{
-      console.log("llega bid id desde back", bid)
       const centerBid = {lat:bid.location.coordinates[1], lng: bid.location.coordinates[0]}
       this.setState({
         ...this.state,
@@ -48,9 +47,7 @@ export default class ShowBid extends Component {
     }
     else {
       return (
-        <div className="preloader">
-            <Preloader flashing size="big" />
-        </div>
+        <PreloaderSpinner></PreloaderSpinner>
        
       )
     }
