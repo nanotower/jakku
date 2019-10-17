@@ -19,6 +19,7 @@ import ShowMyBid from "./components/pages/ShowMyBid";
 import ShowBid from "./components/pages/ShowBid";
 import Navbar from "./components/organisms/Navbar";
 import ShowMyProduct from "./components/pages/ShowMyProduct";
+import ShowMyPurchases from "./components/pages/ShowMyPurchases";
 import ShowProduct from "./components/pages/ShowProduct";
 import './styles/main.scss'
 import Auth from "./components/auth/Auth";
@@ -64,8 +65,7 @@ export default class App extends Component {
       .then(response => {
         this.setState({
           ...this.state,
-          loggedInUser: response,
-          products: []
+          loggedInUser: response
         });
         console.log("fetch/////", this.state);
       })
@@ -288,8 +288,24 @@ export default class App extends Component {
               );
             }}
           />
+          <Route
+            exact
+            path="/my-purchases"
+            render={props => {
+              return (
+                <div className="page">
+                  <ShowMyPurchases
+                
+                    // fromApp={() => this.fetchUser()}
+                    user={this.state.loggedInUser}
+                    products={this.state.products}
+                  ></ShowMyPurchases>
+                </div>
+              );
+            }}
+          />
         </Switch>
-        <FooterBar></FooterBar>
+        {/* <FooterBar></FooterBar> */}
       </React.Fragment>
     ) :
     

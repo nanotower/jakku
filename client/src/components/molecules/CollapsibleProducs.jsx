@@ -10,25 +10,23 @@ export default class CollapsibleProducs extends Component {
     }
   }
   
-  deleteProduct(id) {
-    this.props.deleteFromShow(id)
-    .then(()=> {
-      this.setState({
-        ...this.state,
-        products: this.props.products
-      })
-    })
-  }
-  componentDidMount(){
-    console.log(this.props)
-  }
+  // deleteProduct(id) {
+  //   this.props.deleteFromShow(id)
+  //   .then(()=> {
+  //     this.setState({
+  //       ...this.state,
+  //       products: this.props.products
+  //     })
+  //   })
+  // }
 
   render() {
-    if(this.props.products) {
+    if(this.props.products && this.props.user) {
       return (
+        
         <div className="collapsible-container">
           <Collapsible accordion={false}>
-            {this.state.products.map((product, idx) => {
+            {this.props.products.map((product, idx) => {
               if (product.buyer == this.props.user._id) {
                 return (
                   <CollapsibleItem

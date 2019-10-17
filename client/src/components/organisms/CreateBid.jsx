@@ -61,8 +61,12 @@ class CreateBid extends Component {
       }
     });
   }
-  transformDate () {
-    return moment(this.state.deadLine).format('LL')
+ 
+  transformDate = () => {
+    moment.lang('es');
+    const dateTransformed= moment(this.state.bid.deadLine).format('LLLL')
+    console.log(dateTransformed)
+    return <p>{dateTransformed}</p>
   }
 
 

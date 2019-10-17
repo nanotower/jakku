@@ -2,29 +2,41 @@ import React, { Component } from "react";
 import { Row, Col, Card } from "react-materialize";
 import { NavLink } from "react-router-dom";
 
+import moment from "moment";
+import 'moment/locale/es'
+moment.locale('es')
+
 export default class CardMap extends Component {
- 
+  constructor(props) {
+    super(props)
+    this.state={
 
-
-
+    }
+  }
+  transformDate = () => {
+    moment.lang('es');
+    //const dateTransformed= moment(this.props.bid.deadLine).format('LLLL')
+    const dateTransformed= moment(this.props.bid.deadLine).fromNow()
+    console.log(dateTransformed)
+    return <p>{dateTransformed}</p>
+  }
 
 
   render() {
     return (
-      <div>
-        <Row>
-          <Col m={6} s={12}>
+      <div className="card-map-container">
+       
             <Card
               className="blue-grey darken-1"
               textClassName="white-text"
-              title="Card title"
-              actions={[<NavLink to={`/product/${this.props.bid._id}`}>Mudanza</NavLink>]}
+              title=""
+              actions={[<NavLink to={`/bid/${this.props.bid._id}`}>Ir a la Mudanza</NavLink>]}
             >
-              I am a very simple card.
-              <h1>{this.props.bid.deadLine}</h1>
+              <p>Esta mudanza acaba {this.transformDate()}</p>
+          
             </Card>
-          </Col>
-        </Row>
+        
+       
       </div>
     );
   }

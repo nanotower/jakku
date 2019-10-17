@@ -46,7 +46,9 @@ export default class AllProductsAndSearch extends Component {
                   centerBid={this.props.centerBid}
                   zoomMap={this.props.zoomMap}
                 ></Bidmapcontainer>
+                 <div className="card-container">
                 <AllProducts products={this.state.searchProducts}></AllProducts>
+                 </div>
               </div>
     )
   }

@@ -19,6 +19,9 @@ class Navbar extends Component {
   yourbid= () => {
     this.props.history.push("/your-bid")
   }
+  yourPurchases = () => {
+    this.props.history.push("/my-purchases")
+  }
 
   // render() {
 
@@ -105,7 +108,7 @@ class Navbar extends Component {
                    
                     {/* <SideNavItem subheader></SideNavItem>
                     <SideNavItem subheader waves href="/your-bid"></SideNavItem> */}
-                    <SideNavItem waves onClick={this.logout}>
+                    <SideNavItem waves onClick={this.yourPurchases}>
                     Cajas compradas
                     </SideNavItem>
                     <SideNavItem waves onClick={this.yourbid}>

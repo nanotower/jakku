@@ -1,0 +1,34 @@
+.display-product{
+  h1{
+    font-size: 1.4rem;
+    font-weight: bold;
+  }
+  .container-product-display{
+    margin: 10px;
+    .owner-container{
+      
+      width:300px;
+      height: 100px;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      p{
+        margin-left: 10px;
+      }
+      .profile-image{
+        // width: 80px;
+        height: 100%;
+        width: 100px;
+        overflow: hidden;
+      }
+      img{
+        width:100%;
+        border-radius: 50%;
+      }
+    }
+  
+    
+  }
+
+
+}

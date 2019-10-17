@@ -7,8 +7,8 @@ export default class Card extends Component {
       
 
 
-          <div class="row">
-          <div class="col s12 m7">
+          // <div class="row">
+          // <div class="col s12 m7">
             <div class="card">
             <NavLink to={`/product/${this.props.product._id}`}className="product-card">
                 {this.props.product.active? 
@@ -30,16 +30,16 @@ export default class Card extends Component {
     
               
               <div class="card-content">
-                <p className="card-price">{this.props.product.price}</p>
-                <p>{this.props.product.description}</p>
+                <p className="card-price">{this.props.product.price} €</p>
+                {/* <p>{this.props.product.description}</p> */}
               </div>
               </NavLink>
               <div class="card-action">
                 <a href={`/bid/${this.props.product.bid._id}`} onClick={()=>console.log(this.props.product)}>Otras cajas en la misma mudanza</a>
               </div>
             </div>
-          </div>
-        </div>
+          // </div>
+        // </div>
     )
   }
 }
