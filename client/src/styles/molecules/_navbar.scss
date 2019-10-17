@@ -28,6 +28,17 @@ nav {
   .carousel {
     overflow: visible;
   }
+  .profile-container{
+    margin-right: 20px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    font-size: 1rem;
+    img{
+      margin-left: 10px;
+      float: right;
+    }
+  }
 
 
 

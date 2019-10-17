@@ -2,8 +2,12 @@ import React, { Component } from 'react'
 import RoutesService from "../../RoutesService";
 import AllProductsAndSearch from '../organisms/AllProductsAndSearch';
 import PreloaderSpinner from "../atoms/PreloaderSpinner";
+import { withRouter } from 'react-router-dom';
+import moment from "moment";
+import 'moment/locale/es'
+moment.locale('es')
 
-export default class ShowBid extends Component {
+class ShowBid extends Component {
   constructor(props) {
     super(props)
     this.state= {
@@ -24,13 +28,22 @@ export default class ShowBid extends Component {
       })
     })
   }
+  goBack =()=> {
+    this.props.history.goBack()
+  }
+  transformDate = () => {
+    moment.lang('es');
+    const dateTransformed= moment(this.state.bid.deadLine).format('LL')
+    return <p>{dateTransformed}</p>
+  }
 
   render() {
     if(this.state.bid && this.state.centerMap) {
       return (
         <div>
+        <a className="back-btn"><i class="medium material-icons" onClick={this.goBack}>arrow_back</i></a>
         <p>
-          Recogerán las cosas el día {this.state.bid.deadLine} entre las{" "}
+          Recogerán las cosas el día {this.transformDate()} entre las{" "}
           {this.state.bid.from} y las {this.state.bid.to}
         </p>
         <AllProductsAndSearch
@@ -54,3 +67,4 @@ export default class ShowBid extends Component {
   
   }
 }
+export default withRouter(ShowBid)

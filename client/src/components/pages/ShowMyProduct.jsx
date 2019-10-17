@@ -26,8 +26,8 @@ export default class ShowProduct extends Component {
       <h1>Mostrar caja</h1>
       <div>
         <img src={this.state.product.imgPath1} alt="product image"></img>
-        <img src={this.state.product.imgPath2} alt="product image"></img>
-        <img src={this.state.product.imgPath3} alt="product image"></img>
+        {/* <img src={this.state.product.imgPath2} alt="product image"></img>
+        <img src={this.state.product.imgPath3} alt="product image"></img> */}
         <h1>{this.state.product.name}</h1>
         <p>{this.state.product.description}</p>
         <p>Precio: {this.state.product.price} €</p>

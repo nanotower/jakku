@@ -1,8 +1,12 @@
-.product-card{
+.card{
   position: relative;
-  .card {
+  margin: 10px;
+  .card-content{
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
 
-    
   }
 
   .test:hover{
@@ -31,8 +35,16 @@
   img {
     filter: brightness(100%);
     transition: 0.2s ease-out;
+    max-width: 300px;
+    height: 250px;
+  }
+  .product-card{
+    overflow: hidden;
   }
   img:hover {
     filter: brightness(50%);
+  }
+  .price {
+    font-weight: bold;
   }
 }

@@ -26,13 +26,13 @@ export default class AllProducts extends Component {
             //         : "No se vende en pack"}
             //     </p>
             //   </div>
-            
-            <Card 
+           
+               <Card 
               product={product}
               idx={idx}
-            
-            
             ></Card>
+
+            
             // </NavLink>
           );
         })}

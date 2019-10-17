@@ -19,6 +19,7 @@ import ShowMyBid from "./components/pages/ShowMyBid";
 import ShowBid from "./components/pages/ShowBid";
 import Navbar from "./components/organisms/Navbar";
 import ShowMyProduct from "./components/pages/ShowMyProduct";
+import ShowMyPurchases from "./components/pages/ShowMyPurchases";
 import ShowProduct from "./components/pages/ShowProduct";
 import './styles/main.scss'
 import Auth from "./components/auth/Auth";
@@ -64,10 +65,9 @@ export default class App extends Component {
       .then(response => {
         this.setState({
           ...this.state,
-          loggedInUser: response,
-          products: []
-        });
-        console.log("fetch/////", this.state);
+          loggedInUser: response
+        }, console.log("fetch/////", this.state));
+        
       })
       .catch(error => {
         this.setState({
@@ -110,7 +110,7 @@ export default class App extends Component {
         ...this.state,
         product: response
       });
-      console.log("vuelta de compra producto", this.state);
+
     });
   }
   getProducts() {
@@ -120,7 +120,7 @@ export default class App extends Component {
         ...this.state,
         products: response
       });
-      console.log("carga productos en state app", this.state);
+
     });
   }
   shuffleProducts() {
@@ -149,7 +149,8 @@ export default class App extends Component {
 
   render() {
     return this.state.loggedInUser ? (
-      <React.Fragment>
+      <div className="render-login">
+        <div className="body-render-login">
         <Navbar
           className="nav-logged"
           user={this.state.loggedInUser}
@@ -288,9 +289,26 @@ export default class App extends Component {
               );
             }}
           />
+          <Route
+            exact
+            path="/my-purchases"
+            render={props => {
+              return (
+                <div className="page">
+                  <ShowMyPurchases
+                
+                    // fromApp={() => this.fetchUser()}
+                    user={this.state.loggedInUser}
+                    products={this.state.products}
+                  ></ShowMyPurchases>
+                </div>
+              );
+            }}
+          />
         </Switch>
+        </div>
         <FooterBar></FooterBar>
-      </React.Fragment>
+      </div>
     ) :
     
     

@@ -65,10 +65,9 @@ class HomeLogged extends Component {
             </div>
             <Tabs className="tab-demo z-depth-1 tabs-fixed-width tab-container">
               <Tab title="Me voy a mudar" className="me-mudo">
-                <div className="mudo-container">
+                <div className="mudo-container-login">
                   <div className="create-bid-container">
-                    <label>Crear mudanza</label>
-                    
+                    <ButtonAdd bid={true}></ButtonAdd>
                   </div>
                 </div>
               </Tab>

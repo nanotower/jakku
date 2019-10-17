@@ -69,11 +69,15 @@ class CreateProduct extends Component {
       })
     })
   }
+  goBack =()=> {
+    this.props.history.goBack()
+  }
 
   render() {
     if(this.state.bid) {
       return (
         <React.Fragment>
+          <a className="back-btn"><i class="medium material-icons" onClick={this.goBack}>arrow_back</i></a>
           <h1>Contenido de la caja</h1>
           <div className="container-photo-input">
             <h2>Foto 1</h2>
@@ -116,6 +120,7 @@ class CreateProduct extends Component {
               placeholder="Breve descripción"
               name="description"
               onChange={e => this.updateFormData(e, "description")}
+              maxlength="100"
             ></input>
             <label htmlFor="price">Precio</label>
             <input

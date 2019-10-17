@@ -19,6 +19,9 @@ class Navbar extends Component {
   yourbid= () => {
     this.props.history.push("/your-bid")
   }
+  yourPurchases = () => {
+    this.props.history.push("/my-purchases")
+  }
 
   // render() {
 
@@ -81,9 +84,19 @@ class Navbar extends Component {
                 </li>
               </ul>
               <div>
-                <a href="#" data-target="mobile-demo" class="sidenav-trigger">
-                <i class="material-icons" className="menu-icon">menu</i>
-              </a>
+              <a href="#"  data-target="mobile-demo"   className="profile-container sidenav-trigger" >
+                    {this.props.user.username}
+                    <img className="profile-image"
+                      src={this.props.user.imgPath}
+                      alt="User profile image"
+                    />
+
+                  </a>
+
+                {/* <a href="#" data-target="mobile-demo" class="sidenav-trigger">
+                <i class="material-icons" className="material-icons">menu</i>
+              </a> */}
+
                   <SideNav
                     className="sidenav" id="mobile-demo"
                     trigger={<i class="material-icons"></i>}
@@ -105,7 +118,7 @@ class Navbar extends Component {
                    
                     {/* <SideNavItem subheader></SideNavItem>
                     <SideNavItem subheader waves href="/your-bid"></SideNavItem> */}
-                    <SideNavItem waves onClick={this.logout}>
+                    <SideNavItem waves onClick={this.yourPurchases}>
                     Cajas compradas
                     </SideNavItem>
                     <SideNavItem waves onClick={this.yourbid}>
