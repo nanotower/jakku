@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import Productmapcontainer from "../molecules/Productmapcontainer";
 import PreloaderSpinner from "../atoms/PreloaderSpinner";
 import { withRouter } from 'react-router-dom'
+import moment from "moment";
+import 'moment/locale/es'
+moment.locale('es')
 
 
 
@@ -39,6 +42,12 @@ class ShowProduct extends Component {
   goBack =()=> {
     this.props.history.goBack()
   }
+  transformDate = () => {
+    
+    moment.lang('es');
+    const dateTransformed= moment(this.props.product.bid.deadLine).format('LL')
+    return <p>{dateTransformed}</p>
+  }
 
   render() {
     if(this.props.product) {
@@ -53,12 +62,15 @@ class ShowProduct extends Component {
           <img src={this.props.product.imgPath3} alt="product image"></img> */}
           <h3>{this.props.product.name}</h3>
           <p>{this.props.product.description}</p>
-          <p>La mudanza de esta caja será el {this.props.product.bid.deadLine} de {this.props.product.bid.from} a {this.props.product.bid.to}</p>
+          <p>La mudanza de esta caja será el {this.transformDate()} de {this.props.product.bid.from} a {this.props.product.bid.to}</p>
           <p>Precio: {this.props.product.price} €</p>
           
           {/* {this.props.product.active && this.props.product.owner._id!=this.props.userId &&(<button onClick={e => this.buy(e)}>Comprar</button>)} */}
-          {(this.props.product.active && this.props.product.owner._id!=this.props.userId) ?
+          {(this.props.product.active && this.props.product.owner._id!==this.props.userId) ?
             <button onClick={e => this.buy(e)}>Comprar</button>
+            :
+            this.props.product.buyer==this.props.userId?
+            <p></p>
             :
             <p>Esta caja es tuya</p>
             }

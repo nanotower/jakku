@@ -71,10 +71,10 @@ router.get("/logout", (req, res) => {
 
 router.get('/currentuser', (req,res,next) => {
   if(req.user){
+    console.log("user va", req.user)
     User.findById(req.user._id)
-    .populate("bid")
-    .populate("products")
-
+    .populate('bid')
+    .populate('products')
     .then(user => {
       console.log("currentuser", req.user)
       res.status(200).json(user);

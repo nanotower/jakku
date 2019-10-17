@@ -64,7 +64,7 @@ export default class CollapsibleProducs extends Component {
                       <img src={product.imgPath1} alt="Product image"></img>
                       <p>{product.price} €</p>
                       <p>{product.description}</p>
-                      <div className="borrar" ><i class="medium material-icons">cancel</i><p>Borrar</p></div>
+                      <div className="borrar"><i class="medium material-icons">cancel</i><p>Borrar</p></div>
                     </div>
                   </CollapsibleItem>
                 );

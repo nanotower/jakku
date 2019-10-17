@@ -4,15 +4,15 @@
   width: 100vw;
   z-index: 10;
  
-  position: sticky;
+  
     left: 0;
     bottom: 0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
 
   footer {
-    position: absolute;
-    right: 20px;
-    top: 17px;
-    margin-top: auto;
+    margin-right: 20px;
     font-weight: bold;
     font-size: 0.9rem;
   }

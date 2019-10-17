@@ -7,8 +7,12 @@ import ButtonAdd from "../atoms/ButtonAdd";
 import CollapsibleProducs from "../molecules/CollapsibleProducs";
 import RoutesService from "../../RoutesService";
 import PreloaderSpinner from "../atoms/PreloaderSpinner";
+import { withRouter } from 'react-router-dom';
+import moment from "moment";
+import 'moment/locale/es'
+moment.locale('es')
 
-export default class ShowMyBid extends Component {
+class ShowMyBid extends Component {
   constructor(props) {
     super(props);
     this.state= {
@@ -21,9 +25,8 @@ export default class ShowMyBid extends Component {
       const products= response.filter(product=> product.owner==this.props.user._id);
       this.setState({
         ...this.state,
-        products: response
+        products: products
       });
-      console.log("carga productos en showbid", this.state.products[0]);
     });
     // console.log(this.state)
     // this.props.fromApp()
@@ -45,12 +48,14 @@ export default class ShowMyBid extends Component {
   //     })
   //   })
   // }
-  getProducts() {
-    
+  goBack =()=> {
+    this.props.history.push("/")
   }
-
-
-
+  transformDate = () => {
+    moment.lang('es');
+    const dateTransformed= moment(this.props.user.bid.deadLine).format('LL')
+    return <p>{dateTransformed}</p>
+  }
   extractCoordinates(latlng) {
     const lat = latlng[0];
     const lng = latlng[1];
@@ -63,10 +68,11 @@ export default class ShowMyBid extends Component {
         return (
 
           <div className="your-bid-container">
+            <a className="back-btn"><i class="medium material-icons" onClick={this.goBack}>arrow_back</i></a>
           <h1>Panel de control de tu mudanza</h1>
            <p>{this.props.user.username}</p>
           <p>
-            Recogerán las cosas el día {this.props.user.bid.deadLine} entre las{" "}
+            Recogerán las cosas el día {this.transformDate()} entre las{" "}
             {this.props.user.bid.from} y las {this.props.user.bid.to}
           </p>
           
@@ -108,14 +114,6 @@ export default class ShowMyBid extends Component {
 
    
   }
-  
-     
-      
-      
-       
-    
-     
-   
 
 }
-
+export default withRouter(ShowMyBid)

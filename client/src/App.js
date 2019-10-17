@@ -66,8 +66,8 @@ export default class App extends Component {
         this.setState({
           ...this.state,
           loggedInUser: response
-        });
-        console.log("fetch/////", this.state);
+        }, console.log("fetch/////", this.state));
+        
       })
       .catch(error => {
         this.setState({
@@ -110,7 +110,7 @@ export default class App extends Component {
         ...this.state,
         product: response
       });
-      console.log("vuelta de compra producto", this.state);
+
     });
   }
   getProducts() {
@@ -120,7 +120,7 @@ export default class App extends Component {
         ...this.state,
         products: response
       });
-      console.log("carga productos en state app", this.state);
+
     });
   }
   shuffleProducts() {
@@ -149,7 +149,8 @@ export default class App extends Component {
 
   render() {
     return this.state.loggedInUser ? (
-      <React.Fragment>
+      <div className="render-login">
+        <div className="body-render-login">
         <Navbar
           className="nav-logged"
           user={this.state.loggedInUser}
@@ -305,8 +306,9 @@ export default class App extends Component {
             }}
           />
         </Switch>
-        {/* <FooterBar></FooterBar> */}
-      </React.Fragment>
+        </div>
+        <FooterBar></FooterBar>
+      </div>
     ) :
     
     
