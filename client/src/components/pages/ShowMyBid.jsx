@@ -21,13 +21,18 @@ class ShowMyBid extends Component {
     this.router = new RoutesService()
   }
   componentDidMount=() =>{
-    return this.router.getProducts().then(response => {
-      const products= response.filter(product=> product.owner==this.props.user._id);
-      this.setState({
-        ...this.state,
-        products: products
-      });
-    });
+
+    this.setState({
+      ...this.state,
+      products:this.props.user.products
+    })
+    // this.router.getProducts().then(response => {
+    //   const products= response.filter(product=> product.owner==this.props.user._id)
+    //   this.setState({
+    //     ...this.state,
+    //     products: products
+    //   });
+    // });
     // console.log(this.state)
     // this.props.fromApp()
     // .then(()=> {

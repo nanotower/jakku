@@ -181,22 +181,23 @@ export default class App extends Component {
             exact
             path="/create-bid"
             render={() => {
-              if (this.state.loggedInUser.bid) {
-                return (
-                  <div className="page">
-                    <h1>Ya tienes una subasta activa</h1>
-                    <p>Link al panel de control de tu mudanza</p>
-                  </div>
-                );
-              } else {
+              // if (this.state.loggedInUser.bid) {
+              //   return (
+              //     <div className="page">
+              //       <h1>Ya tienes una subasta activa</h1>
+              //       <p>Link al panel de control de tu mudanza</p>
+              //     </div>
+              //   );
+              // } else {
                 return (
                   <div className="page">
                     <CreateBid
                       fromApp={newValue => this.changeStateBid(newValue)}
+                      user={this.state.loggedInUser}
                     ></CreateBid>
                   </div>
                 );
-              }
+              // }
             }}
           />
           <Route
@@ -208,6 +209,7 @@ export default class App extends Component {
               return (
                 <div className="page">
                   <CreateProduct
+                    user={this.state.loggedInUser}
                     fromApp={() => this.fetchUser()}
                     fromAppRefreshProducts={() => this.getProducts()}
                     bid={

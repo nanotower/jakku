@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 import { withRouter } from 'react-router-dom'
 
 import RoutesService from "../../RoutesService";
+import ButtonAdd from "../atoms/ButtonAdd";
 
 class CreateProduct extends Component {
   constructor(props) {
@@ -74,7 +75,7 @@ class CreateProduct extends Component {
   }
 
   render() {
-    if(this.state.bid) {
+    if(this.props.bid) {
       return (
         <React.Fragment>
           <a className="back-btn"><i class="medium material-icons" onClick={this.goBack}>arrow_back</i></a>
@@ -141,7 +142,7 @@ class CreateProduct extends Component {
       return (
       <React.Fragment>
         <h1>Tienes que crear una mudanza para poder tener cajas con productos</h1>
-        <NavLink to={"/create-bid"}>Crear mudanza</NavLink>
+        <ButtonAdd bid={true}></ButtonAdd>
       </React.Fragment>
       )
     }
