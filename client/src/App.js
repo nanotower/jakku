@@ -4,7 +4,6 @@ import { Switch, Route, Redirect } from "react-router-dom";
 import Login from "./components/auth/Login";
 import Signup from "./components/auth/Signup";
 
-
 import GoogleAuth from "./components/auth/GoogleAuth";
 import AuthService from "./components/auth/Authservice";
 import RoutesService from "./RoutesService";
@@ -24,6 +23,7 @@ import ShowProduct from "./components/pages/ShowProduct";
 import './styles/main.scss'
 import Auth from "./components/auth/Auth";
 import FooterBar from "./components/organisms/FooterBar";
+import PPal from "./components/organisms/PPal";
 
 export default class App extends Component {
   constructor(props) {
@@ -146,9 +146,19 @@ export default class App extends Component {
       });
     }
   };
+  
 
   render() {
+    const onSuccess = (payment) =>
+      console.log('Successful payment!', payment);
+    const onError = (error) =>
+      console.log('Erroneous payment OR failed to load script!', error);
+    const onCancel = (data) =>
+      console.log('Cancelled payment!', data);
+
+
     return this.state.loggedInUser ? (
+    
       <div className="render-login">
         <div className="body-render-login">
         <Navbar

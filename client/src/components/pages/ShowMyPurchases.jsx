@@ -8,31 +8,66 @@ class ShowMyPurchases extends Component {
   constructor(props) {
     super(props);
     this.state = {
-     
+     products:null
     };
   }
 
   componentDidMount() {
-    console.log(this.props)
     const productsOwned = this.props.products.filter(product =>{
-      console.log(product, product.buyer, this.props.user._id, product.buyer == this.props.user._id)
       return  product.buyer?  product.buyer == this.props.user._id 
       : false
-    }
-    );
-    console.log(productsOwned)
+    });
     this.setState({
       ...this.state,
       products: productsOwned
     })
-
   }
+  getmyproducts=()=>{
+    const productsOwned = this.props.products.filter(product =>{
+      return  product.buyer?  product.buyer == this.props.user._id 
+      : false
+    }
+   
+    );
+    this.setState({
+      ...this.state,
+      products: productsOwned
+    })
+  }
+
   goBack =()=> {
     this.props.history.push("/")
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    if (
+      this.state.products !==
+      prevState.someStatefulValue
+    ) {
+      this.props.onChange(this.state.someStatefulValue);
+    }
+  }
+  // componentDidUpdate(prevProps, prevState) {
+  //   if (prevState.products !== this.state.products) {
+  //     let firebaseRef=firebase.database().ref(this.state.products);
+  //     this.setState({firebaseRef});
+     
+  //   }
+  // }
+
+  // static getDerivedStateFromProps(nextProps, prevState){
+  //   if(nextProps.products!==prevState.products){
+  //     let firebaseRef=prevState.firebaseRef;
+  //     return {products : nextProps.products};
+  //   }
+  //   else return null;
+  // }
+
   render() {
-    if(this.state.products && this.props.user) {
+    const filterproducts = this.filter(this.props.products, this.state.products);
+    
+    if(this.state.products && this.props.user) { 
+       
       if(this.state.products.length>0){
         return (
           <div className="my-purchases">
