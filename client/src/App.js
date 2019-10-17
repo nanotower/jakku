@@ -3,7 +3,7 @@ import "./App.css";
 import { Switch, Route, Redirect } from "react-router-dom";
 import Login from "./components/auth/Login";
 import Signup from "./components/auth/Signup";
-// import "./stylesheets/style.scss";
+
 
 import GoogleAuth from "./components/auth/GoogleAuth";
 import AuthService from "./components/auth/Authservice";
@@ -16,10 +16,13 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import CreateBid from "./components/organisms/CreateBid";
 import CreateProduct from "./components/organisms/CreateProduct";
 import ShowMyBid from "./components/pages/ShowMyBid";
+import ShowBid from "./components/pages/ShowBid";
 import Navbar from "./components/organisms/Navbar";
 import ShowMyProduct from "./components/pages/ShowMyProduct";
 import ShowProduct from "./components/pages/ShowProduct";
-
+import './styles/main.scss'
+import Auth from "./components/auth/Auth";
+import FooterBar from "./components/organisms/FooterBar";
 
 export default class App extends Component {
   constructor(props) {
@@ -29,8 +32,7 @@ export default class App extends Component {
       bid: null,
       product: null,
       products: null,
-      position: {lat: 40.3923071, lng: -3.6996187}
-      
+      position: { lat: 40.3923071, lng: -3.6996187 }
     };
     this.service = new AuthService();
     this.router = new RoutesService();
@@ -47,7 +49,7 @@ export default class App extends Component {
   };
 
   logout = () => {
-    console.log("logout done")
+    console.log("logout done");
     this.service.logout().then(() => {
       this.setState({
         ...this.state,
@@ -91,97 +93,86 @@ export default class App extends Component {
   }
 
   getProduct(id) {
-    return this.router.getProduct(id)
-    .then(response=> {
-
-      this.setState({
-        ...this.state,
-        product: response,
+    return this.router
+      .getProduct(id)
+      .then(response => {
+        this.setState({
+          ...this.state,
+          product: response
+        });
+        console.log("vuelta de productid", this.state);
       })
-      console.log("vuelta de productid", this.state)
-    })
-    .catch(error=> console.log(error))
-    
+      .catch(error => console.log(error));
   }
   buyProduct(id) {
-    return this.router.buyProduct(id)
-    .then(response=> {
+    return this.router.buyProduct(id).then(response => {
       this.setState({
         ...this.state,
         product: response
-      })
-      console.log("vuelta de compra producto", this.state)
-    })
+      });
+      console.log("vuelta de compra producto", this.state);
+    });
   }
   getProducts() {
-    return this.router.getProducts()
-    .then(response=> {
-      response.sort((a, b) => Math.random() - 0.5);      
+    return this.router.getProducts().then(response => {
+      response.sort((a, b) => Math.random() - 0.5);
       this.setState({
         ...this.state,
         products: response
-      })
-      console.log("carga productos en state app", this.state)
-
-    }
-      )
+      });
+      console.log("carga productos en state app", this.state);
+    });
   }
-  shuffleProducts () {
-    const shuffled= [...this.props.products].sort((a, b) => Math.random() - 0.5);
+  shuffleProducts() {
+    const shuffled = [...this.props.products].sort(
+      (a, b) => Math.random() - 0.5
+    );
     this.setState({
       ...this.state,
       products: shuffled
-    })
-  console.log("logged props", this.props)
-
+    });
+    console.log("logged props", this.props);
   }
   getGeoLocation = () => {
     if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(
-            position => {
-                console.log(position.coords);
-                this.setState(
-                   {
-                        ...this.state,
-                        position :{lat: position.coords.latitude, lng: position.coords.longitude}
-                    }
-                )
-            }
-        )
-    } 
-}
-  
-
-  
-
+      navigator.geolocation.getCurrentPosition(position => {
+        this.setState({
+          ...this.state,
+          position: {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+          }
+        });
+      });
+    }
+  };
 
   render() {
     return this.state.loggedInUser ? (
-      
       <React.Fragment>
-          <Navbar
-            className="nav-logged"
-            user={this.state.loggedInUser}
-            logMeOut={this.logout}
-          />
+        <Navbar
+          className="nav-logged"
+          user={this.state.loggedInUser}
+          logMeOut={this.logout}
+        />
+        
         <Switch>
           <Route
             exact
             path="/"
             render={() => {
-              console.log("antes de montar", this.state)
               return (
-                <React.Fragment>
-        
-                  <HomeLogged user={this.state.loggedInUser}
-                   productsFromApp={()=>{this.getProducts()}}
-                   centerMap={this.state.position}
+                <div className="page">
+                  <HomeLogged
+                    user={this.state.loggedInUser}
+                    productsFromApp={() => {
+                      this.getProducts();
+                    }}
+                    centerMap={this.state.position}
                     products={this.state.products}
-                    bids={this.state.bids}
-                    >
-                    </HomeLogged>
-                   
-                </React.Fragment>
+                    // bids={this.state.bids}
+                  ></HomeLogged>
+                </div>
               );
             }}
           />
@@ -191,21 +182,18 @@ export default class App extends Component {
             render={() => {
               if (this.state.loggedInUser.bid) {
                 return (
-                  <React.Fragment>
-                
+                  <div className="page">
                     <h1>Ya tienes una subasta activa</h1>
                     <p>Link al panel de control de tu mudanza</p>
-                  </React.Fragment>
+                  </div>
                 );
               } else {
                 return (
-                  <React.Fragment>
-          
-                    estas log
+                  <div className="page">
                     <CreateBid
                       fromApp={newValue => this.changeStateBid(newValue)}
                     ></CreateBid>
-                  </React.Fragment>
+                  </div>
                 );
               }
             }}
@@ -214,84 +202,94 @@ export default class App extends Component {
             exact
             path="/create-product"
             render={() => {
-              console.log("llama create product" , this.state.loggedInUser)
-          
-                return (
-                  <React.Fragment>
-          
-                    <CreateProduct 
-                    fromApp={()=>this.fetchUser()}
-                    fromAppRefreshProducts={()=>this.getProducts()} 
-                    bid={this.state.loggedInUser.bid? this.state.loggedInUser.bid._id : null}>
-                      
-                    </CreateProduct>
-                  </React.Fragment>
-                ) 
+              console.log("llama create product", this.state.loggedInUser);
+
+              return (
+                <div className="page">
+                  <CreateProduct
+                    fromApp={() => this.fetchUser()}
+                    fromAppRefreshProducts={() => this.getProducts()}
+                    bid={
+                      this.state.loggedInUser.bid
+                        ? this.state.loggedInUser.bid._id
+                        : null
+                    }
+                  ></CreateProduct>
+                </div>
+              );
             }}
           />
           <Route
             exact
             path="/your-bid"
             render={() => {
+              console.log("antes de montar", this.state);
               return (
-                <React.Fragment>
-      
+                <div className="page">
                   <ShowMyBid
                     fromApp={() => this.fetchUser()}
                     user={this.state.loggedInUser}
+                    product={this.state.products}
                   ></ShowMyBid>
-                </React.Fragment>
+                </div>
               );
             }}
           />
-          {/* <Route
-            exact
+          <Route
             path="/bid/:id"
-            render={() => {
+            render={props => {
               return (
-                <React.Fragment>
+                <div className="page">
       
                   <ShowBid
-                    BidFromApp={() => this.GetBid()}
-                    // user={this.state.loggedInUser}
+                    // BidFromApp={() => this.GetBid()}
+                    id={props.match.params.id}
+                    user={this.state.loggedInUser}
+                    centerMap={this.state.position}
                   ></ShowBid>
-                </React.Fragment>
+                </div>
               );
             }}
-          /> */}
-   
+          />
+
           <Route
             path="/product/:id"
-            render={(props) => {            
+            render={props => {
               return (
-                <React.Fragment>
-           
-                 
-                  <ShowProduct 
-                  productFromApp={()=>this.getProduct(props.match.params.id)} product={this.state.product}
-                  fromApp={() => this.fetchUser()} userId={this.state.loggedInUser._id} buyFromApp={(id)=>this.buyProduct(id)}
-                  centerMap={this.state.position}>
-                  
-                  </ShowProduct>
-                </React.Fragment>
+                <div className="page">
+                  <ShowProduct
+                    productFromApp={() =>
+                      this.getProduct(props.match.params.id)
+                    }
+                    product={this.state.product}
+                    fromApp={() => this.fetchUser()}
+                    userId={this.state.loggedInUser._id}
+                    buyFromApp={id => this.buyProduct(id)}
+                    centerMap={this.state.position}
+                  ></ShowProduct>
+                </div>
               );
             }}
           />
 
           <Route
             path="/my-product/:id"
-            render={(props) => {
+            render={props => {
               let chosenProduct = props.match.params.id;
               return (
-                <React.Fragment>
-          
-                 
-                  <ShowMyProduct productId={chosenProduct} fromApp={() => this.fetchUser()} user={this.state.loggedInUser} product={null}></ShowMyProduct>
-                </React.Fragment>
+                <div className="page">
+                  <ShowMyProduct
+                    productId={chosenProduct}
+                    fromApp={() => this.fetchUser()}
+                    user={this.state.loggedInUser}
+                    product={null}
+                  ></ShowMyProduct>
+                </div>
               );
             }}
           />
         </Switch>
+        <FooterBar></FooterBar>
       </React.Fragment>
     ) :
     
@@ -301,25 +299,24 @@ export default class App extends Component {
     
     
     
-    
-    
-    
-    
     (
       <React.Fragment>
-          <Navbar
-            className="nav-logged"
-            logMeOut={this.logout}
-          />
+        <Navbar className="nav-logged" logMeOut={this.logout} />
         <Switch>
           <Route
             exact
             path="/"
             render={() => {
               return (
-                <React.Fragment>
-                  <Home></Home>
-                </React.Fragment>
+         
+                  <Home
+                    productsFromApp={() => {
+                      this.getProducts();
+                    }}
+                    centerMap={this.state.position}
+                    products={this.state.products}
+                  ></Home>
+     
               );
             }}
           />
@@ -329,12 +326,8 @@ export default class App extends Component {
             render={() => {
               return (
                 <React.Fragment>
-                  <Login getUser={this.getUser}></Login>
-                  <Signup getUser={this.getUser}></Signup>
-                  <GoogleAuth getUser={this.getUser}></GoogleAuth>
-                  <a href="http://localhost:3010/auth/google">
-                    Sign In with Google
-                  </a>
+                <Auth></Auth>
+               
                 </React.Fragment>
               );
             }}
@@ -345,20 +338,7 @@ export default class App extends Component {
             render={() => {
               return (
                 <React.Fragment>
-                  <h1>
-                    Tienes que estar registrado para poder crear tu mudanza
-                  </h1>
-                  <Login getUser={this.getUser}></Login>
-                  <Signup getUser={this.getUser}></Signup>
-                  <GoogleAuth getUser={this.getUser}></GoogleAuth>
-                  <a href="http://localhost:3010/auth/google">
-                    Sign In with Google
-                  </a>
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    href="http://localhost:3010/auth/google"
-                  ></Button>
+               <Auth></Auth>
                 </React.Fragment>
               );
             }}

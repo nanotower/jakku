@@ -23,9 +23,7 @@ export default class Login extends Component {
 
     this.service.googleauth(username, password)
     .then(response => {
-      console.log("llama al setsate")
-      console.log(response)
-
+ 
       this.setState({
         username : username,
         password : password,
@@ -34,7 +32,7 @@ export default class Login extends Component {
       this.props.getUser(response.user);
     })
     .catch(error => {
-      console.log("entra por catch")
+
       this.setState({
         username: username,
         password: password,
@@ -47,7 +45,7 @@ export default class Login extends Component {
       <div>
         <h1>Login with google</h1>
         <form onSubmit={this.sendLogin}>
-        <input value={this.state.name} placeholder="User name"  name="username" onChange={e=>this.changeState(e)} type="text"></input>
+        <input value={this.state.username} placeholder="User name"  name="username" onChange={e=>this.changeState(e)} type="text"></input>
         <input value={this.state.password} placeholder="Password"  name="password" onChange={e=>this.changeState(e)} type="password"></input>
         <input type="submit" value="Login" />
         </form>

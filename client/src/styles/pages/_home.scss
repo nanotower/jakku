@@ -1,0 +1,92 @@
+.home {
+  margin-bottom: 50px;
+  .title-container {
+    height: 500px;
+  }
+  h1 {
+    font-size: 3rem;
+    margin: 0 20px 20px 20px;
+    padding-top: 50px;
+    margin-right: 100px;
+    font-weight: 500;
+    line-height: 3rem;
+  }
+  h3 {
+    font-weight: bold;
+  }
+  .title-container {
+    background: linear-gradient(
+      to bottom,
+      rgba(248, 229, 229, 1) 0%,
+      rgba(195, 158, 160, 1) 54%,
+      rgba(250, 37, 94, 1) 100%
+    );
+    img {
+      margin-left:35vw;
+    }
+    
+
+  }
+  .mudo-container {
+    width: 80vw;
+    margin: 0 auto;
+    padding: 70px 0px;
+  }
+  .row {
+    background-color: F8E5E5;
+  }
+  .create-bid-container {
+    padding-top: 50px;
+    color: #FA255E;
+    i {
+      color: black;
+    }
+    label {
+      color: black;
+    }
+  }
+ .number-r {
+    position: absolute;
+    font-size: 25rem;
+    color: #fff1f1;
+    bottom: -200px;
+    z-index: -5;
+}
+ .number-l {
+    position: absolute;
+    font-size: 25rem;
+    color: #fff1f1;
+    bottom: -200px;
+    right: 0;
+    z-index: -5;
+}
+ .number-3 {
+    position: absolute;
+    font-size: 25rem;
+    color: #fff1f1;
+    bottom: -230px;
+    z-index: -5;
+}
+ .number-4 {
+    position: absolute;
+    font-size: 25rem;
+    color: #fff1f1;
+    bottom: -240px;
+    right: 0;
+    z-index: -5;
+}
+a {
+  color: #FA255E;
+}
+.container-all-search {
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+col {
+  width:600px;
+}
+  
+}

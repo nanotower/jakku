@@ -1,13 +1,15 @@
 import React, { Component } from "react";
-import { NavLink } from "react-router-dom";
-import { Button, Tabs, Tab } from "react-materialize";
+import PreloaderSpinner from "../atoms/PreloaderSpinner";
+import { Button, Tabs, Tab, Preloader } from "react-materialize";
 import { withRouter } from "react-router-dom";
 import ShowBid from "./ShowMyBid";
 import AllProducts from "../organisms/AllProducts";
 import SearchBar from "../atoms/SearchBar";
 import Bidmapcontainer from "../molecules/Bidmapcontainer";
 import RoutesService from "../../RoutesService";
-
+import ModalLoginFirst from "../auth/ModalLoginFirst";
+import AllProductsAndSearch from "../organisms/AllProductsAndSearch";
+import ButtonAdd from "../atoms/ButtonAdd";
 
 class HomeLogged extends Component {
   constructor(props) {
@@ -17,120 +19,107 @@ class HomeLogged extends Component {
       searchProducts: props.products,
       bids: null
     };
-    this.router= new RoutesService;
+    this.router = new RoutesService();
   }
 
   componentDidMount() {
-    this.router.getProducts()
-    .then(response=> {
-      let bids= response.map(product=> product.bid);
-      bids.forEach(bid=> bid.productsList.map(id=> response.filter(product=> product._id===id)))
-      let bidsId= []
-      bids= bids.filter(bid=> {
-        if(bidsId.includes(bid._id)) {
-          return false
-        }
-        else {
+    this.router.getProducts().then(response => {
+      let bids = response.map(product => product.bid);
+      bids.forEach(bid =>
+        bid.productsList.map(id =>
+          response.filter(product => product._id === id)
+        )
+      );
+      let bidsId = [];
+      bids = bids.filter(bid => {
+        if (bidsId.includes(bid._id)) {
+          return false;
+        } else {
           bidsId.push(bid._id);
-          return true
+          return true;
         }
-      })
+      });
       this.setState({
         ...this.state,
         products: response,
-        bids: bids
-      })
-      console.log(this.state)
-    })
-  }
-
-  makeSearch(searchText) {
-    console.log(this.props);
-    const searchProductsResults = this.state.products.filter(product =>
-      product.name.toLowerCase().includes(searchText.toLowerCase())
-    );
-    console.log(this.state);
-
-    this.setState({
-      ...this.state,
-      searchProducts: searchProductsResults
+        bids: bids,
+        centerMap: this.props.centerMap,
+        loaded: true
+      });
+      console.log("show home logged", this.state);
     });
   }
-  change = () => {
-    this.setState({
-      ...this.state,
-      products: this.props.products
-    });
-    console.log(this.state);
-  };
-
-  // changeStock(stockCheckbox) {
-  //   this.setState({
-  //     ...this.state,
-  //     inStock: stockCheckbox
-  //   });
-  // }
 
 
   render() {
     if (!this.props.user.bid) {
       return (
-        <div>
-          {/* <h1>Hola, {this.props.user.username}</h1> */}
-          <h1>
-            Si te acabas de mudar o estás a punto de mudarte, podemos ayudarte
-          </h1>
-          <NavLink to={"/create-bid"}>
-            <Button>Me voy a mudar</Button>
-          </NavLink>
-          <NavLink to={"/create-bid"}>Me acabo de mudar</NavLink>
+        <div className="home">
+          <div>
+            <div className="title-container">
+              <h1>
+                Si te acabas de mudar o estás a punto de mudarte, podemos
+                ayudarte
+              </h1>
+              <img src="bkg-img.svg" alt="background image"></img>
+            </div>
+            <Tabs className="tab-demo z-depth-1 tabs-fixed-width tab-container">
+              <Tab title="Me voy a mudar" className="me-mudo">
+                <div className="mudo-container">
+                  <div className="create-bid-container">
+                    <label>Crear mudanza</label>
+                    
+                  </div>
+                </div>
+              </Tab>
+
+              <Tab title="Me acabo de mudar" active>
+                {this.state.products &&
+                this.state.bids &&
+                this.state.centerMap ? (
+             
+                    <AllProductsAndSearch
+                      bids={this.state.bids}
+                      centerMap={this.props.centerMap}
+                      products={this.props.products}
+                    ></AllProductsAndSearch>
+        
+                ) : (
+                  <PreloaderSpinner></PreloaderSpinner>
+                )}
+              </Tab>
+            </Tabs>
+          </div>
         </div>
       );
     } else {
-      if (this.props.products && this.state.bids) {
-        return (
-          <React.Fragment>
-            {/* <h1>Hola, {this.props.user.username}</h1> */}
-            <Tabs className="tab-demo z-depth-1" options={{ swipeable: true }}>
-              <Tab title="Tu mudanza" >
-                   <ShowBid
-                    // fromApp={() => this.fetchUser()}
-                    user={this.props.user}
-                  ></ShowBid>
-              </Tab>
-              <Tab title="Test 2" active className="red">
-                Test 2
-              </Tab>
-            </Tabs>
+      return (
+        <div className="home">
+          <div className="title-container">
+            <h1>
+              Crea nuevas cajas o busca en otras mudanzas
+            </h1>
+            <img src="bkg-img.svg" alt="background image"></img>
+          </div>
 
-{/*       
-            <NavLink to={"/your-bid"}>
-              <Button>Panel de control de mudanza</Button>
-            </NavLink> */}
+          <ButtonAdd product={true}></ButtonAdd>
 
-            <p>aqui va la search</p>
-            <SearchBar
-              updateSearch={searchText => this.makeSearch(searchText)}
-              // updateInStock={stockCheckbox => this.changeStock(stockCheckbox)}
-            />
 
-            <button onClick={this.change}>cambiar</button>
-            <Bidmapcontainer
-              bids={this.state.bids}
-              centerMap={this.props.centerMap}
-            ></Bidmapcontainer>
+
+          {this.state.loaded && this.state.bids && this.state.products && this.state.centerMap ? (
          
-         
-            <AllProducts products={this.props.products}></AllProducts>
-          </React.Fragment>
-        );
-      } else {
-        return (
-          <React.Fragment>
-            <h1>Loading...</h1>
-          </React.Fragment>
-        ); 
-      }
+              <AllProductsAndSearch
+                bids={this.state.bids}
+                centerMap={this.state.centerMap}
+                products={this.state.products}
+              ></AllProductsAndSearch>
+       
+          ) : (
+  
+            <PreloaderSpinner></PreloaderSpinner>
+          )}
+        </div>
+      );
     }
   }
 }

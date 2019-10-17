@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Productmapcontainer from "../molecules/Productmapcontainer";
+import PreloaderSpinner from "../atoms/PreloaderSpinner";
 
 
 
@@ -12,10 +13,15 @@ export default class ShowProduct extends Component {
   }
   componentDidMount(){
     this.props.productFromApp()
-    this.setState({
-      ...this.state,
-      product: this.props.product,
+    .then(product => {
+      this.setState({
+        ...this.state,
+        product: this.props.product,
+        
+      })
+      console.log("showproductmount", this.props.product)
     })
+  
   }
   change() {
     this.props.productFromApp()
@@ -37,14 +43,19 @@ export default class ShowProduct extends Component {
         <h1>Contenido de la caja</h1>
         <div>
           <img src={this.props.product.imgPath1} alt="product image"></img>
-          <img src={this.props.product.imgPath2} alt="product image"></img>
-          <img src={this.props.product.imgPath3} alt="product image"></img>
+          {/* <img src={this.props.product.imgPath2} alt="product image"></img>
+          <img src={this.props.product.imgPath3} alt="product image"></img> */}
           <h1>{this.props.product.name}</h1>
           <p>{this.props.product.description}</p>
           <p>La mudanza de esta caja será el {this.props.product.bid.deadLine} de {this.props.product.bid.from} a {this.props.product.bid.to}</p>
           <p>Precio: {this.props.product.price} €</p>
           
-          {this.props.product.active && (<button onClick={e => this.buy(e)}>Comprar</button>)}
+          {/* {this.props.product.active && this.props.product.owner._id!=this.props.userId &&(<button onClick={e => this.buy(e)}>Comprar</button>)} */}
+          {(this.props.product.active && this.props.product.owner._id!=this.props.userId) ?
+            <button onClick={e => this.buy(e)}>Comprar</button>
+            :
+            <p>Esta caja es tuya</p>
+            }
           <span>{!this.props.product.active && this.props.userId==this.props.product.buyer? "Comprado! Enhorabuena" : !this.props.product.active? "Vendido": ""}</span>
           <div className="owner-container">
           <img src={this.props.product.owner.imgPath}></img>
@@ -60,12 +71,11 @@ export default class ShowProduct extends Component {
     else {
       
       return (
-        <React.Fragment>
-          <h1>Loading...</h1>
+ 
+        <PreloaderSpinner></PreloaderSpinner>
         
-        </React.Fragment>
+     
       )
     }
-  
   }
 }

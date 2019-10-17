@@ -5,7 +5,7 @@ import Bidmarker from "../atoms/Bidmarker";
 
 
 const Bidmap2 = withScriptjs(withGoogleMap((props) =>{
-  console.log("dentro de bidmap", props)
+
   let active;
   let zoom= 12;
   if(props.zoomMap) {

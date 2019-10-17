@@ -1,22 +1,56 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import Bidmapcontainer from "../molecules/Productmapcontainer";
-import { Row, Card, CardTitle, Col} from 'react-materialize';
+import { Row, Card, CardTitle, Col, Preloader} from 'react-materialize';
+import AllProducts from "../organisms/AllProducts";
+import ButtonAdd from "../atoms/ButtonAdd";
+import CollapsibleProducs from "../molecules/CollapsibleProducs";
+import RoutesService from "../../RoutesService";
+import PreloaderSpinner from "../atoms/PreloaderSpinner";
 
 export default class ShowMyBid extends Component {
   constructor(props) {
     super(props);
+    this.state= {
+
+    }
+    this.router = new RoutesService()
   }
-  componentDidMount() {
-    // this.props.fromApp();
-    //   axios.get("").then(beer => {
-    //    this.setState({
-    //      ...this.state,
-    //      randomBeer: {...beer.data}
-    //    })
-    //    console.log(this.state.randomBeer)
-    //  })
+  componentDidMount=() =>{
+    return this.router.getProducts().then(response => {
+      const products= response.filter(product=> product.owner==this.props.user._id);
+      this.setState({
+        ...this.state,
+        products: response
+      });
+      console.log("carga productos en showbid", this.state.products[0]);
+    });
+    // console.log(this.state)
+    // this.props.fromApp()
+    // .then(()=> {
+    //   this.setState({
+    //     ...this.state,
+    //     user: this.props.user,
+    //   })
+    // })
+
   }
+  // deleteProduct = (id) => {
+  //   console.log("borrando")
+  //   this.route.deleteProduct(id)
+  //   .then(user => {
+  //     this.setState({
+  //       ...this.state,
+  //       user
+  //     })
+  //   })
+  // }
+  getProducts() {
+    
+  }
+
+
+
   extractCoordinates(latlng) {
     const lat = latlng[0];
     const lng = latlng[1];
@@ -24,41 +58,64 @@ export default class ShowMyBid extends Component {
   }
 
   render() {
-    return (
-      <React.Fragment>
-        <h1>Panel de control de tu mudanza</h1>
-        <p>{this.props.user.username}</p>
-        <p>
-          Recogerán las cosas el día {this.props.user.bid.deadLine} entre las{" "}
-          {this.props.user.bid.from} y las {this.props.user.bid.to}
-        </p>
-        {/* <Bidmapcontainer
-          position={this.extractCoordinates(
-            this.props.user.bid.location.coordinates
-          )}
-        ></Bidmapcontainer> */}
-        <NavLink to={"/create-product"}>Añadir caja</NavLink>
-        <h2>Tus cajas</h2>
-        {this.props.user.products.map((product, idx) => {
-          return (
-            <NavLink to={`/my-product/${product._id}`} key={idx}>
-             
-              
-              <div className="product-container">
-                <img src={product.imgPath1} alt="Product image" />
-                <h2>{product.name}</h2>
-                <p>{product.description}</p>
-                <p>Precio: {product.price} €</p>
-                <p>
-                  {product.isBundle.length > 0
-                    ? "Pertenece a un pack furgo"
-                    : "No se vende en pack"}
-                </p>
-              </div>
-            </NavLink>
-          );
-        })}
-      </React.Fragment>
-    );
+    if(this.props.user.bid ) {
+      if(this.state.products) {
+        return (
+
+          <div className="your-bid-container">
+          <h1>Panel de control de tu mudanza</h1>
+           <p>{this.props.user.username}</p>
+          <p>
+            Recogerán las cosas el día {this.props.user.bid.deadLine} entre las{" "}
+            {this.props.user.bid.from} y las {this.props.user.bid.to}
+          </p>
+          
+          <ButtonAdd product={true}></ButtonAdd>
+        
+          <h2>Tus cajas</h2>
+          <CollapsibleProducs 
+          products={this.state.products} user={this.props.user}
+          // deleteFromShow={(id)=>this.deleteProduct(id)}
+          ></CollapsibleProducs>
+         
+    
+        
+          </div>
+    
+          )
+
+      }
+      else {
+        return (
+          <PreloaderSpinner></PreloaderSpinner>
+        )
+
+      }
+      
+    }
+    else {
+      return(
+        <div className="your-bid-container">
+        <p>No tienes ninguna mudanza creada.</p>
+        <ButtonAdd bid={true}></ButtonAdd>
+        </div>
+      )
+    }
+    
+      
+      
+   
+
+   
   }
+  
+     
+      
+      
+       
+    
+     
+   
+
 }
+

@@ -1,0 +1,38 @@
+.product-card{
+  position: relative;
+  .card {
+
+    
+  }
+
+  .test:hover{
+    display: block;
+  }
+  .selled-badge {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    background-color: aqua;
+    z-index: 2;
+    border-radius: 50%;
+    background-color: #FA255E;
+    color: black;
+    padding: 5px;
+  }
+  .selled-img {
+    filter: brightness(50%);
+  }
+  .vendido {
+    position: absolute;
+    z-index: 2;
+    right: 120px;
+    font-size: 1rem;
+  }
+  img {
+    filter: brightness(100%);
+    transition: 0.2s ease-out;
+  }
+  img:hover {
+    filter: brightness(50%);
+  }
+}

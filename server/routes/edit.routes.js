@@ -142,7 +142,7 @@ router.put("/buy-product/:id", (req, res, next) => {
     { new: true }
   ) 
   .populate("owner")
-  .populate("isBundle")
+  // .populate("isBundle")
   .populate("bid")
     .then(updatedProduct => {
       console.log("udaptedbid%%%%" + updatedProduct);
@@ -150,6 +150,7 @@ router.put("/buy-product/:id", (req, res, next) => {
     })
     .catch(error => next(error));
 });
+
 router.put("/buy-bundle/:id", (req, res, next) => {
   console.log("&&&");
   const buyer = req.user._id

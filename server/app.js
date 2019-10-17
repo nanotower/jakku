@@ -31,9 +31,8 @@ const app = express();
 
 //Cors setup
 var whitelist = [
-  `${process.env.LOCAL_URL}`,
-
-
+  // `${process.env.LOCAL_REACT_URL}`,
+  "http://localhost:3000"
 ];
 var corsOptions = {
   origin: function(origin, callback){
@@ -77,7 +76,7 @@ hbs.registerHelper('ifUndefined', (value, options) => {
   
 
 // default value for title local
-app.locals.title = 'Express - Generated with IronGenerator';
+app.locals.title = 'Jakku';
 
 
 // Enable authentication using session + passport

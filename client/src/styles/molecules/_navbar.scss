@@ -1,0 +1,34 @@
+nav {
+  background-color: #F8E5E5;
+  .brand-logo {
+    color: black;
+    margin-left: 3%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 120px;
+    left: 0;
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+  a {
+    color: black;
+  }
+  .logo-img {
+    height: 40px;
+  }
+  .profile-image {
+    border-radius: 50%;
+    height: 40px;
+  
+  }
+  .sidenav-trigger {
+    float: right;
+  }
+  .carousel {
+    overflow: visible;
+  }
+
+
+
+}

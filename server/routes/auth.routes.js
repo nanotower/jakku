@@ -74,8 +74,9 @@ router.get('/currentuser', (req,res,next) => {
     User.findById(req.user._id)
     .populate("bid")
     .populate("products")
-    .populate("bundles")
+
     .then(user => {
+      console.log("currentuser", req.user)
       res.status(200).json(user);
 
     })
@@ -97,10 +98,12 @@ router.get(
   router.get(
     "/auth/google/callback",
     passport.authenticate("google", {
-      successRedirect: "https://jakkuapp.herokuapp.com",
+      // successRedirect: "https://jakkuapp.herokuapp.com",
       // successRedirect: "http://localhost:3000/",
-      failureRedirect: "https://jakkuapp.herokuapp.com/auth/login"
+      successRedirect: `${process.env.REACT_URL}`,
+      // failureRedirect: "https://jakkuapp.herokuapp.com/auth/login"
       // failureRedirect: "http://localhost:3000/auth/login"
+      failureRedirect: `${process.env.REACT_URL}/auth/login`
     })
 );
 // router.get('/auth/google/callback', 

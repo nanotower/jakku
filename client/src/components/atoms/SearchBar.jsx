@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { TextInput } from "react-materialize";
 
 export default class SearchBar extends Component {
   render() {
@@ -6,18 +7,19 @@ export default class SearchBar extends Component {
       <div className="search-bar">
         <form>
           <div className="input-field col s6">
-            <input
+            <TextInput
               onChange={e => this.props.updateSearch(e.target.value)}
               type="text"
               name="search"
               id="search"
-              placeholder="Search products"
+              label="Busca lo que necesites"
+              className="input-search"
             />
           </div>
         </form>
         {/* <label htmlFor="search">Search</label> */}
 
-        <label>
+        {/* <label>
           <input
             onChange={e => this.props.updateInStock(e.target.checked)}
             type="checkbox"
@@ -25,7 +27,7 @@ export default class SearchBar extends Component {
             id="in-stock"
           />
           <span>Only show products in stock</span>
-        </label>
+        </label> */}
         {/* <label htmlFor="in-stock">Only show products in stock</label> */}
       </div>
     );

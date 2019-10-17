@@ -9,7 +9,15 @@ class Navbar extends Component {
     super(props);
   }
   logout=(e)=> {
-    this.props.logMeOut(e);
+    this.props.logMeOut(e)
+    this.props.history.push('/')
+    
+  }
+  signup =(e) => {
+    this.props.history.push("/signup")
+  }
+  yourbid= () => {
+    this.props.history.push("/your-bid")
   }
 
   // render() {
@@ -74,7 +82,7 @@ class Navbar extends Component {
               </ul>
               <div>
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger">
-                <i class="material-icons">menu</i>
+                <i class="material-icons" className="menu-icon">menu</i>
               </a>
                   <SideNav
                     className="sidenav" id="mobile-demo"
@@ -90,12 +98,20 @@ class Navbar extends Component {
                         name: `${this.props.user.username}`
                       }}
                     />
-                    <SideNavItem href="#!icon" icon="cloud">
-                      First Link With Icon
+                    <SideNavItem href="#!icon" icon="account_circle">
+                      Tu perfil
                     </SideNavItem>
-                    <SideNavItem href="#!second">Second Link</SideNavItem>
+                    
+                   
+                    {/* <SideNavItem subheader></SideNavItem>
+                    <SideNavItem subheader waves href="/your-bid"></SideNavItem> */}
+                    <SideNavItem waves onClick={this.logout}>
+                    Cajas compradas
+                    </SideNavItem>
+                    <SideNavItem waves onClick={this.yourbid}>
+                    Tu mudanza
+                    </SideNavItem>
                     <SideNavItem divider />
-                    <SideNavItem subheader>Subheader</SideNavItem>
                     <SideNavItem waves onClick={this.logout}>
                       Salir
                     </SideNavItem>
@@ -142,12 +158,12 @@ class Navbar extends Component {
                       name: `Invitado`
                     }}
                   />
-                  <SideNavItem href="#!icon" icon="cloud">
-                    First Link With Icon
+                  <SideNavItem href="#!icon" icon="account_circle" onClick={(e)=>this.signup(e)}>
+                    Acceder 
                   </SideNavItem>
-                  <SideNavItem href="#!second">Second Link</SideNavItem>
+                  {/* <SideNavItem href="#!second">Second Link</SideNavItem>
                   <SideNavItem divider />
-                  <SideNavItem subheader>Subheader</SideNavItem>
+                  <SideNavItem subheader>Subheader</SideNavItem> */}
                 </SideNav>
               </div> 
           </div>

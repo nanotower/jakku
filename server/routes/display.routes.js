@@ -36,19 +36,21 @@ router.get("/all-products", (req, res, next) => {
     //   populate: { path: 'productsList' }
     // })
     .then(allProducts => {
-      console.log("resdata allproduct%%%%%%%"+allProducts)
+      // console.log("resdata allproduct%%%%%%%"+allProducts)
       res.json(allProducts);
     })
     .catch(error => next(error));
 });
 
 router.get("/bid-info/:id", (req, res, next) => {
+  console.log("llega llamada bid.id", req.params.id)
   const id = req.params.id;
   Bid.findById(id)
     .populate("owner")
     .populate("productsList")
-    .populate("bundlesList")
+    // .populate("bundlesList")
     .then(bid => {
+      console.log("subasta populada desde back", bid)
       res.json(bid);
     })
     .catch(error => next(error));

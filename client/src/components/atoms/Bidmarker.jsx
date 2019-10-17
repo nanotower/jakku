@@ -16,7 +16,7 @@ export default class Bidmarker extends React.Component {
   }
 
   toggleOpen = () => {
-    console.log("inside bidmarker", this.state)
+ 
     this.setState({isOpen: !this.state.isOpen}, () =>{
         if (!this.state.isOpen){
           this.setState({activeMarker: false}, () => {
