@@ -110,6 +110,7 @@ export default class App extends Component {
         ...this.state,
         product: response
       });
+      this.getProducts();
 
     });
   }
@@ -236,13 +237,13 @@ export default class App extends Component {
             exact
             path="/your-bid"
             render={() => {
-              console.log("antes de montar", this.state);
+              
               return (
                 <div className="page">
                   <ShowMyBid
                     fromApp={() => this.fetchUser()}
                     user={this.state.loggedInUser}
-                    product={this.state.products}
+                    products={this.state.loggedInUser.products}
                   ></ShowMyBid>
                 </div>
               );
@@ -281,7 +282,7 @@ export default class App extends Component {
                     centerMap={this.state.position}
                   ></ShowProduct>
                 </div>
-              );
+              );  
             }}
           />
 
@@ -305,13 +306,18 @@ export default class App extends Component {
             exact
             path="/my-purchases"
             render={props => {
+             
+              let productsOwned = this.state.products.filter(product =>{
+                return  product.buyer?  product.buyer == this.state.loggedInUser._id 
+                : false
+              });
               return (
                 <div className="page">
                   <ShowMyPurchases
                 
-                    // fromApp={() => this.fetchUser()}
+                    fromApp={() => this.fetchUser()}
                     user={this.state.loggedInUser}
-                    products={this.state.products}
+                    products={productsOwned}
                   ></ShowMyPurchases>
                 </div>
               );
@@ -330,7 +336,8 @@ export default class App extends Component {
     
     
     (
-      <React.Fragment>
+        <div className="render-nologin">
+        <div className="body-render-nologin">
         <Navbar className="nav-logged" logMeOut={this.logout} />
         <Switch>
           <Route
@@ -395,7 +402,10 @@ export default class App extends Component {
             }}
           />
         </Switch>
-      </React.Fragment>
+        </div>
+        {/* <FooterBar></FooterBar> */}
+        </div>
+     
     );
   }
 }

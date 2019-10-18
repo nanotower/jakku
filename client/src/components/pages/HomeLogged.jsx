@@ -39,6 +39,7 @@ class HomeLogged extends Component {
           return true;
         }
       });
+      response.sort((a, b) => Math.random() - 0.5)
       this.setState({
         ...this.state,
         products: response,
@@ -46,7 +47,6 @@ class HomeLogged extends Component {
         centerMap: this.props.centerMap,
         loaded: true
       });
-      console.log("show home logged", this.state);
     });
   }
 

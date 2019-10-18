@@ -22,10 +22,10 @@ class ShowMyBid extends Component {
   }
   componentDidMount=() =>{
 
-    this.setState({
-      ...this.state,
-      products:this.props.user.products
-    })
+    // this.setState({
+    //   ...this.state,
+    //   products:this.props.user.products
+    // })
     // this.router.getProducts().then(response => {
     //   const products= response.filter(product=> product.owner==this.props.user._id)
     //   this.setState({
@@ -69,7 +69,7 @@ class ShowMyBid extends Component {
 
   render() {
     if(this.props.user.bid ) {
-      if(this.state.products) {
+      if(this.props.user.products) {
         return (
 
           <div className="your-bid-container">
@@ -85,7 +85,7 @@ class ShowMyBid extends Component {
         
           <h2>Tus cajas</h2>
           <CollapsibleProducs 
-          products={this.state.products} user={this.props.user}
+          products={this.props.products} user={this.props.user}
           // deleteFromShow={(id)=>this.deleteProduct(id)}
           ></CollapsibleProducs>
          

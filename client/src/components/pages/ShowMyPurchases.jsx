@@ -13,14 +13,14 @@ class ShowMyPurchases extends Component {
   }
 
   componentDidMount() {
-    const productsOwned = this.props.products.filter(product =>{
-      return  product.buyer?  product.buyer == this.props.user._id 
-      : false
-    });
-    this.setState({
-      ...this.state,
-      products: productsOwned
-    })
+    // const productsOwned = this.props.products.filter(product =>{
+    //   return  product.buyer?  product.buyer == this.props.user._id 
+    //   : false
+    // });
+    // this.setState({
+    //   ...this.state,
+    //   products: productsOwned
+    // })
   }
   getmyproducts=()=>{
     const productsOwned = this.props.products.filter(product =>{
@@ -39,14 +39,14 @@ class ShowMyPurchases extends Component {
     this.props.history.push("/")
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    if (
-      this.state.products !==
-      prevState.someStatefulValue
-    ) {
-      this.props.onChange(this.state.someStatefulValue);
-    }
-  }
+  // componentDidUpdate(prevProps, prevState) {
+  //   if (
+  //     this.state.products !==
+  //     prevState.someStatefulValue
+  //   ) {
+  //     this.props.onChange(this.state.someStatefulValue);
+  //   }
+  // }
   // componentDidUpdate(prevProps, prevState) {
   //   if (prevState.products !== this.state.products) {
   //     let firebaseRef=firebase.database().ref(this.state.products);
@@ -64,17 +64,17 @@ class ShowMyPurchases extends Component {
   // }
 
   render() {
-    const filterproducts = this.filter(this.props.products, this.state.products);
     
-    if(this.state.products && this.props.user) { 
+    
+    if(this.props.products && this.props.user) { 
        
-      if(this.state.products.length>0){
+      if(this.props.products.length>0){
         return (
           <div className="my-purchases">
              <a className="back-btn"><i class="medium material-icons" onClick={this.goBack}>arrow_back</i></a>
             <h2>Tus cajas compradas</h2>
             <CollapsibleProducs 
-            products={this.state.products} user={this.props.user}
+            products={this.props.products} user={this.props.user}
             // deleteFromShow={(id)=>this.deleteProduct(id)}
             ></CollapsibleProducs>
           </div>

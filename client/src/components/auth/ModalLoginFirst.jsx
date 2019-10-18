@@ -6,6 +6,7 @@ import Login from "./Login";
 export default class ModalLoginFirst extends Component {
   render() {
     return (
+     
       <div className="modal-first-container">
         <Modal
           header={this.props.passText}
@@ -37,6 +38,7 @@ export default class ModalLoginFirst extends Component {
           </div>
         </Modal>
       </div>
+     
     );
   }
 }

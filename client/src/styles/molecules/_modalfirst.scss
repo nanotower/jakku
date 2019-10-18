@@ -1,4 +1,22 @@
+#modal-0{
+  height:90%;
+  max-width: 70%;
+  
+  .modal{
+    height:80%
+  }
+  .modal-fixed-footer{
+    height:80%;
+  }
+}
+
 .modal-content {
+  line-height: 1rem;
+  .modal{
+    max-height:80%;
+    max-width: 70%;
+  }
+ 
   h4 {
     text-align: center;
     font-size: 1.5rem;
