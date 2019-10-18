@@ -201,7 +201,7 @@ export default class App extends Component {
               //   );
               // } else {
                 return (
-                  <div className="page">
+                  <div className="page page-create-bid">
                     <CreateBid
                       fromApp={newValue => this.changeStateBid(newValue)}
                       user={this.state.loggedInUser}
@@ -218,7 +218,7 @@ export default class App extends Component {
               console.log("llama create product", this.state.loggedInUser);
 
               return (
-                <div className="page">
+                <div className="page page-create-product">
                   <CreateProduct
                     user={this.state.loggedInUser}
                     fromApp={() => this.fetchUser()}
@@ -239,7 +239,7 @@ export default class App extends Component {
             render={() => {
               
               return (
-                <div className="page">
+                <div className="page page-mybid">
                   <ShowMyBid
                     fromApp={() => this.fetchUser()}
                     user={this.state.loggedInUser}
@@ -253,7 +253,7 @@ export default class App extends Component {
             path="/bid/:id"
             render={props => {
               return (
-                <div className="page">
+                <div className="page page-bid-id">
       
                   <ShowBid
                     // BidFromApp={() => this.GetBid()}
@@ -270,7 +270,7 @@ export default class App extends Component {
             path="/product/:id"
             render={props => {
               return (
-                <div className="page">
+                <div className="page page-product-id">
                   <ShowProduct
                     productFromApp={() =>
                       this.getProduct(props.match.params.id)
@@ -291,7 +291,7 @@ export default class App extends Component {
             render={props => {
               let chosenProduct = props.match.params.id;
               return (
-                <div className="page">
+                <div className="page page-myproduct-id">
                   <ShowMyProduct
                     productId={chosenProduct}
                     fromApp={() => this.fetchUser()}
@@ -312,7 +312,7 @@ export default class App extends Component {
                 : false
               });
               return (
-                <div className="page">
+                <div className="page page-purchases">
                   <ShowMyPurchases
                 
                     fromApp={() => this.fetchUser()}
@@ -325,7 +325,7 @@ export default class App extends Component {
           />
         </Switch>
         </div>
-        <FooterBar></FooterBar>
+        {/* <FooterBar></FooterBar> */}
       </div>
     ) :
     
@@ -345,7 +345,7 @@ export default class App extends Component {
             path="/"
             render={() => {
               return (
-         
+                  <div className="page page-home-not-logged">
                   <Home
                     productsFromApp={() => {
                       this.getProducts();
@@ -353,7 +353,7 @@ export default class App extends Component {
                     centerMap={this.state.position}
                     products={this.state.products}
                   ></Home>
-     
+                </div>
               );
             }}
           />
@@ -362,10 +362,10 @@ export default class App extends Component {
             path="/signup"
             render={() => {
               return (
-                <React.Fragment>
+                <div className="page page-singup">
                 <Auth></Auth>
                
-                </React.Fragment>
+                </div>
               );
             }}
           />
@@ -374,9 +374,9 @@ export default class App extends Component {
             path="/create-bid"
             render={() => {
               return (
-                <React.Fragment>
+                <div className="page page-create-notlog">
                <Auth></Auth>
-                </React.Fragment>
+                </div>
               );
             }}
           />
@@ -385,7 +385,7 @@ export default class App extends Component {
             path="/create-product"
             render={() => {
               return (
-                <React.Fragment>
+                <div className="page page-create-notlog">
                   <h1>
                     Tienes que estar registrado y tener una mudanza activa para
                     poder crear cajas con productos{" "}
@@ -397,7 +397,7 @@ export default class App extends Component {
                     Sign In with Google
                   </a>
                   <Button variant="contained" color="primary"></Button>
-                </React.Fragment>
+                </div>
               );
             }}
           />

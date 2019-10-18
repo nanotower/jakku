@@ -1,0 +1,26 @@
+.your-bid-container{
+  background: linear-gradient(to top, #ffffff 0%,#f8e5e5 59%);
+  .top-box{
+    width:80vw;
+    margin: 0 auto;
+    p{
+
+      line-height: 1rem;
+    }
+    h1{
+      font-size: 2rem;
+      font-weight: bold;
+      
+    }
+    span{
+      font-weight: 600;
+    }
+    .btnadd{
+      margin-top:50px;
+    }
+    h2{
+      font-size: 1.8rem;
+      font-weight: bold;
+    }
+  }
+}
