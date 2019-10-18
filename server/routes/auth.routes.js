@@ -99,11 +99,11 @@ router.get(
   router.get(
     "/auth/google/callback",
     passport.authenticate("google", {
-      // successRedirect: "https://jakkuapp.herokuapp.com",
-      successRedirect: "http://localhost:3000/",
+      successRedirect: "https://jakkuapp.herokuapp.com",
+      // successRedirect: "http://localhost:3000/",
       // successRedirect: `${process.env.REACT_URL}`,
-      // failureRedirect: "https://jakkuapp.herokuapp.com/auth/login"
-      failureRedirect: "http://localhost:3000/auth/login"
+      failureRedirect: "https://jakkuapp.herokuapp.com/auth/login"
+      // failureRedirect: "http://localhost:3000/auth/login"
       // failureRedirect: `${process.env.REACT_URL}/auth/login`
     })
 );

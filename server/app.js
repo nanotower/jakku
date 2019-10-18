@@ -31,9 +31,9 @@ const app = express();
 
 //Cors setup
 var whitelist = [
-  // `${process.env.MONGO_URL}`,
+  `${process.env.MONGO_URL}`,
 
-  "http://localhost:3000"
+  // "http://localhost:3000"
 ];
 var corsOptions = {
   origin: function(origin, callback){
