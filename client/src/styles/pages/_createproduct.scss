@@ -5,12 +5,15 @@
   padding: 75px;
   background: linear-gradient(to top, #ffffff 0%,#f8e5e5 59%);
   .container-create-product{
-
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     background-color: white;
     width: 70vw;
     h1{
       font-size: 2.2rem;
       font-weight: bold;
+      line-height: 0;;
     }
     h2{
       font-size: 1.5rem;
@@ -24,8 +27,10 @@
       width:100%;
     }
     img{
-      margin: auto;
-      width: 90px; 
+     
+      margin: 0  auto;
+     
+      max-width: 250px; 
     }
     input{
       font-size: 1.2rem;

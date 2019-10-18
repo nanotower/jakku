@@ -80,15 +80,17 @@ class CreateProduct extends Component {
         <div className="container-create-product">
           <a className="back-btn"><i class="medium material-icons" onClick={this.goBack}>arrow_back</i></a>
           <h1>CONTENIDO DE LA CAJA</h1>
+          <h2>Foto</h2>
+          <img src={this.state.imgPath1} alt="product picture" />
           <div className="container-photo-input">
-            <h2>Foto</h2>
+            
   
             <form onSubmit={e => this.handleSubmit(e, "imgPath1")}>
               <input type="file" onChange={e => this.handleChange(e)} /> <br />
               <button type="submit">Guardar foto</button>
             </form>
   
-            <img src={this.state.imgPath1} alt="product picture" />
+           
             {/* <h2>Foto 2</h2>
    */}
             {/* <form onSubmit={e => this.handleSubmit(e, "imgPath2")}>
