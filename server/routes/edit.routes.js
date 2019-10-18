@@ -131,7 +131,6 @@ router.put(
 );
 
 router.put("/buy-product/:id", (req, res, next) => {
-  console.log("&&&");
   const buyer = req.user._id
   Product.findByIdAndUpdate(
     req.params.id,
@@ -140,7 +139,7 @@ router.put("/buy-product/:id", (req, res, next) => {
      buyer
     },
     { new: true }
-  ) 
+  )
   .populate("owner")
   // .populate("isBundle")
   .populate("bid")
@@ -150,6 +149,38 @@ router.put("/buy-product/:id", (req, res, next) => {
     })
     .catch(error => next(error));
 });
+
+// router.put("/buy-product/:id", (req, res, next) => {
+//   const buyer = req.user._id
+//   const promisesArray=[Product.findByIdAndUpdate(
+//     req.params.id,
+//     {
+//      active: false,
+//      buyer
+//     },
+//     { new: true }
+//   ), User.findByIdAndUpdate(buyer, { $push: { purchases: req.params.id } },
+//     { new: true })]
+//     Promise.all(promisesArray)
+//     .then(values=> res.json(purchasedProduct))
+  
+//   .populate("owner")
+//   // .populate("isBundle")
+//   .populate("bid")
+//     .then(updatedProduct => {
+//       console.log("udaptedbid%%%%" + updatedProduct);
+//       res.json(updatedProduct);
+//     })
+//     .catch(error => next(error));
+// });
+
+
+
+
+
+
+
+
 
 router.put("/buy-bundle/:id", (req, res, next) => {
   console.log("&&&");
