@@ -6,7 +6,8 @@ import Login from "./Login";
 export default class Auth extends Component {
   render() {
     return (
-      <div className="auth-standalone">
+      <div className="sign-backgnd">
+        <div className="auth-standalone">
         <div className="auth-container">
           <p>Accede con tu cuenta de google</p>
 
@@ -21,6 +22,9 @@ export default class Auth extends Component {
           <Login></Login>
         </div>
       </div>
+
+      </div>
+      
     );
   }
 }

@@ -16,7 +16,6 @@ const flash      = require("connect-flash");
 
 mongoose
   // .connect('mongodb://localhost/gang', {useNewUrlParser: true})
-  // .connect(`${process.env.MONGO_URL}`, {useNewUrlParser: true})
   .connect(`${process.env.MONGO_URL}`, {useNewUrlParser: true})
   .then(x => {
     // console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
@@ -32,7 +31,7 @@ const app = express();
 
 //Cors setup
 var whitelist = [
-  `${process.env.MONGO_URL}`,
+  // `${process.env.MONGO_URL}`,
 
   "http://localhost:3000"
 ];

@@ -71,19 +71,22 @@ class ShowMyBid extends Component {
     if(this.props.user.bid ) {
       if(this.props.user.products) {
         return (
-
+         
           <div className="your-bid-container">
+            <div className="top-box">
             <a className="back-btn"><i class="medium material-icons" onClick={this.goBack}>arrow_back</i></a>
-          <h1>Panel de control de tu mudanza</h1>
-           <p>{this.props.user.username}</p>
+          <h1>PANEL DE CONTROL DE TU MUDANZA</h1>
           <p>
-            Recogerán las cosas el día {this.transformDate()} entre las{" "}
-            {this.props.user.bid.from} y las {this.props.user.bid.to}
+            Recogerán las cosas el día <span>{this.transformDate()}</span> entre las
+            <span>{this.props.user.bid.from}</span> y las <span>{this.props.user.bid.to}</span>
           </p>
           
           <ButtonAdd product={true}></ButtonAdd>
+          <h2>TUS CAJAS</h2>
+            </div>
+           
         
-          <h2>Tus cajas</h2>
+          
           <CollapsibleProducs 
           products={this.props.products} user={this.props.user}
           // deleteFromShow={(id)=>this.deleteProduct(id)}

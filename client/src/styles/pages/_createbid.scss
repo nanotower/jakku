@@ -1,0 +1,38 @@
+.page-create-bid{
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 75px;
+
+ 
+  .create-bid-container{
+    background-color: white;
+    width: 70vw;
+    h1{
+      font-size: 2.2rem;
+      font-weight: bold;
+    }
+    padding: 0px 80px;
+    padding-bottom: 50px;
+    border: 1px solid #dbcccc;
+
+  }
+  .created-bid-container{
+    border: 1px solid #dbcccc;
+    background-color: white;
+    width: 70vw;
+    h1{
+      font-size: 2.2rem;
+      font-weight: bold;
+    }
+    padding: 0px 80px;
+    padding-bottom: 50px;
+    span{
+      font-weight: bold;
+    }
+    
+  }
+
+background: linear-gradient(to top, #ffffff 0%,#f8e5e5 59%);
+ 
+}

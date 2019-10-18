@@ -1,0 +1,51 @@
+.page-create-product{
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 75px;
+  background: linear-gradient(to top, #ffffff 0%,#f8e5e5 59%);
+  .container-create-product{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: white;
+    width: 70vw;
+    h1{
+      font-size: 2.2rem;
+      font-weight: bold;
+      line-height: 0;;
+    }
+    h2{
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+    padding: 0px 40px;
+    padding-bottom: 50px;
+    border: 1px solid #dbcccc;
+    .container-photo-input{
+   
+      width:100%;
+    }
+    img{
+     
+      margin: 0  auto;
+     
+      max-width: 250px; 
+    }
+    input{
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+    button, .btn-crear{
+      width: 150px;
+      background-color: #C39EA0;
+      padding: 7px;
+      font-size: 1rem;
+      text-decoration: none;
+      color: black;
+      cursor: pointer;
+    }
+  
+  }
+ 
+}

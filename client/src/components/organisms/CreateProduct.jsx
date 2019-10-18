@@ -77,18 +77,20 @@ class CreateProduct extends Component {
   render() {
     if(this.props.bid) {
       return (
-        <React.Fragment>
+        <div className="container-create-product">
           <a className="back-btn"><i class="medium material-icons" onClick={this.goBack}>arrow_back</i></a>
-          <h1>Contenido de la caja</h1>
+          <h1>CONTENIDO DE LA CAJA</h1>
+          <h2>Foto</h2>
+          <img src={this.state.imgPath1} alt="product picture" />
           <div className="container-photo-input">
-            <h2>Foto 1</h2>
+            
   
             <form onSubmit={e => this.handleSubmit(e, "imgPath1")}>
               <input type="file" onChange={e => this.handleChange(e)} /> <br />
               <button type="submit">Guardar foto</button>
             </form>
   
-            <img src={this.state.imgPath1} alt="product picture" />
+           
             {/* <h2>Foto 2</h2>
    */}
             {/* <form onSubmit={e => this.handleSubmit(e, "imgPath2")}>
@@ -131,10 +133,10 @@ class CreateProduct extends Component {
               onChange={e => this.updateFormData(e, "price")}
             ></input>
   
-            <a onClick={e => this.sendState(e)}>Submit</a>
+            <a className="btn-crear" onClick={e => this.sendState(e)}>Crear caja</a>
           </form>
           
-        </React.Fragment>
+        </div>
       );
     }
     else 

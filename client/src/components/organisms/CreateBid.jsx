@@ -19,6 +19,7 @@ import ButtonAdd from '../atoms/ButtonAdd';
 
 
 
+
 class CreateBid extends Component {
   constructor(props) {
     super();
@@ -82,7 +83,7 @@ class CreateBid extends Component {
   render() {
     if(this.state.isBid){
       return(
-        <div className="page">
+        <div className="create-bid-active">
         <h1>Ya tienes una subasta activa</h1>
         <ButtonAdd></ButtonAdd>
      
@@ -94,10 +95,11 @@ class CreateBid extends Component {
 
       if(!this.state.sent) {
         return (
-          <React.Fragment>
+          <div className="create-bid-container">
+            <h1>CREA TU MUDANZA</h1>
           <form>
             <label  htmlFor="input-day">Día de finalización</label>
-            <input type="date" placeholder="Cuando quieres que se lo lleven" name="dia" id="input-day" onChange={e => this.updateFormData(e, "deadLine")} ></input>
+            <input type="date" class="datepicker" placeholder="Cuando quieres que se lo lleven" name="dia" id="input-day" onChange={e => this.updateFormData(e, "deadLine")} ></input>
             <label htmlFor="hora">Hora de recogida</label>
             <input type="time" placeholder="Hora de comienzo de recogida" name="hora"  onChange={e => this.updateFormData(e, "from")} ></input>
             <label htmlFor="fin">Finalización de recogida</label>
@@ -105,21 +107,21 @@ class CreateBid extends Component {
             <label htmlFor="location">Lugar de recogida</label>
             <LocationSearchInput changeState={newValue => this.changeState(newValue)}
             value={this.state.value} name="location" placeholder="Calle o barrio" onChange={e => this.updateFormData(e, "location")}></LocationSearchInput>
-            <button  onClick={e => this.sendState(e)}>Submit</button>
+            <button  onClick={e => this.sendState(e)}>Listo para añadir cajas</button>
           </form>
-          </React.Fragment>
+          </div>
         )
       }
       else {
         return (
-          <React.Fragment>
+          <div className="created-bid-container">
             <h1>Tu mudanza</h1>
-             <h3>Finaliza el día {this.transformDate()}</h3>
-          <h3>Los compradores irán a recogerlo de {this.state.from} a {this.state.to}</h3>
-          <h3>en {this.state.location.address}</h3>
+             <p>Finaliza el día {this.transformDate()}</p>
+          <p>Los compradores irán a recogerlo de <span>{this.state.from}</span> a <span>{this.state.to}</span></p>
+          <p>en <span>{this.state.location.address}</span></p>
           <p>Ya puedes añadir cajas a tu mudanza</p>
           <NavLink to={`/create-product`}>Añadir caja</NavLink>
-          </React.Fragment>  
+          </div>  
         )
       }
     }

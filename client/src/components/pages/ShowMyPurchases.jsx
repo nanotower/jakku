@@ -64,13 +64,18 @@ class ShowMyPurchases extends Component {
   // }
 
   render() {
-    
-    
     if(this.props.products && this.props.user) { 
        
       if(this.props.products.length>0){
         return (
+          <div className="purchases-container">
+      
+
+          
           <div className="my-purchases">
+            <div className="top-box-purchases">
+
+            </div>
              <a className="back-btn"><i class="medium material-icons" onClick={this.goBack}>arrow_back</i></a>
             <h2>Tus cajas compradas</h2>
             <CollapsibleProducs 
@@ -78,11 +83,18 @@ class ShowMyPurchases extends Component {
             // deleteFromShow={(id)=>this.deleteProduct(id)}
             ></CollapsibleProducs>
           </div>
+          </div>
         );
       }
       else {
         return(
+          <div className="purchases-container">
+          <div className="purchased-none">
+        <a className="back-btn"><i class="medium material-icons" onClick={this.goBack}>arrow_back</i></a>
           <h2>Todavía no has comprado nada</h2>
+          </div>
+          </div>
+  
         )
       }
     
@@ -93,6 +105,9 @@ class ShowMyPurchases extends Component {
        
       )
     } 
+
+    
+    
   }
 }
 
