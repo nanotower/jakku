@@ -2,11 +2,17 @@ import React, { Component } from "react";
 import Productmapcontainer from "../molecules/Productmapcontainer";
 import PreloaderSpinner from "../atoms/PreloaderSpinner";
 import { withRouter } from 'react-router-dom'
+import PPal from "../organisms/PPal";
 import moment from "moment";
 import 'moment/locale/es'
 moment.locale('es')
+const s=process.env.PAYPAL_CLIENT_ID;
 
-
+const CLIENT = {
+  sandbox: "AQcrq4YDWyfXU3sXAPunwF77twdTo_JaPFx2en6b48mJfwpzw1vRXcuJVcOD4P7CUcxstryIVCRj2_bB"
+  // sandbox: `${process.env.REACT_APP_PAYPAL_CLIENT_ID}`
+};
+const ENV = 'sandbox';
 
 
 class ShowProduct extends Component {
@@ -44,12 +50,28 @@ class ShowProduct extends Component {
   }
   transformDate = () => {
     
-    moment.lang('es');
+    moment.locale('es');
     const dateTransformed= moment(this.props.product.bid.deadLine).format('LL')
-    return <p>{dateTransformed}</p>
+    return dateTransformed
   }
 
   render() {
+    console.log(process.env)
+    const onSuccess = (payment) => {
+      this.props.buyFromApp(this.props.product._id)
+      .then(()=>
+       console.log('Successful payment!', payment)
+      )
+      
+
+    }
+    
+  const onError = (error) =>
+    console.log('Erroneous payment OR failed to load script!', error);
+  const onCancel = (data) =>
+    console.log('Cancelled payment!', data);
+    console.log(CLIENT)
+
     if(this.props.product) {
       return (
      
@@ -67,7 +89,23 @@ class ShowProduct extends Component {
           
           {/* {this.props.product.active && this.props.product.owner._id!=this.props.userId &&(<button onClick={e => this.buy(e)}>Comprar</button>)} */}
           {(this.props.product.active && this.props.product.owner._id!==this.props.userId) ?
-            <button onClick={e => this.buy(e)}>Comprar</button>
+           
+              
+              <PPal
+      client={CLIENT}
+      env={ENV}
+      commit={true}
+      currency={'EUR'}
+      total={this.props.product.price}
+      total={1}
+      onSuccess={onSuccess}
+      onError={onError}
+      onCancel={onCancel}
+     
+
+      ></PPal>
+              
+            
             :
             this.props.product.buyer==this.props.userId?
             <p></p>

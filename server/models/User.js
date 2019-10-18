@@ -21,6 +21,7 @@ const userSchema = new Schema({
   bid: { type: Schema.Types.ObjectId, ref: "Bid" },
   products: [{ type: Schema.Types.ObjectId, ref: "Product" }],
   bundles: [{ type: Schema.Types.ObjectId, ref: "Bundle" }],
+  purchases: [{ type: Schema.Types.ObjectId, ref: "Product" }],
 }, {
   timestamps: {
     createdAt: 'created_at',
