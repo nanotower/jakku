@@ -15,7 +15,9 @@ const flash      = require("connect-flash");
     
 
 mongoose
+  //local mongo
   // .connect('mongodb://localhost/gang', {useNewUrlParser: true})
+  //Atlas
   .connect(`${process.env.MONGO_URL}`, {useNewUrlParser: true})
   .then(x => {
     // console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
@@ -32,7 +34,7 @@ const app = express();
 //Cors setup
 var whitelist = [
   `${process.env.MONGO_URL}`,
-
+  `${process.env.REACT_URL}`
   // "http://localhost:3000"
 ];
 var corsOptions = {
@@ -96,7 +98,6 @@ require('./passport')(app);
 
 const authRoutes = require('./routes/auth.routes');
 app.use('/', authRoutes);
-
 const createRoutes = require('./routes/create.routes');
 app.use('/create', createRoutes);
 const displayRoutes = require('./routes/display.routes');

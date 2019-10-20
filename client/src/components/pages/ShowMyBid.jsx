@@ -16,7 +16,8 @@ class ShowMyBid extends Component {
   constructor(props) {
     super(props);
     this.state= {
-
+      user: this.props.user,
+      product: this.props.user.products
     }
     this.router = new RoutesService()
   }
@@ -34,25 +35,26 @@ class ShowMyBid extends Component {
     //   });
     // });
     // console.log(this.state)
-    // this.props.fromApp()
-    // .then(()=> {
-    //   this.setState({
-    //     ...this.state,
-    //     user: this.props.user,
-    //   })
-    // })
+    this.props.fromApp()
+    .then(()=> {
+      this.setState({
+        ...this.state,
+        user: this.props.user,
+        products: this.props.user.products
+      })
+    })
 
   }
-  // deleteProduct = (id) => {
-  //   console.log("borrando")
-  //   this.route.deleteProduct(id)
-  //   .then(user => {
-  //     this.setState({
-  //       ...this.state,
-  //       user
-  //     })
-  //   })
-  // }
+  deleteProduct = (id) => {
+    console.log("borrando")
+    this.route.deleteProduct(id)
+    .then(user => {
+      this.setState({
+        ...this.state,
+        user
+      })
+    })
+  }
   goBack =()=> {
     this.props.history.push("/")
   }
@@ -69,7 +71,7 @@ class ShowMyBid extends Component {
 
   render() {
     if(this.props.user.bid ) {
-      if(this.props.user.products) {
+      if(this.state.user.products) {
         return (
          
           <div className="your-bid-container">
@@ -88,16 +90,15 @@ class ShowMyBid extends Component {
         
           
           <CollapsibleProducs 
-          products={this.props.products} user={this.props.user}
-          // deleteFromShow={(id)=>this.deleteProduct(id)}
+          products={this.state.products} user={this.state.user}
+          deleteFromShow={(id)=>this.deleteProduct(id)}
           ></CollapsibleProducs>
          
     
         
           </div>
-    
-          )
 
+          )
       }
       else {
         return (
@@ -115,12 +116,6 @@ class ShowMyBid extends Component {
         </div>
       )
     }
-    
-      
-      
-   
-
-   
   }
 
 }
