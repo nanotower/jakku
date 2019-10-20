@@ -23,4 +23,11 @@
       font-weight: bold;
     }
   }
+  li {
+    position: relative;
+  }
+  .btn-del-row{
+    position: absolute;
+    right: 50px;
+  }
 }

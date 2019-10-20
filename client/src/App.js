@@ -22,8 +22,6 @@ import ShowMyPurchases from "./components/pages/ShowMyPurchases";
 import ShowProduct from "./components/pages/ShowProduct";
 import './styles/main.scss'
 import Auth from "./components/auth/Auth";
-import FooterBar from "./components/organisms/FooterBar";
-import PPal from "./components/organisms/PPal";
 
 export default class App extends Component {
   constructor(props) {
