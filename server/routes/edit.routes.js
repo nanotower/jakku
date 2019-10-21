@@ -111,22 +111,22 @@ router.put(
         })
         .catch(error => next(error));
     }
-    if (req.params.photoN == "imgPath2") {
-      const imgPath2 = req.file.url;
-      Product.findByIdAndUpdate(id, { imgPath2: imgPath2 }, { new: true })
-        .then(userUpdated => {
-          res.json(userUpdated);
-        })
-        .catch(error => next(error));
-    }
-    if (req.params.photoN == "imgPath3") {
-      const imgPath3 = req.file.url;
-      Product.findByIdAndUpdate(id, { imgPath3: imgPath3 }, { new: true })
-        .then(userUpdated => {
-          res.json(userUpdated);
-        })
-        .catch(error => next(error));
-    }
+    // if (req.params.photoN == "imgPath2") {
+    //   const imgPath2 = req.file.url;
+    //   Product.findByIdAndUpdate(id, { imgPath2: imgPath2 }, { new: true })
+    //     .then(userUpdated => {
+    //       res.json(userUpdated);
+    //     })
+    //     .catch(error => next(error));
+    // }
+    // if (req.params.photoN == "imgPath3") {
+    //   const imgPath3 = req.file.url;
+    //   Product.findByIdAndUpdate(id, { imgPath3: imgPath3 }, { new: true })
+    //     .then(userUpdated => {
+    //       res.json(userUpdated);
+    //     })
+    //     .catch(error => next(error));
+    // }
   }
 );
 

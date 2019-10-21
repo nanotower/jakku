@@ -1,24 +1,25 @@
 import React, { Component } from "react";
 import { Collapsible, CollapsibleItem, Icon, Switch } from "react-materialize";
 import PreloaderSpinner from "../atoms/PreloaderSpinner";
+import DelModalWarning from "./DelModalWarning";
 
 export default class CollapsibleProducs extends Component {
   constructor(props){
     super(props)
-    this.state={
-      products: this.props.products
-    }
+    // this.state={
+    //   products: this.props.products
+    // }
   }
   
-  deleteProduct(id) {
-    this.props.deleteFromShow(id)
-    .then(()=> {
-      this.setState({
-        ...this.state,
-        products: this.props.products
-      })
-    })
-  }
+  // deleteProduct(id) {
+  //   this.props.deleteFromShow(id)
+  //   .then(()=> {
+  //     this.setState({
+  //       ...this.state,
+  //       products: this.props.products
+  //     })
+  //   })
+  // }
 
   render() {
     if(this.props.products && this.props.user) {
@@ -47,8 +48,11 @@ export default class CollapsibleProducs extends Component {
               } else {
                 return (
                   <CollapsibleItem
-                    btnFunction={()=> console.log(product._id)}
-                    btnDel={<div className="borrar"><i class="medium material-icons">cancel</i>"Ya no vendo esta caja"</div>}
+                    // btnFunction={()=> console.log(product._id)}
+                    // btnDel={<div className="borrar">"Ya no vendo esta caja"</div>}
+                    btnDel={
+                      <DelModalWarning deleteFunction={()=>this.props.deleteFromShow(product._id)}></DelModalWarning>
+                    }
                     header={product.name}   
                     key={idx}
                     info={
@@ -75,8 +79,6 @@ export default class CollapsibleProducs extends Component {
                      
                     </div>
                   </CollapsibleItem>
-            
-          
                 );
               }
             })}
