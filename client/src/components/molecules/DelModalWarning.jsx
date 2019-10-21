@@ -17,7 +17,7 @@ export default class DelModalWarning extends Component {
           <div className="modal-cancel-container">
             <p>¿Estás seguro de que quieres eliminar esta caja?</p>
 
-            <Button waves="light" className="red del-product-btn" onClick={()=>this.props.deleteFunction()}>
+            <Button waves="light" className="red del-product-btn modal-close" onClick={()=>this.props.deleteFunction()}>
               Eliminar
             </Button>
             <Button waves="light" className="red del-product-btn modal-close">

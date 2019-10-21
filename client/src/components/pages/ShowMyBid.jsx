@@ -43,8 +43,8 @@ class ShowMyBid extends Component {
       });
     });
   };
+
   deleteProduct = id => {
-    
     console.log(id);
     console.log("borrando");
     this.router.deleteProduct(id).then(user => {
@@ -55,14 +55,17 @@ class ShowMyBid extends Component {
       });
     });
   };
+
   goBack = () => {
     this.props.history.push("/");
   };
+  
   transformDate = () => {
     moment.lang("es");
     const dateTransformed = moment(this.props.user.bid.deadLine).format("LL");
     return <p>{dateTransformed}</p>;
   };
+
   extractCoordinates(latlng) {
     const lat = latlng[0];
     const lng = latlng[1];

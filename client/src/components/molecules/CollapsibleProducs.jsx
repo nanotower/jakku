@@ -79,8 +79,6 @@ export default class CollapsibleProducs extends Component {
                      
                     </div>
                   </CollapsibleItem>
-            
-          
                 );
               }
             })}
