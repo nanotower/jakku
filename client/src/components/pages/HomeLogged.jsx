@@ -54,19 +54,20 @@ class HomeLogged extends Component {
   render() {
     if (!this.props.user.bid) {
       return (
-        <div className="home">
-          <div>
+        <div className="home home-logged">
+          
             <div className="title-container">
               <h1>
-                Si te acabas de mudar o estás a punto de mudarte, podemos
-                ayudarte
+                Si te acabas de mudar<br></br>
+                o estás a punto de mudarte,<br></br>
+                podemos ayudarte
               </h1>
               <img src="bkg-img.svg" alt="background image"></img>
             </div>
             <Tabs className="tab-demo z-depth-1 tabs-fixed-width tab-container">
               <Tab title="Me voy a mudar" className="me-mudo">
                 <div className="mudo-container-login">
-               
+                    <h3>Crea tu mudanza para poder poner cajas a la venta</h3>
                     <ButtonAdd bid={true}></ButtonAdd>
                 
                 </div>
@@ -88,7 +89,7 @@ class HomeLogged extends Component {
                 )}
               </Tab>
             </Tabs>
-          </div>
+       
         </div>
       );
     } else {

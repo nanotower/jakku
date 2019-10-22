@@ -69,9 +69,10 @@ class Navbar extends Component {
               <NavLink to={"/"} className="brand-logo tracking-in-expand">
                 <img src={Box} className="logo-img"/>
                 Jakku
+                
               </NavLink>
               
-              <ul class="right hide-on-med-and-down">
+              {/* <ul class="right hide-on-med-and-down">
                 <li>
                   <a href="#" className="profile-container" >
                     {this.props.user.username}
@@ -82,11 +83,11 @@ class Navbar extends Component {
 
                   </a>
                 </li>
-              </ul>
+              </ul> */}
               <div>
               <a href="#"  data-target="mobile-demo"   className="profile-container sidenav-trigger" >
                     {this.props.user.username}
-                    <img className="profile-image"
+                    <img className="profile-image shadow-drop-center"
                       src={this.props.user.imgPath}
                       alt="User profile image"
                     />

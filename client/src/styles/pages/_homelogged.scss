@@ -1,8 +1,35 @@
-// .body-render-login{
-//   .mudo-container-login{
-    
-//   }
-//   .create-bid-container{
-   
-//   }
-// }
+.home-logged{ 
+  .mudo-container-login{
+    height: 500px;
+    h3{
+      margin-top:100px;
+      text-align: center;
+      
+    }
+  }
+  @include desktop {
+    .title-container{
+      height: 633px;
+      h1{
+        padding-top:70px;
+        font-size: 5rem;
+        line-height: 5rem;
+        margin: 0 20vw 0 10vw;
+        position: relative;
+        z-index: 1;
+      }
+      img {
+        position: absolute;
+        margin-left: 53vw;
+        top: 230px;
+        width: 500px;
+        height: 500px;
+        z-index: 0;
+       
+      }
+    }
+
+  }
+
+
+}
