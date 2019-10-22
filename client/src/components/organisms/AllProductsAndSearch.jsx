@@ -34,8 +34,9 @@ export default class AllProductsAndSearch extends Component {
   render() {
     return (
       <div className="container-all-search">
-                
+                <div className="all-map-container">
                 {this.props.title? <p>{this.props.title}</p> 
+                
                 : <h6>Selecciona un marcador del mapa para ver mudanzas disponibles</h6>}
                 <Bidmapcontainer
                   bids={this.props.bids}
@@ -44,6 +45,7 @@ export default class AllProductsAndSearch extends Component {
                   zoomMap={this.props.zoomMap}
                   mapSize={this.props.mapSize}
                 ></Bidmapcontainer>
+                </div>
                 <SearchBar
                   products={this.state.searchProducts}
                   updateSearch={searchText => this.makeSearch(searchText)}

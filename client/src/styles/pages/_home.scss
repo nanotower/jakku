@@ -31,6 +31,17 @@
     width: 70vw;
     margin: 0 auto;
     padding: 70px 0px;
+    height: 333px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: flex-start;
+    p{
+      margin: 5px 0 0 0;
+    }
+    h3{
+      margin: 0;
+    }
   }
   .row {
     background-color: F8E5E5;
@@ -86,6 +97,23 @@ a {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+.all-map-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 500px;
+  padding: 0;
+  margin: 0;
+  background-color: #F8E5E5;
+  // background: linear-gradient(to top, #ffffff 0%,#f8e5e5 59%);
+}
+.row .col {
+
+  padding: 0;
+
 }
 .input-field {
   padding:0;

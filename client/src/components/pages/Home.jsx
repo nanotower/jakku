@@ -130,6 +130,7 @@ class Home extends Component {
               Búscalo. Seguro que alguien se está mudando y le sobra.
             </p>
             </div>
+           
 
             
             {this.state.products && this.state.bids && this.state.centerMap ? (
