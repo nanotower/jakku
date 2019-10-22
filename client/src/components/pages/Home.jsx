@@ -50,9 +50,12 @@ class Home extends Component {
     return (
       <div className="home">
         <div className="title-container">
+       
         <h1>
-          Si te acabas de mudar o estás a punto de mudarte, podemos ayudarte
-        </h1>
+                Si te acabas de mudar<br></br>
+                o estás a punto de mudarte,<br></br>
+                podemos ayudarte
+              </h1>
         <img src='bkg-img.svg' alt="background image"></img>
 
         </div >
@@ -62,10 +65,15 @@ class Home extends Component {
         <Tabs className="tab-demo z-depth-1 tabs-fixed-width tab-container">
           <Tab title="Me voy a mudar" className="me-mudo">
             <div className="mudo-container">
-            <h3>
-              ¿Tienes demasiadas cosas y no vas a llevarlas a tu nuevo hogar?
+
+              <h3>
+              ¿Tienes demasiadas cosas y no vas a llevarlas a tu nuevo hogar?<br></br>
+              Estás de enhorabuena.
             </h3>
-            <h3>Estás de enhorabuena.</h3>
+            
+
+
+          
             <p>
               Tenemos el escaparate perfecto para venderlo todo el día exacto
               que tú decidas.
@@ -91,7 +99,7 @@ class Home extends Component {
                   <h4>Separa lo que no te vas a llevar</h4>
                   <p>Hazle fotos y descríbelo brevemente. Puedes una sola cosa en cada caja, como una mesa, o meter el salón completo. ¡En nuestras cajas cabe todo!</p>
                 </li>
-                <li className="li-r">
+                <li className="li-r no3">
                   <i class="medium material-icons">euro_symbol</i>
                   <p className="number-3">3</p>
                   <h4>Ponles precio</h4>
@@ -131,7 +139,7 @@ class Home extends Component {
                   bids={this.state.bids}
                   centerMap={this.props.centerMap}
                   products={this.props.products}
-                
+                  mapSize={[70,400]}
                 ></AllProductsAndSearch>
               </React.Fragment>
             ) : (

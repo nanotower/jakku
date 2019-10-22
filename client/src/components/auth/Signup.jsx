@@ -45,7 +45,7 @@ export default class Signup extends Component {
 
   render() {
     return (
-      <div className="sign-container">
+      <div className="sign-container .fade-in">
              <p>Signup</p>
         <form onSubmit={this.sendSignup} >
         <TextInput label="Nombre" value={this.state.username} type="text" name="username" onChange={(e)=> this.changeState(e)}></TextInput>

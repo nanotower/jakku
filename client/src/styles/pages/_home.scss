@@ -28,7 +28,7 @@
 
   }
   .mudo-container {
-    width: 80vw;
+    width: 70vw;
     margin: 0 auto;
     padding: 70px 0px;
   }
@@ -36,7 +36,7 @@
     background-color: F8E5E5;
   }
   .create-bid-container {
-    padding-top: 50px;
+    padding: 70px 0 140px 0;
     color: #FA255E;
     i {
       color: black;
@@ -47,14 +47,14 @@
   }
  .number-r {
     position: absolute;
-    font-size: 25rem;
+    font-size: 23rem;
     color: #fff1f1;
     bottom: -200px;
     z-index: -5;
 }
  .number-l {
     position: absolute;
-    font-size: 25rem;
+    font-size: 23rem;
     color: #fff1f1;
     bottom: -200px;
     right: 0;
@@ -62,18 +62,21 @@
 }
  .number-3 {
     position: absolute;
-    font-size: 25rem;
+    font-size: 23rem;
     color: #fff1f1;
-    bottom: -230px;
+    bottom: -210px;
     z-index: -5;
 }
  .number-4 {
     position: absolute;
-    font-size: 25rem;
+    font-size: 23rem;
     color: #fff1f1;
     bottom: -240px;
     right: 0;
     z-index: -5;
+}
+.no3{
+  height: 304px;
 }
 a {
   color: #FA255E;
@@ -83,6 +86,9 @@ a {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+.input-field {
+  padding:0;
 }
 
 col {
@@ -107,6 +113,34 @@ col {
   height: 4px;
 
 }
+@include desktop {
+  .title-container{
+    height: 560px;
+    h1{
+      padding-top:70px;
+      font-size: 4rem;
+      line-height: 4rem;
+      margin: 0 20vw 0 15vw;
+      position: relative;
+      z-index: 1;
+    }
+    img {
+      position: absolute;
+      margin-left: 55vw;
+      top: 230px;
+      width: 400px;
+      height: 400px;
+      z-index: 0;
+     
+    }
+  }
+  .titles-container{
+    line-height: 1rem;
+    background-color: blueviolet;
+  }
+
+}
+
 
   
 }
