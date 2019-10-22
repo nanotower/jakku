@@ -66,7 +66,7 @@ class Navbar extends Component {
           <nav>
             <div class="nav-wrapper">
             
-              <NavLink to={"/"} className="brand-logo">
+              <NavLink to={"/"} className="brand-logo tracking-in-expand">
                 <img src={Box} className="logo-img"/>
                 Jakku
               </NavLink>

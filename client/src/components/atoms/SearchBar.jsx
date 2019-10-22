@@ -1,5 +1,20 @@
 import React, { Component } from 'react';
 import { TextInput } from "react-materialize";
+// const tags = [
+//   { name: 'Cocina' },
+//   { name: 'Salón' },
+//   { name: 'Baño' },
+//   { name: 'Deportes' },
+//   { name: 'Dormitorio' },
+//   { name: 'Estudio' },
+//   { name: 'Niños' },
+//   { name: 'Imagen y sonido' }
+// ];
+
+// filterTag= (tag) => {
+
+// }
+
 
 export default class SearchBar extends Component {
   render() {
@@ -17,18 +32,7 @@ export default class SearchBar extends Component {
             />
           </div>
         </form>
-        {/* <label htmlFor="search">Search</label> */}
-
-        {/* <label>
-          <input
-            onChange={e => this.props.updateInStock(e.target.checked)}
-            type="checkbox"
-            name="in-stock"
-            id="in-stock"
-          />
-          <span>Only show products in stock</span>
-        </label> */}
-        {/* <label htmlFor="in-stock">Only show products in stock</label> */}
+        {/* <div onClick={this.filterTag(cocina)}>cocina</div> */}
       </div>
     );
   }
