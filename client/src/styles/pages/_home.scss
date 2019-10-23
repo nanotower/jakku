@@ -32,10 +32,20 @@
     margin: 0 auto;
     padding: 70px 0px;
     height: 333px;
+    
+    p{
+      margin: 20px 0 0 0;
+    }
+    h3{
+      margin: 0;
+    }
+  }
+  .mudoNext-container {
+   
     display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: flex-start;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+    align-items: center;
     p{
       margin: 5px 0 0 0;
     }
@@ -109,6 +119,9 @@ a {
   margin: 0;
   background-color: #F8E5E5;
   // background: linear-gradient(to top, #ffffff 0%,#f8e5e5 59%);
+}
+.sofa-icon {
+  width: 150px;
 }
 .row .col {
 

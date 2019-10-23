@@ -122,13 +122,17 @@ class Home extends Component {
           </Tab>
           <Tab title="Me acabo de mudar" active>
             <div className="mudare-container">
-          <div className="mudo-container">
+          <div className="mudo-container mudoNext-container">
+            <div className="section-title">
             <h3>
               ¿Te faltan cosas en tu nueva casa?
             </h3>
             <p>
               Búscalo. Seguro que alguien se está mudando y le sobra.
             </p>
+            </div>
+            <img className="sofa-icon" src='sofa-icon.svg' alt="sofa icon"></img>
+         
             </div>
            
 
