@@ -75,7 +75,7 @@ class ShowProduct extends Component {
     if(this.props.product) {
       return (
      
-        <div className="display-product">
+        <div className="display-product slide-in-bck-center">
         <a className="back-btn"><i class="medium material-icons" onClick={this.goBack}>arrow_back</i></a>
         <h1 className="title">Contenido de la caja</h1>
         <div className="container-product-display">
