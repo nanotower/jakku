@@ -80,7 +80,7 @@ class PaypalButton extends React.Component {
           onSuccess(payment);
         });
     return (
-      <div>
+      <div className="paypal-btn">
         {showButton && <paypal.Button.react
           env={env}
           client={client}

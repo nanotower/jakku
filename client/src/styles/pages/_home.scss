@@ -114,13 +114,13 @@ a {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  height: 500px;
-  padding: 0 0 20px 0;
+  height: 517px;
+  padding: 0 0 30px 0;
   margin: 0;
   background-color: #F8E5E5;
   // background: linear-gradient(to top, #ffffff 0%,#f8e5e5 59%);
   h6{
-    padding: 20px 0;
+    padding: 25px 0;
   }
 }
 .sofa-icon {
@@ -164,6 +164,10 @@ col {
 
 }
 @include desktop {
+  .section-title{
+    padding-top: 30px;
+    font-size: 1.4rem;
+  }
   .title-container{
     height: 490px;
     h1{
@@ -186,7 +190,7 @@ col {
   }
   .titles-container{
     line-height: 1rem;
-    background-color: blueviolet;
+    
   }
 
 }

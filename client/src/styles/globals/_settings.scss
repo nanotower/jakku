@@ -31,9 +31,22 @@ a {
 }
 .back-btn{
   padding-top:10px;
-  i{
+  position: absolute;
+    top: 12px;
+    left: 85px;
+  
+  .material-icons{
     margin-top:10px;
-
+    color: #C39EA0;
+    transition: color .3s ease;
   
   }
+  .material-icons:hover{
+    color:black;
+    
+  }
 }
+
+
+
+
