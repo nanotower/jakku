@@ -41,6 +41,7 @@ export default class SearchBar extends Component {
             >
                </TextInput> */}
                <Autocomplete 
+          
           onChange={e => this.props.updateSearch(e.target.value)}
           type="text"
           name="search"
@@ -50,7 +51,7 @@ export default class SearchBar extends Component {
           options={{data: searchObj}}
           placeholder="Busca lo que necesites"
           icon={<Icon>search</Icon>}/>
-        
+          
           </div>
         </form>
         {/* <div onClick={this.filterTag(cocina)}>cocina</div> */}

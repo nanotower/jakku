@@ -2,15 +2,17 @@
   height:90%;
   max-width: 70%;
   
-  .modal{
-    height:80%
-  }
-  .modal-fixed-footer{
-    height:80%;
-  }
+  
+}
+
+.modal-fixed-footer{
+  height:0;
 }
 
 .modal-content {
+  p{
+    line-height: 0;
+  }
   line-height: 1rem;
   .modal{
     max-height:80%;
@@ -20,16 +22,28 @@
   h4 {
     text-align: center;
     font-size: 1.5rem;
+    font-weight: bold;
+  }
+  .col{
+    margin: 5px 0;
   }
   .auth-container {
-    width: 40vw;
-    margin: 20px auto;
-  
-    
+    max-width: 33vw;
+    margin: 40px auto;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;   
+    form{
+      display: flex;
+    justify-content: flex-start;
+    flex-direction: column;  
+
+    }
   }
   .google-auth {
     width:100%;
     text-decoration: none;
+    margin: 12px 0;
   }
   a {
     color: white;
@@ -40,18 +54,29 @@
   .btn, .google-auth{
     width: 200px;
     height: 35px;
-    margin: 0 auto;
-    
+
+    align-self: center;
 
   }
   .btn-large {
     line-height: 0;
 
   }
+  .modal-footer{
+    display: none;
+  }
+ 
+ 
 
 
 
  
+}
+@include desktop {
+  .modal{
+    max-height:75%;
+    width: 45%;
+  }
 }
 
 

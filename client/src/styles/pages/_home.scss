@@ -1,7 +1,7 @@
 .home {
   // margin-bottom: 50px;
   .title-container {
-    height: 500px;
+    height: 450px;
   }
   h1 {
     font-size: 3rem;
@@ -31,7 +31,7 @@
     width: 70vw;
     margin: 0 auto;
     padding: 70px 0px;
-    height: 333px;
+    height: 388px;
     
     p{
       margin: 20px 0 0 0;
@@ -43,7 +43,7 @@
   .mudoNext-container {
    
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     flex-direction: row-reverse;
     align-items: center;
     p{
@@ -115,10 +115,13 @@ a {
   align-items: center;
   flex-direction: column;
   height: 500px;
-  padding: 0;
+  padding: 0 0 20px 0;
   margin: 0;
   background-color: #F8E5E5;
   // background: linear-gradient(to top, #ffffff 0%,#f8e5e5 59%);
+  h6{
+    padding: 20px 0;
+  }
 }
 .sofa-icon {
   width: 150px;
@@ -131,7 +134,13 @@ a {
 .input-field {
   padding:0;
 }
-
+.search-cards{
+  
+  h6{
+    text-align: center;
+    margin-top: 30px;
+  }
+}
 col {
   width:600px;
 }
@@ -156,7 +165,7 @@ col {
 }
 @include desktop {
   .title-container{
-    height: 560px;
+    height: 490px;
     h1{
       padding-top:70px;
       font-size: 4rem;
@@ -168,7 +177,7 @@ col {
     img {
       position: absolute;
       margin-left: 55vw;
-      top: 230px;
+      top: 188px;
       width: 400px;
       height: 400px;
       z-index: 0;

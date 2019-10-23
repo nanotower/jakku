@@ -46,13 +46,17 @@ export default class AllProductsAndSearch extends Component {
                   mapSize={this.props.mapSize}
                 ></Bidmapcontainer>
                 </div>
+                <div className="search-cards">
+                <h6>Busca entre todos las cajas disponibles</h6>
                 <SearchBar
                   products={this.state.searchProducts}
                   updateSearch={searchText => this.makeSearch(searchText)}
                   // updateInStock={stockCheckbox => this.changeStock(stockCheckbox)}
                 />
+                 </div>
                  <div className="card-container">
                 <AllProducts products={this.state.searchProducts}></AllProducts>
+                
                  </div>
               </div>
     )

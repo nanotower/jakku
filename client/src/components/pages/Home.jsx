@@ -139,7 +139,7 @@ class Home extends Component {
             
             {this.state.products && this.state.bids && this.state.centerMap ? (
               <React.Fragment>
-              
+             
                 <AllProductsAndSearch
                   bids={this.state.bids}
                   centerMap={this.props.centerMap}

@@ -89,24 +89,7 @@ class CreateProduct extends Component {
               <input type="file" onChange={e => this.handleChange(e)} /> <br />
               <button type="submit">Guardar foto</button>
             </form>
-  
-           
-            {/* <h2>Foto 2</h2>
-   */}
-            {/* <form onSubmit={e => this.handleSubmit(e, "imgPath2")}>
-              <input type="file" onChange={e => this.handleChange(e)} /> <br />
-              <button type="submit">Guardar foto</button>
-            </form>
-  
-            <img src={this.state.imgPath2} alt="product picture" />
-            <h2>Foto 3</h2>
-  
-            <form onSubmit={e => this.handleSubmit(e, "imgPath3")}>
-              <input type="file" onChange={e => this.handleChange(e)} /> <br />
-              <button type="submit">Guardar foto</button>
-            </form> */}
-{/*   
-            <img src={this.state.imgPath3} alt="product picture" /> */}
+ 
           </div>
           <form>
             <label htmlFor="name">Nombre</label>

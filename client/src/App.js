@@ -399,6 +399,25 @@ export default class App extends Component {
               );
             }}
           />
+             <Route
+            path="/product/:id"
+            render={props => {
+              return (
+                <div className="page page-product-id">
+                  <ShowProduct
+                    productFromApp={() =>
+                      this.getProduct(props.match.params.id)
+                    }
+                    product={this.state.product}
+                    fromApp={() => this.fetchUser()}
+                    userId={this.state.loggedInUser._id}
+                    buyFromApp={id => this.buyProduct(id)}
+                    centerMap={this.state.position}
+                  ></ShowProduct>
+                </div>
+              );  
+            }}
+          />
         </Switch>
         </div>
         {/* <FooterBar></FooterBar> */}

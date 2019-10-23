@@ -1,9 +1,11 @@
 .page-create-product{
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  padding: 75px;
+  padding: 40px;
   background: linear-gradient(to top, #ffffff 0%,#f8e5e5 59%);
+  position: absolute;
   .container-create-product{
     display: flex;
     flex-direction: column;
