@@ -55,7 +55,6 @@ class ShowProduct extends Component {
   };
 
   render() {
-    console.log(process.env);
     const onSuccess = payment => {
       this.props
         .buyFromApp(this.props.product._id)

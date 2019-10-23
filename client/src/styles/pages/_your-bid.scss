@@ -1,5 +1,13 @@
 .your-bid-container{
   background: linear-gradient(to top, #ffffff 0%,#f8e5e5 59%);
+  position: relative;
+  padding-top: 25px;
+  .content{
+    display:flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-direction: row;
+  }
   .top-box{
     width:80vw;
     margin: 0 auto;
@@ -10,7 +18,8 @@
     h1{
       font-size: 2rem;
       font-weight: bold;
-      
+      margin:0;
+      text-align: center;
     }
     span{
       font-weight: 600;
@@ -29,5 +38,14 @@
   .btn-del-row{
     position: absolute;
     right: 50px;
+  }
+  @include desktop {
+    .collapsible-container{
+      width: 100%;
+      .collapsible{
+        width: 50vw;
+        margin:0 auto;
+      }
+    }
   }
 }

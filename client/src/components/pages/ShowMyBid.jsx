@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
-import Bidmapcontainer from "../molecules/Productmapcontainer";
+import Bidmapcontainer from "../molecules/Bidmapcontainer";
 import { Row, Card, CardTitle, Col, Preloader } from "react-materialize";
 import AllProducts from "../organisms/AllProducts";
 import ButtonAdd from "../atoms/ButtonAdd";
@@ -77,13 +77,16 @@ class ShowMyBid extends Component {
       if (this.state.user.products) {
         return (
           <div className="your-bid-container">
-            <div className="top-box">
-              <a className="back-btn">
+            <a className="back-btn">
                 <i class="medium material-icons" onClick={this.goBack}>
                   arrow_back
                 </i>
               </a>
-              <h1>PANEL DE CONTROL DE TU MUDANZA</h1>
+            <h1>Panel de control de tu mudanza</h1>
+            <div className="content">
+            <div className="top-box">
+              
+              
               <p>
                 Recogerán las cosas el día <span>{this.transformDate()}</span>{" "}
                 entre las
@@ -91,17 +94,34 @@ class ShowMyBid extends Component {
                 <span>{this.props.user.bid.to}</span>
               </p>
 
-              <ButtonAdd
+              <Bidmapcontainer
+                  title={"Localización de la subasta"}
+                  bids={[this.props.user.bid]}
+                  centerBid={this.props.centerBid}
+                  zoomMap={18}
+                  mapSize={this.props.mapSize}
+                  centerMap={{
+                    lat: this.props.user.bid.location.coordinates[1],
+                    lng: this.props.user.bid.location.coordinates[0]
+                  }}
+                  mapSize={[30,300]}
+                ></Bidmapcontainer>
+                            
+            </div>
+            <div className="box-container"> 
+            <h2>TUS CAJAS</h2>
+            <ButtonAdd
                 product={true}
                 passText="Ya no vendo esta caja"
               ></ButtonAdd>
-              <h2>TUS CAJAS</h2>
-            </div>
             <CollapsibleProducs
               products={this.state.products}
               user={this.state.user}
               deleteFromShow={id => this.deleteProduct(id)}
             ></CollapsibleProducs>
+
+            </div>
+            </div>
           </div>
         );
       } else {

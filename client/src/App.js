@@ -242,6 +242,7 @@ export default class App extends Component {
                     fromApp={() => this.fetchUser()}
                     user={this.state.loggedInUser}
                     products={this.state.loggedInUser.products}
+                    centerMap={this.state.position}
                   ></ShowMyBid>
                 </div>
               );
