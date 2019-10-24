@@ -8,9 +8,9 @@ export default class DelModalWarning extends Component {
         <Modal
           header={this.props.passText}
           trigger={
-            <a class="btn-floating btn-large waves-effect waves-light black">
-              <i class="material-icons black">cancel</i>
-            </a>
+     
+              <i class="material-icons">cancel</i>
+          
           }
      
         >

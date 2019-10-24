@@ -27,7 +27,8 @@ export default class CardMap extends Component {
       <div className="card-map-container">
        
             <Card
-              className="blue-grey darken-1"
+              // className="blue-grey darken-1"
+              className="card-inside-map"
               textClassName="white-text"
               title=""
               actions={[<NavLink to={`/bid/${this.props.bid._id}`}>Ir a la Mudanza</NavLink>]}

@@ -65,4 +65,18 @@ a {
     color: black;
   }
 }
+.btn-del-row{
+  position: absolute;
+  color: #C39EA0;
+  right: 11px;
+  top: 31px;
+  transition: color .3s ease;
+}
+.btn-del-row:hover{
+  
+ color: black;
+ 
+}
+
+
 
