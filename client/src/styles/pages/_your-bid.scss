@@ -1,18 +1,54 @@
 .your-bid-container{
   background: linear-gradient(to top, #ffffff 0%,#f8e5e5 59%);
+
   position: relative;
   padding-top: 25px;
+
+  h1{
+    font-size: 1.8rem;
+    font-weight: bold;
+    line-height: 1.8rem;
+    margin: 20px 0 20px 0;
+    text-align: center;
+  }
+  h4{
+    font-size: 1.4rem;
+    font-weight: bold;
+  }
+  
   .content{
     display:flex;
     justify-content: space-between;
     align-items: flex-start;
     flex-direction: row;
+    padding-top: 30px;
+  }
+  .info-container{
+    width: 50vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 632px;
+    flex-direction: column;
+    
   }
   .top-box{
-    width:80vw;
-    margin: 0 auto;
+    box-shadow: 0px 26px 32px -4px rgba(0,0,0,0.24);
+    border: 1px solid #dbcccc;
+    border-radius: 1%;
+    padding:5px;
+    width:70%;
+    height:100%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    .text-container{
+      line-height: 1rem;
+    }
     p{
-
+      font-size: 1rem;
       line-height: 1rem;
     }
     h1{
@@ -32,6 +68,23 @@
       font-weight: bold;
     }
   }
+  .box-container{
+    width: 50vw;
+    height: 632px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    .boxes{
+      width: 80%;
+    }
+  }
+  .box-title{
+
+    text-align: center;
+  }
+  .collapsible{
+    box-shadow: 0px 26px 32px -4px rgba(0,0,0,0.24);
+  }
   li {
     position: relative;
   }
@@ -43,7 +96,7 @@
     .collapsible-container{
       width: 100%;
       .collapsible{
-        width: 50vw;
+        width: 100%;
         margin:0 auto;
       }
     }

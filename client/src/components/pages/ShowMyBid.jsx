@@ -59,7 +59,7 @@ class ShowMyBid extends Component {
   goBack = () => {
     this.props.history.push("/");
   };
-  
+
   transformDate = () => {
     moment.lang("es");
     const dateTransformed = moment(this.props.user.bid.deadLine).format("LL");
@@ -78,49 +78,58 @@ class ShowMyBid extends Component {
         return (
           <div className="your-bid-container">
             <a className="back-btn">
-                <i class="medium material-icons" onClick={this.goBack}>
-                  arrow_back
-                </i>
-              </a>
+              <i class="medium material-icons" onClick={this.goBack}>
+                arrow_back
+              </i>
+            </a>
             <h1>Panel de control de tu mudanza</h1>
             <div className="content">
-            <div className="top-box">
-              
-              
-              <p>
-                Recogerán las cosas el día <span>{this.transformDate()}</span>{" "}
-                entre las
-                <span>{this.props.user.bid.from}</span> y las{" "}
-                <span>{this.props.user.bid.to}</span>
-              </p>
+              <div className="info-container">
+              <h4 className="text-title">Recogida</h4>
+                <div className="top-box">
+                  
+                  <div className="text-container">
+                    <p>
+                      Recogerán las cosas el día{" "}
+                      <span>{this.transformDate()}</span>{" "}
+                    </p>
+                    <p>
+                      entre las <span>{this.props.user.bid.from}</span> y las{" "}
+                      <span>{this.props.user.bid.to}</span>
+                    </p>
+                    <p>
+                      En <span>{this.props.user.bid.location.address}</span>
+                    </p>
+                  </div>
+                  <Bidmapcontainer
+                    title={"Localización de la subasta"}
+                    bids={[this.props.user.bid]}
+                    centerBid={this.props.centerBid}
+                    zoomMap={18}
+                    // mapSize={this.props.mapSize}
+                    centerMap={{
+                      lat: this.props.user.bid.location.coordinates[1],
+                      lng: this.props.user.bid.location.coordinates[0]
+                    }}
+                    mapSize={[30, 400]}
+                  ></Bidmapcontainer>
+                </div>
+              </div>
+              <div className="box-container">
+                <div className="boxes">
+                  <h4 className="box-title">Tus cajas</h4>
 
-              <Bidmapcontainer
-                  title={"Localización de la subasta"}
-                  bids={[this.props.user.bid]}
-                  centerBid={this.props.centerBid}
-                  zoomMap={18}
-                  mapSize={this.props.mapSize}
-                  centerMap={{
-                    lat: this.props.user.bid.location.coordinates[1],
-                    lng: this.props.user.bid.location.coordinates[0]
-                  }}
-                  mapSize={[30,300]}
-                ></Bidmapcontainer>
-                            
-            </div>
-            <div className="box-container"> 
-            <h2>TUS CAJAS</h2>
-            <ButtonAdd
-                product={true}
-                passText="Ya no vendo esta caja"
-              ></ButtonAdd>
-            <CollapsibleProducs
-              products={this.state.products}
-              user={this.state.user}
-              deleteFromShow={id => this.deleteProduct(id)}
-            ></CollapsibleProducs>
-
-            </div>
+                  <CollapsibleProducs
+                    products={this.state.products}
+                    user={this.state.user}
+                    deleteFromShow={id => this.deleteProduct(id)}
+                  ></CollapsibleProducs>
+                  <ButtonAdd
+                    product={true}
+                    passText="Ya no vendo esta caja"
+                  ></ButtonAdd>
+                </div>
+              </div>
             </div>
           </div>
         );

@@ -83,13 +83,15 @@ class CreateProduct extends Component {
           <div className="box-form">
           <div className="create-photo">
           <h2>Foto</h2>
+          <div className="photo-container">
           <img src={this.state.imgPath1} alt="product picture" />
+          </div>
           <div className="container-photo-input">
             
   
             <form onSubmit={e => this.handleSubmit(e, "imgPath1")}>
               <input className="load-image" type="file" onChange={e => this.handleChange(e)} /> <br />
-              <button type="submit">Guardar foto</button>
+              <button type="submit" className="save-photo">Guardar foto</button>
             </form>
             </div>
           </div>

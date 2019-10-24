@@ -29,24 +29,33 @@
       width:100%;
     }
     img{
-     
-      margin: 0  auto;
-     
-      max-width: 250px; 
+   
+      max-width: 331px;
+      max-height: 220px;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      
+ 
     }
     input{
-      font-size: 1.2rem;
+      font-size: 1rem;
       cursor: pointer;
 
     }
-    button, .btn-crear{
-      width: 150px;
-      background-color: #C39EA0;
+    .save-photo, .btn-crear{
       padding: 7px;
       font-size: 1rem;
       text-decoration: none;
-      color: black;
+      color: #C39EA0;
       cursor: pointer;
+      transition: color .3s ease;
+      background-color: transparent;
+  
+    }
+    .save-photo:hover, .btn-crear:hover{
+      background-color: transparent;
+      color: rgb(0, 0, 0);
     }
     .load-image{
       font-size: 1rem;
