@@ -137,7 +137,7 @@ class ShowProduct extends Component {
               Esta caja se recogerá el <span>{this.transformDate()}</span> de <span>
               {this.props.product.bid.from}</span> a <span>{this.props.product.bid.to}</span>
             </p>
-            <p>Localización: {this.props.product.bid.location.address}</p>
+            <p>Localización: <span>{this.props.product.bid.location.address}</span></p>
             </div>
             <Productmapcontainer
               products={[this.props.product]}

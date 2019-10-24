@@ -39,6 +39,7 @@ class ShowMyPurchases extends Component {
     this.props.history.push("/")
   }
 
+
   // componentDidUpdate(prevProps, prevState) {
   //   if (
   //     this.state.products !==
@@ -79,7 +80,7 @@ class ShowMyPurchases extends Component {
              <a className="back-btn"><i class="medium material-icons" onClick={this.goBack}>arrow_back</i></a>
             <h2>Tus cajas compradas</h2>
             <CollapsibleProducs 
-            products={this.props.products} user={this.props.user}
+            products={this.props.products} user={this.props.user} 
             // deleteFromShow={(id)=>this.deleteProduct(id)}
             ></CollapsibleProducs>
           </div>
