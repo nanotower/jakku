@@ -40,7 +40,7 @@ export default class LocationSearchInput extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="input-location-container">
         {/* xxxx{this.state.address}xxxx
         xxxx{this.state.lat}xxxx
         xxxx{this.state.lng}xxxx */}
@@ -55,7 +55,7 @@ export default class LocationSearchInput extends React.Component {
             getSuggestionItemProps,
             loading
           }) => (
-            <div>
+            <div className="input-location">
               <input
                 {...getInputProps({
                   placeholder: "Search Places ...",

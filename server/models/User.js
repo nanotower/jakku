@@ -13,7 +13,7 @@ const userSchema = new Schema({
   token: String,
   active: {
     type: Boolean,
-    default: false
+    default: true
   },
   googleID: {
     type: String

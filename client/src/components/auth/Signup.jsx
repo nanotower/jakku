@@ -30,15 +30,17 @@ export default class Signup extends Component {
         username: "",
         password: ""
       });
+      console.log("viuelta auth", response)
       this.props.getUser(response.user)
-      debugger
+      
     })
     .catch(error=> {
+      console.log("catch e", error)
       this.setState({
         username: username,
-        password: "",
+        password: password,
         error: true
-      })
+      });
     })
 
   }

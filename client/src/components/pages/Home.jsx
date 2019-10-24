@@ -115,9 +115,11 @@ class Home extends Component {
               </ul>
             </main>
             <div className="create-bid-container">
+              <div className="create-hover">
         <label className="label-crear">Crear mudanza</label>
         <ModalLoginFirst passText={"Tienes que identificarte para continuar"}></ModalLoginFirst>
         {/* <a class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a> */}
+        </div>
         </div>
           </Tab>
           <Tab title="Me acabo de mudar" active>
@@ -132,14 +134,10 @@ class Home extends Component {
             </p>
             </div>
             <img className="sofa-icon" src='sofa-icon.svg' alt="sofa icon"></img>
-         
             </div>
-           
-
-            
+                       
             {this.state.products && this.state.bids && this.state.centerMap ? (
-              <React.Fragment>
-             
+              <React.Fragment>        
                 <AllProductsAndSearch
                   bids={this.state.bids}
                   centerMap={this.props.centerMap}

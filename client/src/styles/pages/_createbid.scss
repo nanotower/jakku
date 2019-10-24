@@ -1,10 +1,38 @@
 .page-create-bid{
+  
+
+ .create-bid{
+   width: 100vw;
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  padding: 75px;
+  padding: 33px;
 
- 
+ }
+form {
+  display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    .send-form{
+      align-self: center;
+      color: #C39EA0; 
+      font-size: 1rem;
+      transition: color .3s ease;
+      margin-top:20px;
+    }
+    .send-form:hover{
+      color: black;
+    }
+    .input-location-container{
+      width: 100%;
+     
+    }
+}
+
+
+
   .create-bid-container{
     background-color: white;
     width: 70vw;
@@ -12,10 +40,10 @@
       font-size: 2.2rem;
       font-weight: bold;
     }
-    padding: 0px 80px;
+    padding: 0px 133px;
     padding-bottom: 50px;
     border: 1px solid #dbcccc;
-
+    box-shadow: 0px 26px 32px -4px rgba(0,0,0,0.24);
   }
   .created-bid-container{
     border: 1px solid #dbcccc;
@@ -25,13 +53,56 @@
       font-size: 2.2rem;
       font-weight: bold;
     }
-    padding: 0px 80px;
+    p{
+      font-size: 1.2rem;
+    line-height: 1.7rem;
+    }
+    padding: 0px 133px;
     padding-bottom: 50px;
     span{
       font-weight: bold;
     }
+    box-shadow: 0px 26px 32px -4px rgba(0,0,0,0.24);
+   
     
   }
+  .add-box{
+    align-self: center;
+    color: #C39EA0; 
+    font-size: 1rem;
+    transition: color .3s ease;
+    margin-top:20px;
+  }
+  .add-box:hover{
+    color: black;
+  }
+  .create-bid-active{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100vw;
+    padding-top:99px;
+    h1{
+      margin:0;
+      text-align: center;
+      font-size: 1.8rem;
+      font-weight: bold;
+    }
+    .create-bid-container{
+      width: 100vw;
+      background-color: transparent;;
+      padding: 0px;
+      padding-bottom: 50px;
+      border: none;
+      box-shadow: none;
+     
+    }
+  }
+
+
+
+
 
 background: linear-gradient(to top, #ffffff 0%,#f8e5e5 59%);
  
