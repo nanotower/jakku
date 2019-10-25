@@ -30,16 +30,20 @@ class HomeLogged extends Component {
           response.filter(product => product._id === id)
         )
       );
+      console.log("bids", bids)
       let bidsId = [];
       bids = bids.filter(bid => {
         if (bidsId.includes(bid._id)) {
+          console.log("se ripite", bid._id)
           return false;
         } else {
+          
+          console.log("no se ripite", bid._id)
           bidsId.push(bid._id);
           return true;
         }
       });
-      response.sort((a, b) => Math.random() - 0.5)
+      response.sort((a, b) => Math.random() - 0.5);
       this.setState({
         ...this.state,
         products: response,
@@ -50,73 +54,74 @@ class HomeLogged extends Component {
     });
   }
 
-
   render() {
     if (!this.props.user.bid) {
       return (
-        <div className="home">
-          <div>
-            <div className="title-container">
-              <h1>
-                Si te acabas de mudar o estás a punto de mudarte, podemos
-                ayudarte
-              </h1>
-              <img src="bkg-img.svg" alt="background image"></img>
-            </div>
-            <Tabs className="tab-demo z-depth-1 tabs-fixed-width tab-container">
-              <Tab title="Me voy a mudar" className="me-mudo">
-                <div className="mudo-container-login">
-               
-                    <ButtonAdd bid={true}></ButtonAdd>
-                
-                </div>
-              </Tab>
-
-              <Tab title="Me acabo de mudar" active>
-                {this.state.products &&
-                this.state.bids &&
-                this.state.centerMap ? (
-             
-                    <AllProductsAndSearch
-                      bids={this.state.bids}
-                      centerMap={this.props.centerMap}
-                      products={this.props.products}
-                    ></AllProductsAndSearch>
-        
-                ) : (
-                  <PreloaderSpinner></PreloaderSpinner>
-                )}
-              </Tab>
-            </Tabs>
+        <div className="home home-logged">
+          <div className="title-container">
+            <h1>
+              Si te acabas de mudar<br></br>o estás a punto de mudarte,<br></br>
+              podemos ayudarte
+            </h1>
+            <img src="bkg-img.svg" alt="background image"></img>
           </div>
+          <Tabs className="tab-demo z-depth-1 tabs-fixed-width tab-container">
+            <Tab title="Me voy a mudar" className="me-mudo">
+              <div className="mudo-container-login">
+                <h3>Crea tu mudanza para poder poner cajas a la venta</h3>
+                <ButtonAdd bid={true}></ButtonAdd>
+              </div>
+            </Tab>
+
+            <Tab title="Me acabo de mudar" active>
+              {this.state.products &&
+              this.state.bids &&
+              this.state.centerMap ? (
+                <AllProductsAndSearch
+                  bids={this.state.bids}
+                  centerMap={this.props.centerMap}
+                  products={this.props.products}
+                ></AllProductsAndSearch>
+              ) : (
+                <PreloaderSpinner></PreloaderSpinner>
+              )}
+            </Tab>
+          </Tabs>
         </div>
       );
     } else {
       return (
-        <div className="home">
+        <div className="home home-logged">
           <div className="title-container">
-            <h1>
-              Crea nuevas cajas o busca en otras mudanzas
-            </h1>
+            <h1>Hacemos tu mudanza <br></br>más fácil</h1>
             <img src="bkg-img.svg" alt="background image"></img>
           </div>
 
-          <ButtonAdd product={true}></ButtonAdd>
+          
 
+          <Tabs className="tab-demo z-depth-1 tabs-fixed-width tab-container">
+            <Tab title="Me voy a mudar" className="me-mudo">
+              <div className="mudo-container-login">
+                <h3>Tienes una mudanza creada. Puedes añadir cajas a la venta.</h3>
+                <ButtonAdd product={true}></ButtonAdd>
+              </div>
+            </Tab>
 
-
-          {this.state.loaded && this.state.bids && this.state.products && this.state.centerMap ? (
-         
-              <AllProductsAndSearch
-                bids={this.state.bids}
-                centerMap={this.state.centerMap}
-                products={this.state.products}
-              ></AllProductsAndSearch>
-       
-          ) : (
-  
-            <PreloaderSpinner></PreloaderSpinner>
-          )}
+            <Tab title="Me acabo de mudar" active>
+              {this.state.loaded &&
+              this.state.bids &&
+              this.state.products &&
+              this.state.centerMap ? (
+                <AllProductsAndSearch
+                  bids={this.state.bids}
+                  centerMap={this.state.centerMap}
+                  products={this.state.products}
+                ></AllProductsAndSearch>
+              ) : (
+                <PreloaderSpinner></PreloaderSpinner>
+              )}
+            </Tab>
+          </Tabs>
         </div>
       );
     }

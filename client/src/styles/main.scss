@@ -3,7 +3,7 @@
 @import 'globals/fonts';
 @import 'globals/font-size';
 @import 'globals/preloader';
-// @import 'globals/media-queries';
+@import 'globals/media-queries';
 @import 'globals/settings';
 @import 'globals/variables';
 
@@ -20,6 +20,7 @@
 @import 'molecules/footer';
 @import 'molecules/card';
 @import 'molecules/cardall';
+@import 'molecules/cardmap';
 // @import 'molecules/home/header';
 // @import 'molecules/home/section';
 // @import 'molecules/projects/card';
@@ -42,4 +43,5 @@
 @import 'pages/pages';
 @import 'pages/your-bid';
 @import 'pages/signup';
-@import 'pages/showpurchases'
+@import 'pages/showpurchases';
+@import 'pages/displaybid';

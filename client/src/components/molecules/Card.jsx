@@ -15,14 +15,17 @@ export default class Card extends Component {
                 
                   <div class="card-image" >
                   <img src={this.props.product.imgPath1}/>
-                <span class="card-title">{this.props.product.name}</span> 
+                  <div className="description-container">
+                  <p className="description-show">{this.props.product.description}</p>
+                  </div>
+           
                 </div> 
                  : 
                   <div class="card-image">
-                  <div className="selled-badge"><i class="medium material-icons">done</i></div>
+                 <i class="medium material-icons">done</i>
                   <p className="vendido">Vendido</p>
                   <img className="selled-img" src={this.props.product.imgPath1}/>
-                <span class="card-title">{this.props.product.name}</span> 
+                
                 </div>
               
               }
@@ -30,12 +33,16 @@ export default class Card extends Component {
     
               
               <div class="card-content">
+                <div className="price-container">
                 <p className="card-price">{this.props.product.price} €</p>
+                </div>
+                <span class="card-title">{this.props.product.name}</span>
+                
                 {/* <p>{this.props.product.description}</p> */}
               </div>
               </NavLink>
               <div class="card-action">
-                <a href={`/bid/${this.props.product.bid._id}`} onClick={()=>console.log(this.props.product)}>Otras cajas en la misma mudanza</a>
+                <a className="link-btn" href={`/bid/${this.props.product.bid._id}`} onClick={()=>console.log(this.props.product)}>Ir a su mudanza</a>
               </div>
             </div>
           // </div>

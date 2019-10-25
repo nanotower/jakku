@@ -2,8 +2,6 @@ import React from "react";
 import { Marker, InfoWindow } from "react-google-maps";
 import CardMap from "../organisms/CardMap";
 
-
-
 import Box from "../../img/boxMapIcon.png"
 
 export default class Bidmarker extends React.Component {

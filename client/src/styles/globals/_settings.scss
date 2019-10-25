@@ -31,9 +31,52 @@ a {
 }
 .back-btn{
   padding-top:10px;
-  i{
+  position: absolute;
+    top: 12px;
+    left: 85px;
+  
+  .material-icons{
     margin-top:10px;
-
+    color: #C39EA0;
+    transition: color .3s ease;
   
   }
+  .material-icons:hover{
+    color:black;
+    
+  }
 }
+
+
+
+.create-hover{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  .label-crear {
+    font-size: 1.2rem;
+    color: #C39EA0;
+    transition: color .3s ease;
+  }
+
+}
+.create-hover:hover{
+  .label-crear {
+    color: black;
+  }
+}
+.btn-del-row{
+  position: absolute;
+  color: #C39EA0;
+  right: 11px;
+  top: 31px;
+  transition: color .3s ease;
+}
+.btn-del-row:hover{
+  
+ color: black;
+ 
+}
+
+
+

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { NavLink } from "react-router-dom";
-
+import Bidmapcontainer from "../molecules/Bidmapcontainer";
 import 'date-fns';
 import DateFnsUtils from '@date-io/date-fns';
 import TextField from '@material-ui/core/TextField';
@@ -95,6 +95,7 @@ class CreateBid extends Component {
 
       if(!this.state.sent) {
         return (
+          <div className="create-bid">
           <div className="create-bid-container">
             <h1>CREA TU MUDANZA</h1>
           <form>
@@ -107,20 +108,36 @@ class CreateBid extends Component {
             <label htmlFor="location">Lugar de recogida</label>
             <LocationSearchInput changeState={newValue => this.changeState(newValue)}
             value={this.state.value} name="location" placeholder="Calle o barrio" onChange={e => this.updateFormData(e, "location")}></LocationSearchInput>
-            <button  onClick={e => this.sendState(e)}>Listo para añadir cajas</button>
+            <button  className="send-form" onClick={e => this.sendState(e)}>Listo para añadir cajas</button>
           </form>
+          </div>
           </div>
         )
       }
       else {
+        console.log(this.state)
         return (
+          <div className="create-bid">
           <div className="created-bid-container">
             <h1>Tu mudanza</h1>
-             <p>Finaliza el día {this.transformDate()}</p>
+             <p>Finaliza el <span>{this.transformDate()}</span></p>
           <p>Los compradores irán a recogerlo de <span>{this.state.from}</span> a <span>{this.state.to}</span></p>
           <p>en <span>{this.state.location.address}</span></p>
+          {/* <Bidmapcontainer
+                  title={""}
+                  bids={[this.state]}
+                  centerBid={this.props.centerBid}
+                  zoomMap={18}
+                  mapSize={this.props.mapSize}
+                  centerMap={{
+                    lat: this.state.location.lat,
+                    lng: this.state.location.lng
+                  }}
+                  mapSize={[30,300]}
+                ></Bidmapcontainer> */}
           <p>Ya puedes añadir cajas a tu mudanza</p>
-          <NavLink to={`/create-product`}>Añadir caja</NavLink>
+          <NavLink to={`/create-product`} className="add-box">Añadir caja</NavLink>
+          </div>  
           </div>  
         )
       }

@@ -242,6 +242,7 @@ export default class App extends Component {
                     fromApp={() => this.fetchUser()}
                     user={this.state.loggedInUser}
                     products={this.state.loggedInUser.products}
+                    centerMap={this.state.position}
                   ></ShowMyBid>
                 </div>
               );
@@ -397,6 +398,25 @@ export default class App extends Component {
                   <Button variant="contained" color="primary"></Button>
                 </div>
               );
+            }}
+          />
+             <Route
+            path="/product/:id"
+            render={props => {
+              return (
+                <div className="page page-product-id">
+                  <ShowProduct
+                    productFromApp={() =>
+                      this.getProduct(props.match.params.id)
+                    }
+                    product={this.state.product}
+                    fromApp={() => this.fetchUser()}
+                    userId={this.state.loggedInUser._id}
+                    buyFromApp={id => this.buyProduct(id)}
+                    centerMap={this.state.position}
+                  ></ShowProduct>
+                </div>
+              );  
             }}
           />
         </Switch>

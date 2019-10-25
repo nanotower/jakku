@@ -1,9 +1,77 @@
 .purchases-container{
   background: linear-gradient(to top, #ffffff 0%,#f8e5e5 59%);
   height:80vh;
+  position: relative;
   h2{
     font-size: 2rem;
     font-weight: bold;
-    margin-left: 40px;
+    margin:0;
+    text-align: center;
+    padding-top: 42px;
   }
+  .collapsible-container{
+    width:50vw;
+    margin:0 auto;
+    margin-top:60px;
+    box-shadow: 0px 25px 69px -13px rgba(0,0,0,0.23);
+    .collapsible-header{
+      height:125px;
+      width: 100%;
+    }
+    .inside-box-container{
+      
+      display: flex;
+      flex-direction: column;
+     
+    }
+    .inside-box-purchased{
+      width:100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      .product-title-inside{
+        font-size: 1.2rem;
+        font-weight: bold;
+        margin: 0;
+      }
+      p{
+        font-size: 1rem;
+      }
+    }
+    .info-purchased-container{
+      display: flex;
+      margin:0;
+    }
+  }
+  .collapsible-body{
+    width:100%;
+    
+    
+  }
+  .collapse-open{
+    width:90%;
+    height:400px;
+  
+  }
+  .product-image-uncol{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    
+  }
+  .image-uncol-container{
+    width: 100%;
+    height: 400px;
+  }
+  .map-uncol-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-top: 1px solid #C39EA0;
+  }
+  .map-location-title{
+    font-size: 1rem;
+  }
+ 
 }

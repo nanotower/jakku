@@ -1,0 +1,19 @@
+.card-inside-map{
+  background-color: #FA255E;
+  width: 100%;
+  box-shadow:0px 0px 9px 0px rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+  .white-text{
+    width: 100%;
+    height: 100px;
+  }
+  .card-action{
+    background-color: #F8E5E5;
+    a{
+     
+
+    }
+  }
+}
+.card .card-action a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-floating){
+  color: #C39EA0;
+}

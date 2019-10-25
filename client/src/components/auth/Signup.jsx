@@ -30,22 +30,24 @@ export default class Signup extends Component {
         username: "",
         password: ""
       });
+      console.log("viuelta auth", response)
       this.props.getUser(response.user)
-      debugger
+      
     })
     .catch(error=> {
+      console.log("catch e", error)
       this.setState({
         username: username,
-        password: "",
+        password: password,
         error: true
-      })
+      });
     })
 
   }
 
   render() {
     return (
-      <div className="sign-container">
+      <div className="sign-container .fade-in">
              <p>Signup</p>
         <form onSubmit={this.sendSignup} >
         <TextInput label="Nombre" value={this.state.username} type="text" name="username" onChange={(e)=> this.changeState(e)}></TextInput>

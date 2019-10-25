@@ -34,20 +34,29 @@ export default class AllProductsAndSearch extends Component {
   render() {
     return (
       <div className="container-all-search">
-                <SearchBar
-                  updateSearch={searchText => this.makeSearch(searchText)}
-                  // updateInStock={stockCheckbox => this.changeStock(stockCheckbox)}
-                />
+                <div className="all-map-container">
                 {this.props.title? <p>{this.props.title}</p> 
-                : <h6>Selecciona un marcador del mapa para ver mudanzas disponibles</h6>}
+                
+                : <h6 className="section-title">Selecciona un marcador del mapa para ver mudanzas disponibles</h6>}
                 <Bidmapcontainer
                   bids={this.props.bids}
                   centerMap={this.props.centerMap}
                   centerBid={this.props.centerBid}
                   zoomMap={this.props.zoomMap}
+                  mapSize={this.props.mapSize}
                 ></Bidmapcontainer>
+                </div>
+                <div className="search-cards">
+                <h6 className="section-title">Busca entre todos las cajas disponibles</h6>
+                <SearchBar
+                  products={this.state.searchProducts}
+                  updateSearch={searchText => this.makeSearch(searchText)}
+                  // updateInStock={stockCheckbox => this.changeStock(stockCheckbox)}
+                />
+                 </div>
                  <div className="card-container">
                 <AllProducts products={this.state.searchProducts}></AllProducts>
+                
                  </div>
               </div>
     )

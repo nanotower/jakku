@@ -11,11 +11,11 @@ const login = (req, user) => {
   return new Promise((resolve,reject) => {
     req.login(user, err => {
       console.log('req.login ')
-      console.log(user)
+      console.log("user login", user)
 
       
       if(err) {
-        reject(new Error('Something went wrong'))
+        reject(new Error('Something went wrong.'))
       }else{
         resolve(user);
       }
@@ -58,9 +58,9 @@ router.post("/signup", (req, res, next) => {
   .then( savedUser => {
     return login(req, savedUser)
   })
-  .then(user => {
-    res.json({status: 'signup & login successfully', user});
-  })
+  .then(user => 
+    res.json({status: 'signup & login successfully', user})
+  )
   .catch(err => next(err))
 });
 

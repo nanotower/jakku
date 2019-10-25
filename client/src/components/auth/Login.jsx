@@ -44,8 +44,8 @@ export default class Login extends Component {
       <div className="login-container">
         <p>Login</p>
         <form onSubmit={this.sendLogin}>
-        <TextInput value={this.state.username} placeholder="User name"  name="username" onChange={e=>this.changeState(e)} type="text"></TextInput>
-        <TextInput value={this.state.password} placeholder="Password"  name="password" onChange={e=>this.changeState(e)} type="password"></TextInput>
+        <TextInput label="Nombre" value={this.state.username}   name="username" onChange={e=>this.changeState(e)} type="text"></TextInput>
+        <TextInput label="Contraseña" value={this.state.password} name="password" onChange={e=>this.changeState(e)} type="password"></TextInput>
         <Button type="submit" value="Log in">Login</Button>
         </form>
         <p>{this.state.error? "Login failed. Please, try again o signup." : ""}</p>
