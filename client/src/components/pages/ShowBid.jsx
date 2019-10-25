@@ -45,7 +45,7 @@ class ShowBid extends Component {
     if (this.state.bid && this.state.centerMap) {
       return (
         <div className="render-bid-container">
-          <h2>Ficha de subasta</h2>
+          <h2>Ficha de mudanza</h2>
           <div className="upper-section">
           <a className="back-btn">
                 <i class="medium material-icons" onClick={this.goBack}>
