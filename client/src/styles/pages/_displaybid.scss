@@ -1,0 +1,27 @@
+.page-bid-id{
+  background: linear-gradient(to top, #ffffff 0%,#f8e5e5 59%);
+  position: relative;
+  .render-bid-container{
+    padding-top: 50px;
+  }
+  p{
+    margin:0;
+  }
+  .upper-section{
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+  }
+  .bid-info-container{
+    width: 80vw;
+    height: 450px;
+    background-color: aqua;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:10px;
+  }
+
+}

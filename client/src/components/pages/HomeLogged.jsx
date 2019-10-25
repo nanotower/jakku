@@ -30,11 +30,15 @@ class HomeLogged extends Component {
           response.filter(product => product._id === id)
         )
       );
+      console.log("bids", bids)
       let bidsId = [];
       bids = bids.filter(bid => {
         if (bidsId.includes(bid._id)) {
+          console.log("se ripite", bid._id)
           return false;
         } else {
+          
+          console.log("no se ripite", bid._id)
           bidsId.push(bid._id);
           return true;
         }
