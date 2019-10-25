@@ -45,28 +45,40 @@ class ShowBid extends Component {
     if (this.state.bid && this.state.centerMap) {
       return (
         <div className="render-bid-container">
+          <h2>Ficha de subasta</h2>
           <div className="upper-section">
-          <div className="bid-info-container">
-            <div className="bid-text-container">
-              <a className="back-btn">
+          <a className="back-btn">
                 <i class="medium material-icons" onClick={this.goBack}>
                   arrow_back
                 </i>
               </a>
-              <p>
-                Recogerán las cosas el día {this.transformDate()} entre las{" "}
-                {this.state.bid.from} y las {this.state.bid.to}
-              </p>
-            </div>
-            
-            <Bidmapcontainer
+          <div className="bid-info-container">
+          <Bidmapcontainer
               zoomMap={17}
               title={"Localización de la subasta"}
               bids={[this.state.bid]}
               centerMap={this.state.centerMap}
               centerBid={this.state.centerBid}
-              mapSize={[60, 350]}
+              mapSize={[50, 358]}
             ></Bidmapcontainer>
+            <div className="bid-text-container">
+
+              <div className="deadline">
+              <p>
+                Se acaba el día <span>{this.transformDate()}</span> entre las
+                <span>{this.state.bid.from}</span> y las <span>{this.state.bid.to}</span>
+              </p>
+              </div>
+              <div className="profile-owner-container">
+              <div className="profile-image-container">
+              <img className="profile-image" src={this.state.bid.owner.imgPath}></img>
+              </div>
+              <p>{this.state.bid.owner.username}</p>
+
+              </div>
+            </div>
+            
+         
           </div>
           </div>
 

@@ -139,7 +139,7 @@ class Home extends Component {
             {this.state.products && this.state.bids && this.state.centerMap ? (
               <React.Fragment>        
                 <AllProductsAndSearch
-                zoomMap={16}
+                zoomMap={12}
                   bids={this.state.bids}
                   centerMap={this.props.centerMap}
                   products={this.props.products}
