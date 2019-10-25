@@ -102,17 +102,17 @@ router.get(
 
 
       // heroku URL
-      // successRedirect: "https://jakkuapp.herokuapp.com",
+      successRedirect: "https://jakkuapp.herokuapp.com",
 
       // Local URl dev
-      successRedirect: `${process.env.REACT_URL}`,
+      // successRedirect: `${process.env.REACT_URL}`,
 
 
        // heroku URL
-      // failureRedirect: "https://jakkuapp.herokuapp.com/auth/login"
+      failureRedirect: "https://jakkuapp.herokuapp.com/auth/login"
 
       // Local URl dev
-      failureRedirect: `${process.env.REACT_URL}/auth/login`
+      // failureRedirect: `${process.env.REACT_URL}/auth/login`
     })
 );
 
