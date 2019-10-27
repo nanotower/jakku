@@ -34,7 +34,7 @@ class Login extends Component {
       
       this.props.getUser(response);
       this.props.history.goBack();
-      this.props.history.push('/');
+
       
     })
     .catch(error => {

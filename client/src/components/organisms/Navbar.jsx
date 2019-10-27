@@ -77,7 +77,7 @@ class Navbar extends Component {
                       name: `${this.props.user.username}`
                     }}
                   />
-                  <SideNavItem href="#!icon" icon="account_circle">
+                  <SideNavItem icon="account_circle">
                     Tu perfil
                   </SideNavItem>
 
@@ -116,7 +116,7 @@ class Navbar extends Component {
               </ul>
               {/* <div className="acceder-hover"></div> */}
               <div className="side-trigger-container">
-                <a href="#" data-target="mobile-demo" class="sidenav-trigger">
+                <a data-target="mobile-demo" class="sidenav-trigger">
                   <i class="material-icons">menu</i>
                   <div className="acceder-container"><NavLink className="acceder" to={"/signup"} >Acceder</NavLink></div>
                 </a>

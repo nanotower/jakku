@@ -31,7 +31,7 @@ class Signup extends Component {
         password: ""
       });
       this.props.getUser(response.user);
-      this.props.history.push('/')
+      this.props.history.goBack();
     })
     .catch(error=> {
       console.log("catch e", error);
