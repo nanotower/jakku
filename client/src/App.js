@@ -75,16 +75,6 @@ export default class App extends Component {
       });
   };
   changeStateBid(newValue) {
-    // const { from, to, deadLine } = newValue;
-    // this.setState({
-    //   ...this.state,
-    //   bid: {
-    //     from: from,
-    //     to: to,
-    //     deadLine: deadLine
-    //   },
-    //   nobid: "xxxxxxxx"
-    // });
     this.fetchUser();
     console.log(newValue);
     console.log("bid actualizada", this.state);
@@ -362,7 +352,7 @@ export default class App extends Component {
             render={() => {
               return (
                 <div className="page page-singup">
-                <Auth></Auth>
+                <Auth getUser={this.getUser}></Auth>
                
                 </div>
               );

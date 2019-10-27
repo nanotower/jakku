@@ -3,7 +3,14 @@ import { Button } from "react-materialize";
 import Signup from "./Signup";
 import Login from "./Login";
 
+
+
+
+
 export default class Auth extends Component {
+  constructor(props){
+    super(props)
+  }
   render() {
     return (
       <div className="sign-backgnd">
@@ -18,7 +25,7 @@ export default class Auth extends Component {
           </a>
           </Button>
 
-          <Signup></Signup>
+          <Signup getUser={this.props.getUser}></Signup>
           <Login></Login>
         </div>
       </div>

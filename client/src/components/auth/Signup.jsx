@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import AuthService from "./Authservice";
 import { Button, TextInput } from "react-materialize";
+import { withRouter } from 'react-router-dom'
 
-export default class Signup extends Component {
+class Signup extends Component {
   constructor(props) {
-    super();
+    super(props);
     this.state= {
       username:"",
       password: ""
@@ -24,18 +25,16 @@ export default class Signup extends Component {
     const {username, password} = this.state;
 
     this.service.signup(username, password)
-    .then(response => {
-  
+    .then( response => {
       this.setState({
         username: "",
         password: ""
       });
-      console.log("viuelta auth", response)
-      this.props.getUser(response.user)
-      
+      this.props.getUser(response.user);
+      this.props.history.push('/')
     })
     .catch(error=> {
-      console.log("catch e", error)
+      console.log("catch e", error);
       this.setState({
         username: username,
         password: password,
@@ -57,16 +56,10 @@ export default class Signup extends Component {
           <Button type="submit" value="Sign up">Signup</Button>
         </form>
         <p>{this.state.error? "Something was wrong. Please, try again" : ""}</p>
-        
-        {/* <h1>Signup</h1>
-        <form onSubmit={this.sendSignup}>
-          <input placeholder="User Name" name="username" value={this.state.username} type="text" onChange={(e)=> this.changeState(e)}></input>
-          <input placeholder="Password" name="password" value={this.state.password} type="password" onChange={(e)=> this.changeState(e)}></input>
-          <input type="submit" value="Sign up"></input>
-        </form>
-        <h1>{this.state.error? "Something was wrong. Please, try again" : ""}</h1>
-         */}
       </div>
     )
   }
 }
+
+
+export default withRouter(Signup)
