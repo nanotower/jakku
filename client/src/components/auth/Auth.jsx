@@ -26,7 +26,7 @@ export default class Auth extends Component {
           </Button>
 
           <Signup getUser={this.props.getUser}></Signup>
-          <Login></Login>
+          <Login getUser={this.props.getUser}></Login>
         </div>
       </div>
 

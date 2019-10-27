@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import AuthService from "./Authservice";
 import { Button, TextInput } from "react-materialize";
+import { withRouter } from 'react-router-dom';
 
-export default class Login extends Component {
+class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -21,7 +22,7 @@ export default class Login extends Component {
   sendLogin = (event) => {
     event.preventDefault();
     const {username, password} = this.state;
-
+    debugger
     this.service.login(username, password)
     .then(response => {
       this.setState({
@@ -29,7 +30,9 @@ export default class Login extends Component {
         password : password,
         error : false
       });
-      this.props.userVerified(response)
+      
+      this.props.getUser(response);
+      this.props.history.push('/');
     })
     .catch(error => {
       this.setState({
@@ -53,3 +56,5 @@ export default class Login extends Component {
     )
   }
 }
+
+export default withRouter(Login)
