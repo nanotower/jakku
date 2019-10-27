@@ -22,6 +22,7 @@ import ShowMyPurchases from "./components/pages/ShowMyPurchases";
 import ShowProduct from "./components/pages/ShowProduct";
 import './styles/main.scss'
 import Auth from "./components/auth/Auth";
+import ModalLogin from "./components/auth/ModalLogin";
 
 export default class App extends Component {
   constructor(props) {
@@ -395,7 +396,9 @@ export default class App extends Component {
             render={props => {
               return (
                 <div className="page page-product-id">
-                  <ShowProduct
+                  <ModalLogin></ModalLogin>
+                
+                  {/* <ShowProduct
                     productFromApp={() =>
                       this.getProduct(props.match.params.id)
                     }
@@ -404,7 +407,7 @@ export default class App extends Component {
                     userId={this.state.loggedInUser._id}
                     buyFromApp={id => this.buyProduct(id)}
                     centerMap={this.state.position}
-                  ></ShowProduct>
+                  ></ShowProduct> */}
                 </div>
               );  
             }}
