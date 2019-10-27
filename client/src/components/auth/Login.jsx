@@ -8,7 +8,8 @@ class Login extends Component {
     super(props);
     this.state = {
       username : "",
-      password : ""
+      password : "",
+      logged: false,
     }
     this.service = new AuthService();
   }
@@ -32,7 +33,9 @@ class Login extends Component {
       });
       
       this.props.getUser(response);
+      this.props.history.goBack();
       this.props.history.push('/');
+      
     })
     .catch(error => {
       this.setState({
@@ -43,17 +46,20 @@ class Login extends Component {
     })
   }
   render() {
-    return (
-      <div className="login-container">
-        <p>Login</p>
-        <form onSubmit={this.sendLogin}>
-        <TextInput label="Nombre" value={this.state.username}   name="username" onChange={e=>this.changeState(e)} type="text"></TextInput>
-        <TextInput label="Contraseña" value={this.state.password} name="password" onChange={e=>this.changeState(e)} type="password"></TextInput>
-        <Button type="submit" value="Log in">Login</Button>
-        </form>
-        <p>{this.state.error? "Login failed. Please, try again o signup." : ""}</p>
-      </div>
-    )
+   
+      return (
+      
+        <div className="login-container">
+          <p>Login</p>
+          <form onSubmit={this.sendLogin}>
+          <TextInput label="Nombre" value={this.state.username}   name="username" onChange={e=>this.changeState(e)} type="text"></TextInput>
+          <TextInput label="Contraseña" value={this.state.password} name="password" onChange={e=>this.changeState(e)} type="password"></TextInput>
+          <Button type="submit" value="Log in">Login</Button>
+          </form>
+          <p>{this.state.error? "Login failed. Please, try again o signup." : ""}</p>
+        </div>
+      )
+
   }
 }
 

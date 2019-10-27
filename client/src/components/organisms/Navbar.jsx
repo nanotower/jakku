@@ -22,42 +22,6 @@ class Navbar extends Component {
     this.props.history.push("/my-purchases");
   };
 
-  // render() {
-
-  //     if(this.props.user) {
-  //       return (
-  //         <nav>
-  //           <NavLink to={"/"} className="jakku-logo"><img src="../../img/21eaecb818a8dd6c5286b5f66886d918.jpg" alt="Box image logo"/><h1>Jakku</h1> </NavLink>
-  //            <ul>
-  //              <li>
-  //              <NavLink to={"/profile"} className="profile-container">{this.props.user.username}<img src={this.props.user.imgPath} alt="User profile image"/>
-  //              </NavLink>
-  //              </li>
-
-  //              <li><div onClick={e=>this.logout(e)}>Logout</div></li>
-  //              <li>menu</li>
-  //            </ul>
-  //         </nav>
-  //       )
-  //     }
-  //     else {
-  //       return (
-  //         <nav>
-  //         <NavLink to={"/"} className="jakku-logo"><img src={Box} alt="Box image logo"/><h1>Jakku</h1> </NavLink>
-
-  //          <ul>
-  //            <li>
-  //            <NavLink to={"/login"} className="profile-container">Acceder
-  //            </NavLink>
-  //            </li>
-  //            <li>menu</li>
-  //          </ul>
-  //       </nav>
-
-  //       )
-
-  //     }
-  // }
   render() {
     if (this.props.user) {
       return (
@@ -175,7 +139,6 @@ class Navbar extends Component {
                  }}
                />
                <SideNavItem
-                 href="#!icon"
                  icon="account_circle"
                  onClick={e => this.signup(e)}
                >
