@@ -3,6 +3,7 @@ import { NavLink, withRouter } from "react-router-dom";
 import { Tabs, Tab } from "react-materialize";
 import RoutesService from "../../RoutesService";
 import ModalLoginFirst from "../auth/ModalLoginFirst";
+import ModalLogin from "../auth/ModalLogin";
 
 import AllProductsAndSearch from "../organisms/AllProductsAndSearch";
 import PreloaderSpinner from "../atoms/PreloaderSpinner";
@@ -137,14 +138,22 @@ class Home extends Component {
             </div>
                        
             {this.state.products && this.state.bids && this.state.centerMap ? (
-              <React.Fragment>        
-                <AllProductsAndSearch
+              <React.Fragment>  
+
+                
+               
+               
+                  <AllProductsAndSearch
                 zoomMap={12}
                   bids={this.state.bids}
                   centerMap={this.props.centerMap}
                   products={this.props.products}
                   mapSize={[70,400]}
                 ></AllProductsAndSearch>
+
+                
+               
+               
               </React.Fragment>
             ) : (
               <PreloaderSpinner></PreloaderSpinner>

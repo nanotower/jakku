@@ -394,9 +394,12 @@ export default class App extends Component {
              <Route
             path="/product/:id"
             render={props => {
+              
               return (
+
                 <div className="page page-product-id">
-                  <ModalLogin></ModalLogin>
+                  {/* <ModalLogin></ModalLogin> */}
+                  
                 
                   {/* <ShowProduct
                     productFromApp={() =>

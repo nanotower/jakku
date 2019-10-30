@@ -9,7 +9,8 @@ class ModalLogin extends Component {
   render() {
     return (
       <div>
-        <Modal  
+        <Modal 
+        trigger={this.props.trigger} 
         open={true}
         header="Tienes que identificarte primero"
         actions={<Button waves="green"

@@ -10,6 +10,7 @@ export default class Card extends Component {
           // <div class="row">
           // <div class="col s12 m7">
             <div class="card">
+            
             <NavLink to={`/product/${this.props.product._id}`}className={`product-card ${this.props.idx}`}>
                 {this.props.product.active? 
                 
